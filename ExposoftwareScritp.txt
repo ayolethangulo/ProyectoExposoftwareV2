@@ -1,0 +1,107 @@
+CREATE DATABASE [ExposoftwareBD];
+USE  [ExposoftwareBD]
+
+
+CREATE TABLE [dbo].[Area](
+	[IdArea] [nvarchar](4) NOT NULL PRIMARY KEY,
+	[Nombre] [nvarchar](50) NULL,
+)
+
+CREATE TABLE [dbo].[Asignatura](
+	[IdAsignatura] [nvarchar](4) NOT NULL PRIMARY KEY,
+	[Nombre] [nvarchar](50) NULL,
+	[IdArea] [nvarchar](4) not null,
+	FOREIGN KEY (IdArea) REFERENCES Area(IdArea)
+)
+
+/* aun no creo esta tabla creo que faltan campos*/
+
+CREATE TABLE [dbo].[Rubrica](
+	[IdRubrica] [nvarchar](4) NOT NULL PRIMARY KEY,
+	[IdArea] [nvarchar](4) not null,
+	FOREIGN KEY (IdArea) REFERENCES Area(IdArea)
+)
+-------------------------------------------------------
+
+CREATE TABLE [dbo].[Docente](
+	[Identificacion] [nvarchar](10) NOT NULL PRIMARY KEY,
+	[PrimerNombre] [nvarchar](20) NULL,
+	[SegundoNombre] [nvarchar](20) NULL,
+	[PrimerApellido] [nvarchar](20) NULL,
+	[SegundoApellido] [nvarchar](20) NULL,
+	[Celular] [nvarchar](10) NULL,
+	[Correo] [nvarchar](50) NULL,
+	[Perfil] [nvarchar](50) null,
+	[TipoDocente] [nvarchar](30) NULL,
+)
+
+CREATE TABLE [dbo].[LiderProyecto](
+	[Identificacion] [nvarchar](10) NOT NULL PRIMARY KEY,
+	[PrimerNombre] [nvarchar](20) NULL,
+	[SegundoNombre] [nvarchar](20) NULL,
+	[PrimerApellido] [nvarchar](20) NULL,
+	[SegundoApellido] [nvarchar](20) NULL,
+	[Celular] [nvarchar](10) NULL,
+	[Correo] [nvarchar](50) NULL,
+	[Perfil] [nvarchar](50) null,
+	[TipoDocente] [nvarchar](30) NULL,
+)
+
+CREATE TABLE [dbo].[Usuario](
+	[Usuario] [nvarchar](30) NOT NULL PRIMARY KEY,
+	[Contrtasena] [nvarchar](20) NULL,
+	[Identificacion] [nvarchar](10),
+	FOREIGN KEY (Identificacion) REFERENCES Docente(Identificacion)
+)
+
+CREATE TABLE [dbo].[Proyecto](
+	[IdProyecto] [nvarchar](5) NOT NULL PRIMARY KEY,
+	[Identificacion] [nvarchar](10) NOT NULL,
+	[Estudiante1] [nvarchar](10) NOT NULL,
+	[Estudiante2] [nvarchar](10) NULL,
+	[Asignatura] [nvarchar](50)  NULL,
+	[Titulo] [nvarchar](100)  NULL,
+	[Semestre] [nvarchar](2) NULL,
+	[Resumen] [nvarchar](250) NULL,
+	[Metodologia] [nvarchar](250) NULL,
+	[Resultados] [nvarchar](250) NULL,
+	[Estado] [nvarchar](11) NULL,
+-------no le agregue las llaves forareas aun--------------
+	FOREIGN KEY (Identificacion) REFERENCES LiderProyecto(Identificacion),
+	FOREIGN KEY (Asignatura) REFERENCES Asignatura(IdAsignatura),
+	FOREIGN KEY (Estudiante1) REFERENCES Estudiante(Identificacion),
+	FOREIGN KEY (Estudiante2) REFERENCES Estudiante(Identificacion)
+
+---------------------------------------------------------------------
+)
+
+CREATE TABLE [dbo].[Estudiante](
+	[Identificacion] [nvarchar](10) NOT NULL PRIMARY KEY,
+	[PrimerNombre] [nvarchar](20) NULL,
+	[SegundoNombre] [nvarchar](20) NULL,
+	[PrimerApellido] [nvarchar](20) NULL,
+	[SegundoApellido] [nvarchar](20) NULL,
+	[Celular] [nvarchar](10) NULL,
+	[Correo] [nvarchar](50) NULL,
+)
+
+CREATE TABLE [dbo].[Pendon](
+	[IdPendon] [nvarchar](4) NOT NULL PRIMARY KEY,
+	[Introduccion] [nvarchar](100) NULL,
+	[Metodologia] [nvarchar](250) NULL,
+	[Resultados] [nvarchar](250) NULL,
+	[Objetivos] [nvarchar](250) NULL,
+	[Conclusion] [nvarchar](100) NULL,
+	[Referencias] [nvarchar](250) NULL,
+	[Observaciones] [nvarchar](250) NULL,
+	[Estado] [nvarchar](12) NULL,
+	[IdProyecto] [nvarchar](5) NULL,
+	FOREIGN KEY (IdProyecto) REFERENCES Proyecto(IdProyecto)
+)
+
+*-----------------aun no creo esta tabla------------------*
+CREATE TABLE [dbo].[Certificado](
+	[IdCertificado] [nvarchar](5) NOT NULL PRIMARY KEY,
+	
+)
+---------------------------------------------------
