@@ -22,7 +22,7 @@ namespace Datos
                                                     "Metodologia,Resultados, Estado)"+
                                         "values (@IdProyecto,@Identificacion,@Estudiante1,@Estudiante2,@Asignatura,@Titulo,@Semestre,@Resumen,"+
                                         "@Metodologia,@Resultados, @Estado)";
-                command.Parameters.AddWithValue("@IdProyecto", "001");                        
+                command.Parameters.AddWithValue("@IdProyecto", "002");                        
                 command.Parameters.AddWithValue("@Identificacion", proyecto.Identificacion);
                 command.Parameters.AddWithValue("@Estudiante1", proyecto.Estudiante1);
                 command.Parameters.AddWithValue("@Estudiante2", proyecto.Estudiante2);

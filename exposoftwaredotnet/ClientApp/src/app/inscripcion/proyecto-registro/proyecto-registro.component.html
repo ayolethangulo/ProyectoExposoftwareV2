@@ -5,6 +5,12 @@
             <h5>Datos del Proyecto <span class="obligatorio">* Obligatorio</span></h5>
             <form [formGroup]="formGroup">
 
+                <div class="form-group" >
+                   <input type="hidden" name="identificacion"  formControlName="identificacion">
+                   <input type="hidden" name="estudiante1"  formControlName="estudiante1">
+                   <input type="hidden" name="estudiante2"  formControlName="estudiante2">
+                </div>
+
                 <div class="form-group">
                     <label for="titulo">Titulo del proyecto <span class="obligatorio">*</span></label>
                     <input type="text" name="titulo"  formControlName="titulo" class="form-control" 

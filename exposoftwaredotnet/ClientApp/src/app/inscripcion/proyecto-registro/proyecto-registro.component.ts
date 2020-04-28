@@ -35,6 +35,9 @@ export class ProyectoRegistroComponent implements OnInit {
   private buildForm() {
     this.proyecto = new Proyecto();
 
+    this.proyecto.identificacion = this.ids[0];
+    this.proyecto.estudiante1 = this.ids[1];
+    this.proyecto.estudiante2 = this.ids[2];
     this.proyecto.titulo = '';
     this.proyecto.asignatura = '';
     this.proyecto.semestre = '';
@@ -43,9 +46,9 @@ export class ProyectoRegistroComponent implements OnInit {
     this.proyecto.resultados = '';
 
     this.formGroup = this.formBuilder.group({
-      identificacion: [this.ids[0]],
-      estudiante1: [this.ids[1]],
-      estudiante2: [this[2]],
+      identificacion: this.proyecto.identificacion,
+      estudiante1: this.proyecto.estudiante1,
+      estudiante2: this.proyecto.estudiante2,
       titulo: [this.proyecto.titulo, Validators.required],
       asignatura: [this.proyecto.asignatura, Validators.required],
       semestre: [this.proyecto.semestre, Validators.required],
@@ -71,6 +74,7 @@ export class ProyectoRegistroComponent implements OnInit {
         this.proyecto = p;
       }
     });
+    localStorage.clear();
   }
 
   public getError(controlName: string): string {
