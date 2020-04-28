@@ -6,3 +6,7 @@ label, h5{
     font-size: 15px;
     color: red;
 }
+
+.btn{
+    margin: 10px;
+}

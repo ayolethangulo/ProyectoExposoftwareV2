@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Docente } from '../models/docente';
 import { DocenteService } from '../../services/docente.service';
 import { FormGroup, FormBuilder, Validators,  AbstractControl, ValidationErrors } from '@angular/forms';
+import { DatosLocalSService } from '../../services/datos-local-s.service';
 
 @Component({
   selector: 'app-docente-registro',
@@ -13,7 +14,12 @@ export class DocenteRegistroComponent implements OnInit {
 
   formGroup: FormGroup;
   docente: Docente;
-  constructor(private docenteService: DocenteService, private formBuilder: FormBuilder) { }
+  id: string = '';
+  constructor(
+    private docenteService: DocenteService, 
+    private formBuilder: FormBuilder,
+    private datosLocalS: DatosLocalSService)
+    {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -59,6 +65,7 @@ export class DocenteRegistroComponent implements OnInit {
 
   add() {
     this.docente = this.formGroup.value;
+    this.guardarLocal(this.docente.identificacion);
     this.docenteService.post(this.docente).subscribe(d => {
       if(d != null){
         alert('Docente registrado');
@@ -83,4 +90,7 @@ export class DocenteRegistroComponent implements OnInit {
   
   get control() { return this.formGroup.controls; }
 
+  guardarLocal(id: string){
+    this.datosLocalS.post(id);
+  }
 }

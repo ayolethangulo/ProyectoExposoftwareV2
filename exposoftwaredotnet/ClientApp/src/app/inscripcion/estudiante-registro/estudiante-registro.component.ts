@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Estudiante } from '../models/estudiante';
 import { EstudianteService } from '../../services/estudiante.service';
 import {  FormGroup, FormBuilder, Validators,  AbstractControl, ValidationErrors } from '@angular/forms';
+import { DatosLocalSService } from '../../services/datos-local-s.service';
 
 @Component({
   selector: 'app-estudiante-registro',
@@ -13,7 +14,14 @@ export class EstudianteRegistroComponent implements OnInit {
 
   formGroup: FormGroup;
   estudiante: Estudiante;
-  constructor(private estudianteService: EstudianteService, private formBuilder: FormBuilder) { }
+  id: string = '';
+  constructor(
+    private estudianteService: EstudianteService, 
+    private formBuilder: FormBuilder,
+    private datosLocalS: DatosLocalSService) 
+    {
+  
+     }
 
   ngOnInit(): void {
     this.buildForm();
@@ -57,6 +65,7 @@ export class EstudianteRegistroComponent implements OnInit {
   
   add(){
     this.estudiante = this.formGroup.value;
+    this.guardarLocal(this.estudiante.identificacion);
     this.estudianteService.post(this.estudiante).subscribe(e => {
       if(e != null){
         alert('Estudiante registrado');
@@ -81,4 +90,7 @@ export class EstudianteRegistroComponent implements OnInit {
   
   get control() { return this.formGroup.controls; }
 
+  guardarLocal(id: string){
+    this.datosLocalS.post(id);
+  }
 }

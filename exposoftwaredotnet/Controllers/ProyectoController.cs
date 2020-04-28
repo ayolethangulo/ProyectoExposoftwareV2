@@ -63,8 +63,11 @@ namespace exposoftwaredotnet.Controllers
         {
             var proyecto = new Proyecto
             {
+                Identificacion = proyectoInput.Identificacion,
+                Estudiante1 = proyectoInput.Estudiante1,
+                Estudiante2 = proyectoInput.Estudiante2,
                 Asignatura = proyectoInput.Asignatura,
-                Nombre = proyectoInput.Nombre,
+                Titulo = proyectoInput.Titulo,
                 Semestre = proyectoInput.Semestre,
                 Resumen = proyectoInput.Resumen,
                 Metodologia = proyectoInput.Metodologia,

@@ -18,15 +18,16 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into Proyecto (Identificacion,Estudiante1,Estudiante2,Asignatura,Nombre,Semestre,Resumen,"+
+                command.CommandText = @"Insert Into Proyecto (IdProyecto,Identificacion,Estudiante1,Estudiante2,Asignatura,Titulo,Semestre,Resumen,"+
                                                     "Metodologia,Resultados, Estado)"+
-                                        "values (@Identificacion,@Estudiante1,@Estudiante2,@Asignatura,@Nombre,@Semestre,@Resumen,"+
+                                        "values (@IdProyecto,@Identificacion,@Estudiante1,@Estudiante2,@Asignatura,@Titulo,@Semestre,@Resumen,"+
                                         "@Metodologia,@Resultados, @Estado)";
+                command.Parameters.AddWithValue("@IdProyecto", "001");                        
                 command.Parameters.AddWithValue("@Identificacion", proyecto.Identificacion);
                 command.Parameters.AddWithValue("@Estudiante1", proyecto.Estudiante1);
                 command.Parameters.AddWithValue("@Estudiante2", proyecto.Estudiante2);
                 command.Parameters.AddWithValue("@Asignatura", proyecto.Asignatura);
-                command.Parameters.AddWithValue("@Nombre", proyecto.Nombre);
+                command.Parameters.AddWithValue("@Titulo", proyecto.Titulo);
                 command.Parameters.AddWithValue("@Semestre", proyecto.Semestre);
                 command.Parameters.AddWithValue("@Resumen", proyecto.Resumen);
                 command.Parameters.AddWithValue("@Metodologia", proyecto.Metodologia);
@@ -84,7 +85,7 @@ namespace Datos
             proyecto.Estudiante1 = (string)dataReader["Estudiante1"];
             proyecto.Estudiante2 = (string)dataReader["Estudiante2"];
             proyecto.Asignatura = (string)dataReader["Asignatura"];
-            proyecto.Nombre = (string)dataReader["Nombre"];
+            proyecto.Titulo = (string)dataReader["Titulo"];
             proyecto.Semestre = (string)dataReader["Semestre"];
             proyecto.Resumen = (string)dataReader["Resumen"];
             proyecto.Metodologia = (string)dataReader["Metodologia"];

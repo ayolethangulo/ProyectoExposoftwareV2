@@ -18,6 +18,8 @@ import { EstudianteService } from './services/estudiante.service';
 import { ProyectoService } from './services/proyecto.service';
 import { FooterComponent } from './footer/footer.component';
 import { PestanaRegistroComponent } from './inscripcion/pestana-registro/pestana-registro.component';
+import { AsignaturaService } from './services/asignatura.service';
+import { DatosLocalSService } from './services/datos-local-s.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { PestanaRegistroComponent } from './inscripcion/pestana-registro/pestana
   providers: [
     DocenteService,
     EstudianteService,
-    ProyectoService
+    ProyectoService,
+    AsignaturaService,
+    DatosLocalSService
   ],
   bootstrap: [AppComponent]
 })

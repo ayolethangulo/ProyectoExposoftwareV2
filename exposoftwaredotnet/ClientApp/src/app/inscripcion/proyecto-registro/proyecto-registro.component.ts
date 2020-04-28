@@ -1,26 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { Proyecto } from '../models/proyecto';
 import { ProyectoService } from '../../services/proyecto.service';
+import { AsignaturaService } from '../../services/asignatura.service';
+import { Asignatura } from '../../areaMateria/models/asignatura';
 import { FormGroup, FormBuilder, Validators,  AbstractControl, ValidationErrors} from '@angular/forms';
+import { DatosLocalSService } from '../../services/datos-local-s.service';
+import { DocenteService } from 'src/app/services/docente.service';
 
 @Component({
   selector: 'app-proyecto-registro',
   templateUrl: './proyecto-registro.component.html',
   styleUrls: ['./proyecto-registro.component.css']
 })
+
 export class ProyectoRegistroComponent implements OnInit {
 
   formGroup: FormGroup;
   proyecto: Proyecto;
-  constructor(private proyectoService: ProyectoService, private formBuilder: FormBuilder) { }
+  asignaturas: Asignatura[];
+  ids: string[];
+
+  constructor(
+    private proyectoService: ProyectoService, 
+    private formBuilder: FormBuilder,
+    private asignaturaService: AsignaturaService,
+    private datosLocalS: DatosLocalSService){ }
 
   ngOnInit(): void {
+    this.ObtenerDatos();
     this.buildForm();
-    this.proyecto = new Proyecto();
+    this.cargarAsignatura();
   }
 
   private buildForm() {
     this.proyecto = new Proyecto();
+
     this.proyecto.titulo = '';
     this.proyecto.asignatura = '';
     this.proyecto.semestre = '';
@@ -29,6 +43,9 @@ export class ProyectoRegistroComponent implements OnInit {
     this.proyecto.resultados = '';
 
     this.formGroup = this.formBuilder.group({
+      identificacion: [this.ids[0]],
+      estudiante1: [this.ids[1]],
+      estudiante2: [this[2]],
       titulo: [this.proyecto.titulo, Validators.required],
       asignatura: [this.proyecto.asignatura, Validators.required],
       semestre: [this.proyecto.semestre, Validators.required],
@@ -47,6 +64,7 @@ export class ProyectoRegistroComponent implements OnInit {
   }
 
   add(){
+    this.proyecto = this.formGroup.value;
     this.proyectoService.post(this.proyecto).subscribe(p => {
       if(p != null){
         alert('Proyecto Registrado');
@@ -70,5 +88,15 @@ export class ProyectoRegistroComponent implements OnInit {
   get f() { return this.formGroup.controls; }
   
   get control() { return this.formGroup.controls; }
+
+  public cargarAsignatura(){
+    this.asignaturaService.get().subscribe(result => {
+      this.asignaturas = result;
+    });
+  }
+
+  ObtenerDatos(){
+    this.ids = this.datosLocalS.get();
+  }
 
 }

@@ -8,9 +8,11 @@ namespace exposoftwaredotnet.Models
 {
     public class ProyectoInputModel
     {
-
+        public string Identificacion { get; set; }
+        public string Estudiante1 { get; set; } 
+        public string Estudiante2 { get; set; }
         public string Asignatura { get; set; } 
-        public string Nombre { get; set; }
+        public string Titulo { get; set; }
         public string Semestre { get; set; }
         public string Resumen { get; set; } 
         public string Metodologia { get; set; }
@@ -29,16 +31,13 @@ namespace exposoftwaredotnet.Models
                 Estudiante1 = proyecto.Estudiante1;
                 Estudiante2 = proyecto.Estudiante2;
                 Asignatura = proyecto.Asignatura;
-                Nombre = proyecto.Nombre;
+                Titulo = proyecto.Titulo;
                 Semestre = proyecto.Semestre;
                 Resumen = proyecto.Resumen;
                 Metodologia = proyecto.Metodologia;
                 Resultados = proyecto.Resultados;
                 Estado = proyecto.Estado;
             }
-            public string Identificacion { get; set; }
-        public string Estudiante1 { get; set; }
-        public string Estudiante2 { get; set; }
             public string Estado { get; set; }
         }
 }
