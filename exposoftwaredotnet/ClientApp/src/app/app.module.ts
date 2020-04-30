@@ -20,6 +20,8 @@ import { FooterComponent } from './footer/footer.component';
 import { PestanaRegistroComponent } from './inscripcion/pestana-registro/pestana-registro.component';
 import { AsignaturaService } from './services/asignatura.service';
 import { DatosLocalSService } from './services/datos-local-s.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { DatosLocalSService } from './services/datos-local-s.service';
     EstudianteRegistroComponent,
     ProyectoRegistroComponent,
     FooterComponent,
-    PestanaRegistroComponent
+    PestanaRegistroComponent,
+    AlertModalComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -44,8 +47,10 @@ import { DatosLocalSService } from './services/datos-local-s.service';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ]),
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
+  entryComponents:[AlertModalComponent],
   providers: [
     DocenteService,
     EstudianteService,

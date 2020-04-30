@@ -30,7 +30,7 @@ export class DocenteService {
     post(docente: Docente): Observable<Docente> {
       return this.http.post<Docente>(this.baseUrl + 'api/Docente', docente)
       .pipe(
-      tap(_ => this.handleErrorService.log('datos enviados')),
+      tap(_ => this.handleErrorService.log('Docente registrado.')),
       catchError(this.handleErrorService.handleError<Docente>('Registrar Docente', null))
       );
     }
