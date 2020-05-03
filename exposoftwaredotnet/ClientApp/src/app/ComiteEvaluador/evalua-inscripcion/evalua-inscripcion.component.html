@@ -1,0 +1,36 @@
+
+
+<div class="btn-group-vertical" style="float:left">
+    <button type="button" class="btn btn-success " [routerLink]="['/inicio']"> Inicio</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/evaluaInscripcion']"> Evaluar Inscripcion</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/registrarComiteEvaluador']"> Registrar Comite Evaluador</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/registrarDocenteEvaluador']"> Registrar Docente Evaluador</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/modificarRubrica']"> Modificar Rubrica</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/evaluarPendon']"> Evaluar Pendón</button>
+</div>
+<table class="table table-hover">
+    <thead>
+      <tr class="bg-success">
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+    </tbody>
+    <div class="cuadrado">
+      <h6>Digite El codigo del proyecto que desea Evaluar: </h6>
+      <input class="form-control" type="text" placeholder="Escribe La identificacion">
+    </div>
+    <div class="botonEvaluar">
+      <button type="button" class="btn btn-success btn-sm btn-block caracteristicaBoton" [routerLink]="['/']"> EVALUAR </button>
+    </div>
+   
+  </table>

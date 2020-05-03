@@ -25,6 +25,19 @@ import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
 import { PlantillaComiteComponent } from './plantillas/plantilla-comite/plantilla-comite.component';
 import { PlantillaLiderComponent } from './plantillas/plantilla-lider/plantilla-lider.component';
 import { PlantillaEvaluadorComponent } from './plantillas/plantilla-evaluador/plantilla-evaluador.component';
+import { InformacionComponent } from './informacion/informacion/informacion.component';
+import { LoginComiteEvaluadorComponent } from './loginComiteEvaluador/login-comite-evaluador/login-comite-evaluador.component';
+import { LoginDocenteEvaluadorComponent } from './loginDocenteEvaluador/login-docente-evaluador/login-docente-evaluador.component';
+import { LoginLiderProyectoComponent } from './loginLiderProyecto/login-lider-proyecto/login-lider-proyecto.component';
+import { InicioComponent } from './ComiteEvaluador/inicio/inicio.component';
+import { RegistrarComiteEvaluadorComponent } from './ComiteEvaluador/registrar-comite-evaluador/registrar-comite-evaluador.component';
+import { RegistrarDocenteEvaluadorComponent } from './ComiteEvaluador/registrar-docente-evaluador/registrar-docente-evaluador.component';
+import { ModificarRubricaComponent } from './ComiteEvaluador/modificar-rubrica/modificar-rubrica.component';
+import { EvaluarPendonComponent } from './ComiteEvaluador/evaluar-pendon/evaluar-pendon.component';
+import { EvaluaInscripcionComponent } from './ComiteEvaluador/evalua-inscripcion/evalua-inscripcion.component';
+import { RegistrarPendonComponent } from './DocenteLider/RegistrarPendon/registrar-pendon/registrar-pendon.component';
+import { ConsultaResultadoComponent } from './DocenteLider/ConsultaResultado/consulta-resultado/consulta-resultado.component';
+import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/inicio-lider.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +54,20 @@ import { PlantillaEvaluadorComponent } from './plantillas/plantilla-evaluador/pl
     AlertModalComponent,
     PlantillaComiteComponent,
     PlantillaLiderComponent,
-    PlantillaEvaluadorComponent
+    PlantillaEvaluadorComponent,
+    InformacionComponent,
+    LoginComiteEvaluadorComponent,
+    LoginDocenteEvaluadorComponent,
+    LoginLiderProyectoComponent,
+    InicioComponent,
+    RegistrarComiteEvaluadorComponent,
+    RegistrarDocenteEvaluadorComponent,
+    ModificarRubricaComponent,
+    EvaluarPendonComponent,
+    EvaluaInscripcionComponent,
+    RegistrarPendonComponent,
+    ConsultaResultadoComponent,
+    InicioLiderComponent
   ],
   imports: [
     ReactiveFormsModule,

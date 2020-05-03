@@ -1,0 +1,51 @@
+<div class="btn-group-vertical" style="float:left">
+    <button type="button" class="btn btn-success " [routerLink]="['/inicio']"> Inicio</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/evaluaInscripcion']"> Evaluar Inscripcion</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/registrarComiteEvaluador']"> Registrar Comite Evaluador</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/registrarDocenteEvaluador']"> Registrar Docente Evaluador</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/modificarRubrica']"> Modificar Rubrica</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/evaluarPendon']"> Evaluar Pendón</button>
+</div>
+<div class="container">
+    <h3>REGISTRAR COMITE EVALUADOR</h3>
+    <form>
+
+        <div class="row">
+
+            <div class="col">
+                <h6>Digite el numero de documento: </h6>
+                <input type="text" class="form-control" placeholder="Identificacion" />
+
+
+                <button type="button" class="btn btn-success btn-sm caracteristicaBoton"> BUSCAR</button>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col">
+                <h6>Nombre: </h6>
+                <input type="text" class="form-control" placeholder="Nombre">
+            </div>
+
+            <div class="col ">
+                <h6 class="posicion2">Correo Electronico: </h6>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="colFormLabel" placeholder="Correo Electronico">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <h6 >Contraseña: </h6>
+                
+                    <input type="password" class="form-control tamanio" id="inputPassword3" placeholder="Contraseña">
+                
+                <button type="button" class="btn btn-success btn-sm caracteristicaBoton"> AGREGAR </button>
+            </div>
+        </div>
+    </form>
+
+
+</div>

@@ -21,16 +21,24 @@
         </div>
     </ng-template>
 </ngb-carousel>
-<div class="enlaces">
-    <h3>Noticias de interes</h3>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores quam eum cumque? Pariatur dicta corrupti nam
-        repellat modi, eius et illo cumque saepe iure deleniti totam fugit. Accusantium, accusamus saepe.</p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt earum ratione minus eveniet optio sapiente fugiat
-    cupiditate. Tenetur laudantium ipsum illo voluptas cum, eos fugiat optio sint omnis sunt maxime?
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure nihil modi maiores nisi quos voluptatem ducimus iusto
-    debitis sunt ratione! Praesentium molestias libero repudiandae veniam obcaecati ipsum! Explicabo, eum officiis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit maxime consequatur sunt asperiores, labore quod quasi
-    sequi ipsum debitis quidem voluptatum iure, eum eligendi! Obcaecati incidunt labore blanditiis praesentium
-    veritatis.
-</div>
+    <div class="row">
+        <div class="col-sm-6 mt-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">INSCRIBE TU PROYECTO</h5>
+              <p class="card-text">La Universidad Popular Del Cesar abre su convocatoria para que los docentes inscriban sus proyectos para la competencia Exposoftware.</p>
+              <a [routerLink]="['/docenteRegistro']" class="btn btn-success btn-sm">INSCRIBETE</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 mt-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">INFORMACION</h5>
+              <p class="card-text">Jornada Cientifica De Investigacion Tecnologica ofrecida por la Universidad Popular Del Cesar.</p>
+              <a [routerLink]="['/Informacion']" class="btn btn-success btn-sm">INFORMACION</a>
+            </div>
+          </div>
+        </div>
+      </div> 
 </div>
