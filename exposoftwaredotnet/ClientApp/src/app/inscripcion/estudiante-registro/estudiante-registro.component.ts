@@ -68,7 +68,6 @@ export class EstudianteRegistroComponent implements OnInit {
     this.guardarLocal(this.estudiante.identificacion);
     this.estudianteService.post(this.estudiante).subscribe(e => {
       if(e != null){
-        alert('Estudiante registrado');
         this.estudiante = e;
       }
     });

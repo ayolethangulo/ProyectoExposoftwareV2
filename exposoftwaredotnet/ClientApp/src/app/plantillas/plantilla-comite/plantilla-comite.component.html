@@ -1,0 +1,70 @@
+<div class="container">
+
+<nav
+class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-green border-bottom box-shadow mb-3"
+>
+<div class="container">
+  <a class="navbar-brand" [routerLink]="['/']">
+    <img src="../../assets/logoSistemas.png" alt="Universidad Popular del Cesar">
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target=".navbar-collapse"
+    aria-label="Toggle navigation"
+    [attr.aria-expanded]="isExpanded"
+    (click)="toggle()"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div
+    class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+    [ngClass]="{ show: isExpanded }"
+  >
+    <ul class="navbar-nav flex-grow">
+      <li class="nav-item" [routerLinkActive]="['link-active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link text-dark" [routerLink]="['./home.component.html']">Inicio</a>
+      </li>
+
+      <li class="nav-item" [routerLinkActive]="['link-active']">
+        <a  [routerLink]="['/']">
+          <button type="button" class="btn btn-outline-success">Cerrar sesión</button>
+          </a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+<section>
+    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+        <ngb-panel title="Asinatura">
+          <ng-template ngbPanelContent>
+            <a class="nav-link text-dark" [routerLink]="['/']"
+            >Registrar asignatura</a>
+            <a class="nav-link text-dark" [routerLink]="['/']"
+            >Consultar asignatura</a>
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel title="Area">
+          <ng-template ngbPanelContent>
+            <a class="nav-link text-dark" [routerLink]="['/']"
+            >Registrar Area</a>
+            <a class="nav-link text-dark" [routerLink]="['/']"
+            >Consultar Area</a>
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel title="Docente">
+          <ng-template ngbPanelContent>
+            <a class="nav-link text-dark" [routerLink]="['/']"
+            >Registrar Docente</a>
+            <a class="nav-link text-dark" [routerLink]="['/']"
+            >Consultar Docente</a>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+</section>
+</div>

@@ -29,7 +29,7 @@ export class EstudianteService {
   post(estudiante: Estudiante): Observable<Estudiante> {
     return this.http.post<Estudiante>(this.baseUrl + 'api/Estudiante', estudiante)
     .pipe(
-    tap(_ => this.handleErrorService.log('datos enviados')),
+    tap(_ => this.handleErrorService.log('Estudiante registrado')),
     catchError(this.handleErrorService.handleError<Estudiante>('Registrar Estudiante', null))
     );
   }

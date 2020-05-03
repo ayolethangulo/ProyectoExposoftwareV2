@@ -70,7 +70,7 @@ export class ProyectoRegistroComponent implements OnInit {
     this.proyecto = this.formGroup.value;
     this.proyectoService.post(this.proyecto).subscribe(p => {
       if(p != null){
-        alert('Proyecto Registrado');
+
         this.proyecto = p;
       }
     });

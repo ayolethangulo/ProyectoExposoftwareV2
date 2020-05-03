@@ -30,7 +30,7 @@ export class ProyectoService {
     post(proyecto: Proyecto): Observable<Proyecto> {
       return this.http.post<Proyecto>(this.baseUrl + 'api/Proyecto', proyecto)
       .pipe(
-      tap(_ => this.handleErrorService.log('datos enviados')),
+      tap(_ => this.handleErrorService.log('Proyecto registrado')),
       catchError(this.handleErrorService.handleError<Proyecto>('Registrar Proyecto', null))
       );
     }

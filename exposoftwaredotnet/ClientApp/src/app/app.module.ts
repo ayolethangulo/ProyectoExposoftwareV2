@@ -22,6 +22,9 @@ import { AsignaturaService } from './services/asignatura.service';
 import { DatosLocalSService } from './services/datos-local-s.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
+import { PlantillaComiteComponent } from './plantillas/plantilla-comite/plantilla-comite.component';
+import { PlantillaLiderComponent } from './plantillas/plantilla-lider/plantilla-lider.component';
+import { PlantillaEvaluadorComponent } from './plantillas/plantilla-evaluador/plantilla-evaluador.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
     ProyectoRegistroComponent,
     FooterComponent,
     PestanaRegistroComponent,
-    AlertModalComponent
+    AlertModalComponent,
+    PlantillaComiteComponent,
+    PlantillaLiderComponent,
+    PlantillaEvaluadorComponent
   ],
   imports: [
     ReactiveFormsModule,

@@ -1,0 +1,9 @@
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+    float: left;
+    width: 30%;
+    height: 300px; /* only for demonstration, should be removed */
+    padding: 20px;
+  }

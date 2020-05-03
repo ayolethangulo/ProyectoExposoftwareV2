@@ -3,8 +3,6 @@ import { Docente } from '../models/docente';
 import { DocenteService } from '../../services/docente.service';
 import { FormGroup, FormBuilder, Validators,  AbstractControl, ValidationErrors } from '@angular/forms';
 import { DatosLocalSService } from '../../services/datos-local-s.service';
-import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -21,8 +19,7 @@ export class DocenteRegistroComponent implements OnInit {
   constructor(
     private docenteService: DocenteService, 
     private formBuilder: FormBuilder,
-    private datosLocalS: DatosLocalSService,
-    private modalService: NgbModal)
+    private datosLocalS: DatosLocalSService)
     {}
 
   ngOnInit(): void {
@@ -64,7 +61,7 @@ export class DocenteRegistroComponent implements OnInit {
       return;
     }
     this.add();
-    this.buildForm();
+    //this.buildForm();
   }
 
   add() {
@@ -97,4 +94,6 @@ export class DocenteRegistroComponent implements OnInit {
   guardarLocal(id: string){
     this.datosLocalS.post(id);
   }
+
+
 }
