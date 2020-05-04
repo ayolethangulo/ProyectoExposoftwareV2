@@ -15,7 +15,6 @@ import { DocenteService } from './services/docente.service';
 import { EstudianteService } from './services/estudiante.service';
 import { ProyectoService } from './services/proyecto.service';
 import { FooterComponent } from './footer/footer.component';
-import { PestanaRegistroComponent } from './inscripcion/pestana-registro/pestana-registro.component';
 import { AsignaturaService } from './services/asignatura.service';
 import { DatosLocalSService } from './services/datos-local-s.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -43,7 +42,6 @@ import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/in
     EstudianteRegistroComponent,
     ProyectoRegistroComponent,
     FooterComponent,
-    PestanaRegistroComponent,
     AlertModalComponent,
     InformacionComponent,
     LoginComiteEvaluadorComponent,
