@@ -3,6 +3,8 @@ import { Docente } from '../models/docente';
 import { DocenteService } from '../../services/docente.service';
 import { FormGroup, FormBuilder, Validators,  AbstractControl, ValidationErrors } from '@angular/forms';
 import { DatosLocalSService } from '../../services/datos-local-s.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
 
 
 @Component({
@@ -19,7 +21,8 @@ export class DocenteRegistroComponent implements OnInit {
   constructor(
     private docenteService: DocenteService, 
     private formBuilder: FormBuilder,
-    private datosLocalS: DatosLocalSService)
+    private datosLocalS: DatosLocalSService,
+    private modalService: NgbModal)
     {}
 
   ngOnInit(): void {
@@ -93,6 +96,35 @@ export class DocenteRegistroComponent implements OnInit {
 
   guardarLocal(id: string){
     this.datosLocalS.post(id);
+  }
+
+  buscar(){
+    const idb = this.formGroup.get('identificacion').value
+    if(idb == ''){
+      const messageBox = this.modalService.open(AlertModalComponent)
+      messageBox.componentInstance.title = "Resultado Operación";
+      messageBox.componentInstance.message = "Campo vacío, digite identificación.";
+    }else{
+      this.docenteService.getId(idb).subscribe(d => {
+        this.docente = d;
+        this.mapearDocente(this.docente)
+      });
+      
+    }
+  }
+
+  mapearDocente(d: Docente){
+    this.guardarLocal(this.docente.identificacion);
+    this.formGroup.get('primerNombre').setValue(d.primerNombre);
+    if(d.segundoNombre != ''){
+      this.formGroup.get('SegundoNombre').setValue(d.segundoNombre);
+    }
+    this.formGroup.get('primerApellido').setValue(d.primerApellido);
+    this.formGroup.get('segundoApellido').setValue(d.segundoApellido);
+    this.formGroup.get('celular').setValue(d.celular);
+    this.formGroup.get('correo').setValue(d.correo);
+    this.formGroup.get('perfil').setValue(d.perfil);
+
   }
 
 

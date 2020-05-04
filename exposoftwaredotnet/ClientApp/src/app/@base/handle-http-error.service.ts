@@ -9,6 +9,7 @@ import { AlertModalComponent } from './alert-modal/alert-modal.component';
 export class HandleHttpErrorService {
 
   constructor(private modalService: NgbModal) { }
+
   public handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

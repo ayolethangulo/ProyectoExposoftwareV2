@@ -7,8 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DocenteRegistroComponent } from './inscripcion/docente-registro/docente-registro.component';
 import { EstudianteRegistroComponent } from './inscripcion/estudiante-registro/estudiante-registro.component';
 import { ProyectoRegistroComponent } from './inscripcion/proyecto-registro/proyecto-registro.component';
@@ -22,9 +20,6 @@ import { AsignaturaService } from './services/asignatura.service';
 import { DatosLocalSService } from './services/datos-local-s.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
-import { PlantillaComiteComponent } from './plantillas/plantilla-comite/plantilla-comite.component';
-import { PlantillaLiderComponent } from './plantillas/plantilla-lider/plantilla-lider.component';
-import { PlantillaEvaluadorComponent } from './plantillas/plantilla-evaluador/plantilla-evaluador.component';
 import { InformacionComponent } from './informacion/informacion/informacion.component';
 import { LoginComiteEvaluadorComponent } from './loginComiteEvaluador/login-comite-evaluador/login-comite-evaluador.component';
 import { LoginDocenteEvaluadorComponent } from './loginDocenteEvaluador/login-docente-evaluador/login-docente-evaluador.component';
@@ -44,17 +39,12 @@ import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/in
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     DocenteRegistroComponent,
     EstudianteRegistroComponent,
     ProyectoRegistroComponent,
     FooterComponent,
     PestanaRegistroComponent,
     AlertModalComponent,
-    PlantillaComiteComponent,
-    PlantillaLiderComponent,
-    PlantillaEvaluadorComponent,
     InformacionComponent,
     LoginComiteEvaluadorComponent,
     LoginDocenteEvaluadorComponent,
@@ -75,9 +65,7 @@ import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/in
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: '', component: HomeComponent, pathMatch: 'full' }
     ]),
     AppRoutingModule,
     NgbModule

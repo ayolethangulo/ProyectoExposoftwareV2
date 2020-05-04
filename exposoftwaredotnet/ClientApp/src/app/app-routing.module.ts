@@ -2,7 +2,6 @@ import { DocenteRegistroComponent } from './inscripcion/docente-registro/docente
 import { EstudianteRegistroComponent } from './inscripcion/estudiante-registro/estudiante-registro.component';
 import { ProyectoRegistroComponent } from './inscripcion/proyecto-registro/proyecto-registro.component';
 import { PestanaRegistroComponent } from './inscripcion/pestana-registro/pestana-registro.component';
-import { PlantillaComiteComponent} from './plantillas/plantilla-comite/plantilla-comite.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -37,10 +36,6 @@ const routes: Routes = [
   {
     path: 'pestanaRegistro',
     component: PestanaRegistroComponent
-  },
-  {
-    path: 'plantillaComite',
-    component: PlantillaComiteComponent
   },
   {
     path: 'loginLider',

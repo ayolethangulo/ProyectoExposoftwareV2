@@ -22,7 +22,6 @@ export class AsignaturaService {
     get(): Observable<Asignatura[]> {
       return this.http.get<Asignatura[]>(this.baseUrl + 'api/Asignatura')
       .pipe(
-      tap(_ => this.handleErrorService.log('datos enviados')),
       catchError(this.handleErrorService.handleError<Asignatura[]>('Consulta Asignatura', null))
       );
     }

@@ -45,8 +45,7 @@ export class DocenteService {
       const url = `${this.baseUrl + 'api/Docente'}/${id}`;
         return this.http.get<Docente>(url, httpOptions)
         .pipe(
-          tap(_ => this.handleErrorService.log('datos enviados')),
-          catchError(this.handleErrorService.handleError<Docente>('Buscar Persona', null))
+          catchError(this.handleErrorService.handleError<Docente>('Docente no Registrado', null))
         );
     }
     
