@@ -13,11 +13,10 @@ import { EvaluaInscripcionComponent } from './ComiteEvaluador/evalua-inscripcion
 import { EvaluarPendonComponent } from './ComiteEvaluador/evaluar-pendon/evaluar-pendon.component';
 import { InicioComponent } from './ComiteEvaluador/inicio/inicio.component';
 import { ModificarRubricaComponent } from './ComiteEvaluador/modificar-rubrica/modificar-rubrica.component';
-import { RegistrarComiteEvaluadorComponent } from './ComiteEvaluador/registrar-comite-evaluador/registrar-comite-evaluador.component';
-import { RegistrarDocenteEvaluadorComponent } from './ComiteEvaluador/registrar-docente-evaluador/registrar-docente-evaluador.component';
 import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/inicio-lider.component';
 import { RegistrarPendonComponent } from './DocenteLider/RegistrarPendon/registrar-pendon/registrar-pendon.component';
 import { ConsultaResultadoComponent } from './DocenteLider/ConsultaResultado/consulta-resultado/consulta-resultado.component';
+import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
 
 
 const routes: Routes = [
@@ -74,14 +73,6 @@ const routes: Routes = [
     component: ModificarRubricaComponent
   },
   {
-    path: 'registrarComiteEvaluador',
-    component: RegistrarComiteEvaluadorComponent
-  },
-  {
-    path: 'registrarDocenteEvaluador',
-    component: RegistrarDocenteEvaluadorComponent
-  },
-  {
     path: 'InicioDocenteLider',
     component: InicioLiderComponent
   }, 
@@ -92,6 +83,10 @@ const routes: Routes = [
   {
     path: 'ConsultaResultado',
     component: ConsultaResultadoComponent
+  },
+  {
+    path: 'RegistrarUsuario',
+    component: RegistrarUsuarioComponent
   }
 ];
 

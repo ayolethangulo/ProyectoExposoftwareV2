@@ -1,0 +1,75 @@
+<div class="btn-group-vertical" style="float:left">
+    <button type="button" class="btn btn-success " [routerLink]="['/inicio']"> Inicio</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/evaluaInscripcion']"> Evaluar Inscripcion</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/RegistrarUsuario']"> Registrar
+        Docente</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/modificarRubrica']"> Modificar Rubrica</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/evaluarPendon']"> Evaluar Pendón</button>
+</div>
+<div class="container">
+    <h3>REGISTRAR DOCENTE</h3>
+    <form>
+
+        <div class="row">
+
+            <div class="col">
+
+                <div class="form-group">
+
+                    <label>Identificacion</label>
+
+                    <input type="text" name="identificacion" [(ngModel)]="usuario.identificacion"
+                        class="form-control" />
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col">
+
+                <div class="form-group">
+
+                    <label>Nombre Usuario</label>
+
+                    <input type="text" name="nombreUsuario" [(ngModel)]="usuario.usuarioNombre"
+                        class="form-control" />
+
+                </div>
+            </div>
+
+            <div class="col ">
+                <h6 class="posicion2">Tipo Docente: </h6>
+                <div class="col-sm-10">
+                    <select name="TipoDocente" [(ngModel)]="usuario.tipoDocente" size="2">
+
+                        <option selected>Selecciona</option>
+
+                        <option>Docente Evaluador</option>
+
+                        <option>Comite Evaluador</option>
+
+                        <option>Lider Proyecto</option>
+
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h6>Contraseña: </h6>
+
+                <input type="password" name="Contrasena" [(ngModel)]="usuario.contrasena" class="form-control tamanio"
+                    id="inputPassword3" placeholder="Contraseña">
+
+                <button type="button" class="btn btn-success btn-sm caracteristicaBoton" (click)="add()"> AGREGAR
+                </button>
+            </div>
+        </div>
+    </form>
+
+
+</div>

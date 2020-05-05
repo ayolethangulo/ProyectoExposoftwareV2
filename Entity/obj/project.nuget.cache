@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "g9Yp0BsInWCrB1NgmZnIAp+bI4KxYIsMMdUnb0dhrgoF95PYe5s1c2Xsb2cfAqzXfVOkJATdI+ZZFLWmCSTbvg==",
+  "success": true,
+  "projectFilePath": "E:\\JOEL BOLIVAR GM\\Proyecto v2\\ProyectoExposoftwareV2\\Entity\\Entity.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\JOELBOLIVARGC\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\JOELBOLIVARGC\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

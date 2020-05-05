@@ -25,14 +25,14 @@ import { LoginComiteEvaluadorComponent } from './loginComiteEvaluador/login-comi
 import { LoginDocenteEvaluadorComponent } from './loginDocenteEvaluador/login-docente-evaluador/login-docente-evaluador.component';
 import { LoginLiderProyectoComponent } from './loginLiderProyecto/login-lider-proyecto/login-lider-proyecto.component';
 import { InicioComponent } from './ComiteEvaluador/inicio/inicio.component';
-import { RegistrarComiteEvaluadorComponent } from './ComiteEvaluador/registrar-comite-evaluador/registrar-comite-evaluador.component';
-import { RegistrarDocenteEvaluadorComponent } from './ComiteEvaluador/registrar-docente-evaluador/registrar-docente-evaluador.component';
 import { ModificarRubricaComponent } from './ComiteEvaluador/modificar-rubrica/modificar-rubrica.component';
 import { EvaluarPendonComponent } from './ComiteEvaluador/evaluar-pendon/evaluar-pendon.component';
 import { EvaluaInscripcionComponent } from './ComiteEvaluador/evalua-inscripcion/evalua-inscripcion.component';
 import { RegistrarPendonComponent } from './DocenteLider/RegistrarPendon/registrar-pendon/registrar-pendon.component';
 import { ConsultaResultadoComponent } from './DocenteLider/ConsultaResultado/consulta-resultado/consulta-resultado.component';
 import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/inicio-lider.component';
+import { UsuarioService } from './services/usuario.service';
+import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -50,14 +50,13 @@ import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/in
     LoginDocenteEvaluadorComponent,
     LoginLiderProyectoComponent,
     InicioComponent,
-    RegistrarComiteEvaluadorComponent,
-    RegistrarDocenteEvaluadorComponent,
     ModificarRubricaComponent,
     EvaluarPendonComponent,
     EvaluaInscripcionComponent,
     RegistrarPendonComponent,
     ConsultaResultadoComponent,
-    InicioLiderComponent
+    InicioLiderComponent,
+    RegistrarUsuarioComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -76,7 +75,8 @@ import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/in
     EstudianteService,
     ProyectoService,
     AsignaturaService,
-    DatosLocalSService
+    DatosLocalSService,
+    UsuarioService
   ],
   bootstrap: [AppComponent]
 })
