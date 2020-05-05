@@ -1,6 +1,8 @@
 .container{
 	margin: 5px;
 	padding: 5px;
+	margin-left: 80px;
+	padding-left: 80px;
 	margin-bottom: 10px;
 	display: block;
 	/*min-height: 100vh;*/

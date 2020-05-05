@@ -15,3 +15,7 @@ label, h5, h6{
 .btn{
     margin: 10px;
 }
+.container{
+    margin-left: 80px;
+	padding-left: 80px;
+}
