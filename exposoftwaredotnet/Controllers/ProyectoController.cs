@@ -48,7 +48,12 @@ namespace exposoftwaredotnet.Controllers
             var response = _proyectoService.Guardar(proyecto);
             if (response.Error) 
             {
-                return BadRequest(response.Mensaje);
+                ModelState.AddModelError("Guardar Proyecto", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+                return BadRequest(problemDetails);
             }
             return Ok(response.Proyecto);
         }

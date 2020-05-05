@@ -6,7 +6,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { HandleHttpErrorService } from '../@base/handle-http-error.service';
 
 
-
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };

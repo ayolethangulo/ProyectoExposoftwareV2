@@ -73,8 +73,8 @@ export class ProyectoRegistroComponent implements OnInit {
 
         this.proyecto = p;
       }
+      localStorage.clear();
     });
-    localStorage.clear();
   }
 
   public getError(controlName: string): string {
