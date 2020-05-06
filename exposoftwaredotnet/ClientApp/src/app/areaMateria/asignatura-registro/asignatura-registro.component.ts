@@ -3,6 +3,8 @@ import { Asignatura } from '../models/asignatura';
 import { AsignaturaService } from '../../services/asignatura.service';
 import { FormGroup, FormBuilder, Validators,  AbstractControl, ValidationErrors } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Area } from '../models/area';
+import { AreaService } from 'src/app/services/area.service';
 
 
 @Component({
@@ -14,25 +16,28 @@ export class AsignaturaRegistroComponent implements OnInit {
 
   formGroup: FormGroup;
   asignatura: Asignatura;
+  areas: Area[];
   constructor(
     private asignaturaService: AsignaturaService, private formBuilder: FormBuilder,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private areaService: AreaService
   ) { }
 
   ngOnInit(): void {
     this.buildForm();
+    this.cargarArea();
   }
 
   private buildForm() {
     this.asignatura = new Asignatura();
     this.asignatura.idAsignatura = '';
-    this.asignatura.nombreAsignatura = '';
+    this.asignatura.nombre = '';
     this.asignatura.idArea = '';
 
 
     this.formGroup = this.formBuilder.group({
       idAsignatura: [this.asignatura.idAsignatura, Validators.required],
-      nombreAsignatura: [this.asignatura.nombreAsignatura, Validators.required],
+      nombre: [this.asignatura.nombre, Validators.required],
       idArea: [this.asignatura.idArea, Validators.required]
      });
   }
@@ -65,5 +70,11 @@ export class AsignaturaRegistroComponent implements OnInit {
   }
   get f() { return this.formGroup.controls; }
   get control() { return this.formGroup.controls; }
+
+  public cargarArea() {
+    this.areaService.get().subscribe(result => {
+      this.areas = result;
+    });
+  }
 
 }

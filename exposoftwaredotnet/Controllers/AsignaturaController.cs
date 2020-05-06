@@ -69,7 +69,7 @@ namespace exposoftwaredotnet.Controllers
             var asignatura = new Asignatura
             {
                 IdAsignatura = asignaturaInput.IdAsignatura,
-                NombreAsignatura = asignaturaInput.NombreAsignatura,
+                Nombre = asignaturaInput.Nombre,
                 IdArea = asignaturaInput.IdArea
             };
             return asignatura;

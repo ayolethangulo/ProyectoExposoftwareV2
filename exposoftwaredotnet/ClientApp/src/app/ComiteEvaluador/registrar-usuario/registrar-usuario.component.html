@@ -1,10 +1,6 @@
-<div class="btn-group-vertical" style="float:left">
-    <button type="button" class="btn btn-success " [routerLink]="['/inicio']"> Inicio</button>
-    <button type="button" class="btn btn-success " [routerLink]="['/evaluaInscripcion']"> Evaluar Inscripcion</button>
-    <button type="button" class="btn btn-success " [routerLink]="['/RegistrarUsuario']">Registrar Usuarios Docente</button>
-    <button type="button" class="btn btn-success " [routerLink]="['/modificarRubrica']"> Modificar Rubrica</button>
-    <button type="button" class="btn btn-success " [routerLink]="['/evaluarPendon']"> Evaluar Pendón</button>
-</div>
+<app-menu-top></app-menu-top>
+<div class="row">
+    <app-menu-lateral></app-menu-lateral>
 <div class="container">
     <h3>REGISTRAR DOCENTE</h3>
     <form>
@@ -71,4 +67,5 @@
     </form>
 
 
+</div>
 </div>

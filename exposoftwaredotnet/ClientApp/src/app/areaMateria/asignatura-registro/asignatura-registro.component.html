@@ -17,26 +17,26 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="nombreAsignatura">Nombre de la asignatura<span class="obligatorio">*</span></label>
-                        <input type="text" name="nombreAsignatura" formControlName="nombreAsignatura"
+                        <label for="nombre">Nombre de la asignatura<span class="obligatorio">*</span></label>
+                        <input type="text" name="nombre" formControlName="nombre"
                             class="form-control"
-                            [ngClass]="{'is-invalid': control.nombreAsignatura.errors && formGroup.get('nombreAsignatura').touched}" />
-                        <div *ngIf="control.nombreAsignatura.errors && formGroup.get('nombreAsignatura').touched"
+                            [ngClass]="{'is-invalid': control.nombre.errors && formGroup.get('nombre').touched}" />
+                        <div *ngIf="control.nombre.errors && formGroup.get('nombre').touched"
                             class="invalid-feedback">
-                            <div *ngIf="control.nombreAsignatura.errors.required">Campo requerido</div>
+                            <div *ngIf="control.nombre.errors.required">Campo requerido</div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="area">Area<span class="obligatorio">*</span> </label>
-                        <select class="form-control" formControlName="area" name="area"
-                            [ngClass]="{'is-invalid': control.area.errors && formGroup.get('area').touched}">
+                        <label for="idArea">Area<span class="obligatorio">*</span> </label>
+                        <select class="form-control" formControlName="idArea" name="idArea"
+                            [ngClass]="{'is-invalid': control.idArea.errors && formGroup.get('idArea').touched}">
                             <option *ngFor="let area of areas" value={{area.idArea}}>
-                                {{area.nombreArea}}
-                            </option>>
+                                {{area.idArea}}
+                            </option>
                         </select>
-                        <div *ngIf="control.area.errors && formGroup.get('area').touched" class="invalid-feedback">
-                            <div *ngIf="control.area.errors.required">Campo requerido</div>
+                        <div *ngIf="control.idArea.errors && formGroup.get('idArea').touched" class="invalid-feedback">
+                            <div *ngIf="control.idArea.errors.required">Campo requerido</div>
                         </div>
                     </div>
 

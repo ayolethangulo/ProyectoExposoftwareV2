@@ -1,5 +1,5 @@
 export class Asignatura {
     idAsignatura: string;
-    nombreAsignatura: string;
+    nombre: string;
     idArea: string;
 }

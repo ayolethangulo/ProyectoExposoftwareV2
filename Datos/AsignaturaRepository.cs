@@ -9,7 +9,7 @@ namespace Datos
     public class AsignaturaRepository
     {
          private readonly SqlConnection _connection;
-        private readonly List<Asignatura> _docentes = new List<Asignatura>();
+        private readonly List<Asignatura> _asignaturas = new List<Asignatura>();
         
         public AsignaturaRepository(ConnectionManager connection)
         {
@@ -22,7 +22,7 @@ namespace Datos
             {
                 command.CommandText = @"Insert Into Asignatura (IdAsignatura,Nombre, IdArea) values (@IdAsignatura, @Nombre, @IdArea)";
                 command.Parameters.AddWithValue("@IdAsignatura", asignatura.IdAsignatura);
-                command.Parameters.AddWithValue("@Nombre", asignatura.NombreAsignatura);
+                command.Parameters.AddWithValue("@Nombre", asignatura.Nombre);
                 command.Parameters.AddWithValue("@IdArea", asignatura.IdArea);
                 var filas = command.ExecuteNonQuery();
             }
@@ -72,7 +72,7 @@ namespace Datos
             if(!dataReader.HasRows) return null;
             Asignatura asignatura = new Asignatura();
             asignatura.IdAsignatura = (string)dataReader["IdAsignatura"];
-            asignatura.NombreAsignatura = (string)dataReader["Nombre"];
+            asignatura.Nombre = (string)dataReader["Nombre"];
             asignatura.IdArea = (string)dataReader["IdArea"];
             return asignatura;
         }

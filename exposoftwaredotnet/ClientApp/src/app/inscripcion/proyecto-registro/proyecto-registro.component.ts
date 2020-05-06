@@ -3,7 +3,7 @@ import { Proyecto } from '../models/proyecto';
 import { ProyectoService } from '../../services/proyecto.service';
 import { AsignaturaService } from '../../services/asignatura.service';
 import { Asignatura } from '../../areaMateria/models/asignatura';
-import { FormGroup, FormBuilder, Validators,  AbstractControl, ValidationErrors} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { DatosLocalSService } from '../../services/datos-local-s.service';
 import { DocenteService } from 'src/app/services/docente.service';
 
@@ -21,10 +21,10 @@ export class ProyectoRegistroComponent implements OnInit {
   ids: string[];
 
   constructor(
-    private proyectoService: ProyectoService, 
+    private proyectoService: ProyectoService,
     private formBuilder: FormBuilder,
     private asignaturaService: AsignaturaService,
-    private datosLocalS: DatosLocalSService){ }
+    private datosLocalS: DatosLocalSService) { }
 
   ngOnInit(): void {
     this.ObtenerDatos();
@@ -55,7 +55,7 @@ export class ProyectoRegistroComponent implements OnInit {
       resumen: [this.proyecto.resumen, Validators.required],
       metodologia: [this.proyecto.metodologia, Validators.required],
       resultados: [this.proyecto.resultados, Validators.required]
-     });
+    });
   }
 
   onSubmit() {
@@ -66,10 +66,10 @@ export class ProyectoRegistroComponent implements OnInit {
     this.buildForm();
   }
 
-  add(){
+  add() {
     this.proyecto = this.formGroup.value;
     this.proyectoService.post(this.proyecto).subscribe(p => {
-      if(p != null){
+      if (p != null) {
 
         this.proyecto = p;
       }
@@ -90,16 +90,16 @@ export class ProyectoRegistroComponent implements OnInit {
     return this.formGroup.get(controlName).errors;
   }
   get f() { return this.formGroup.controls; }
-  
+
   get control() { return this.formGroup.controls; }
 
-  public cargarAsignatura(){
+  public cargarAsignatura() {
     this.asignaturaService.get().subscribe(result => {
       this.asignaturas = result;
     });
   }
 
-  ObtenerDatos(){
+  ObtenerDatos() {
     this.ids = this.datosLocalS.get();
   }
 

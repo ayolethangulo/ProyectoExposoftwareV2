@@ -15,8 +15,7 @@ export class UsuarioService {
   constructor(
     private http: HttpClient,
     @Inject('BASE_URL') baseUrl: string,
-    private handleErrorService: HandleHttpErrorService) 
-    {
+    private handleErrorService: HandleHttpErrorService) {
       this.baseUrl = baseUrl;
     }
 
@@ -27,7 +26,6 @@ export class UsuarioService {
       catchError(this.handleErrorService.handleError<Usuario[]>('Consulta Usuario', null))
       );
     }
-  
     post(usuario: Usuario): Observable<Usuario> {
       return this.http.post<Usuario>(this.baseUrl + 'api/Usuario', usuario)
       .pipe(
