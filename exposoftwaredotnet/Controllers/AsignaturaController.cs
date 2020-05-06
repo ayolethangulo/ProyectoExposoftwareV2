@@ -48,7 +48,12 @@ namespace exposoftwaredotnet.Controllers
             var response = _asignaturaService.Guardar(asignatura);
             if (response.Error) 
             {
-                return BadRequest(response.Mensaje);
+               ModelState.AddModelError("Guardar Asignatura", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+                return BadRequest(problemDetails);
             }
             return Ok(response.Asignatura);
         }
@@ -64,7 +69,8 @@ namespace exposoftwaredotnet.Controllers
             var asignatura = new Asignatura
             {
                 IdAsignatura = asignaturaInput.IdAsignatura,
-                NombreAsignatura = asignaturaInput.NombreAsignatura
+                NombreAsignatura = asignaturaInput.NombreAsignatura,
+                IdArea = asignaturaInput.IdArea
             };
             return asignatura;
         }

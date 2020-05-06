@@ -17,6 +17,8 @@ import { RegistrarDocenteEvaluadorComponent } from './ComiteEvaluador/registrar-
 import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/inicio-lider.component';
 import { RegistrarPendonComponent } from './DocenteLider/RegistrarPendon/registrar-pendon/registrar-pendon.component';
 import { ConsultaResultadoComponent } from './DocenteLider/ConsultaResultado/consulta-resultado/consulta-resultado.component';
+import { AsignaturaRegistroComponent } from './areaMateria/asignatura-registro/asignatura-registro.component';
+import { AsignaturaConsultaComponent} from './areaMateria/asignatura-consulta/asignatura-consulta.component';
 
 
 const routes: Routes = [
@@ -79,7 +81,7 @@ const routes: Routes = [
   {
     path: 'InicioDocenteLider',
     component: InicioLiderComponent
-  }, 
+  },
   {
     path: 'RegistrarPendon',
     component: RegistrarPendonComponent
@@ -87,6 +89,14 @@ const routes: Routes = [
   {
     path: 'ConsultaResultado',
     component: ConsultaResultadoComponent
+  },
+  {
+    path: 'AsignaturaRegistro',
+    component: AsignaturaRegistroComponent
+  },
+  {
+    path: 'AsignaturaConsulta',
+    component: AsignaturaConsultaComponent
   }
 ];
 

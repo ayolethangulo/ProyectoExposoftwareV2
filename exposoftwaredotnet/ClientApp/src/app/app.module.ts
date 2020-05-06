@@ -32,6 +32,10 @@ import { EvaluaInscripcionComponent } from './ComiteEvaluador/evalua-inscripcion
 import { RegistrarPendonComponent } from './DocenteLider/RegistrarPendon/registrar-pendon/registrar-pendon.component';
 import { ConsultaResultadoComponent } from './DocenteLider/ConsultaResultado/consulta-resultado/consulta-resultado.component';
 import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/inicio-lider.component';
+import { AsignaturaRegistroComponent } from './areaMateria/asignatura-registro/asignatura-registro.component';
+import { AsignaturaConsultaComponent } from './areaMateria/asignatura-consulta/asignatura-consulta.component';
+import { MenuTopComponent } from './adminGUI/menu-top/menu-top.component';
+import { MenuLateralComponent } from './adminGUI/menu-lateral/menu-lateral.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +59,11 @@ import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/in
     EvaluaInscripcionComponent,
     RegistrarPendonComponent,
     ConsultaResultadoComponent,
-    InicioLiderComponent
+    InicioLiderComponent,
+    AsignaturaRegistroComponent,
+    AsignaturaConsultaComponent,
+    MenuTopComponent,
+    MenuLateralComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -68,7 +76,7 @@ import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/in
     AppRoutingModule,
     NgbModule
   ],
-  entryComponents:[AlertModalComponent],
+  entryComponents: [AlertModalComponent],
   providers: [
     DocenteService,
     EstudianteService,

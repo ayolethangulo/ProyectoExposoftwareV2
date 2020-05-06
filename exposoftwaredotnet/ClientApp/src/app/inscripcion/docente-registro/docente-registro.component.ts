@@ -22,8 +22,7 @@ export class DocenteRegistroComponent implements OnInit {
     private docenteService: DocenteService, 
     private formBuilder: FormBuilder,
     private datosLocalS: DatosLocalSService,
-    private modalService: NgbModal)
-    {}
+    private modalService: NgbModal) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -70,8 +69,7 @@ export class DocenteRegistroComponent implements OnInit {
     this.docente = this.formGroup.value;
     this.guardarLocal(this.docente.identificacion);
     this.docenteService.post(this.docente).subscribe(d => {
-      if(d != null){
-   
+      if (d != null) {
         this.docente = d;
       }
     });
@@ -90,7 +88,6 @@ export class DocenteRegistroComponent implements OnInit {
     return this.formGroup.get(controlName).errors;
   }
   get f() { return this.formGroup.controls; }
-  
   get control() { return this.formGroup.controls; }
 
   guardarLocal(id: string){

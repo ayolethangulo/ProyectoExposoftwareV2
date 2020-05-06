@@ -20,6 +20,11 @@ namespace Logica
         {
             try
             {
+                 var asignaturaBuscada = this.BuscarxId(asignatura.IdAsignatura);
+                if (asignaturaBuscada!= null)
+                {
+                    return new GuardarAsignaturaResponse("Error la asignatura ya se encuentra registrada");
+                }
                 _conexion.Open();
                 _repositorio.Guardar(asignatura);
                 _conexion.Close();

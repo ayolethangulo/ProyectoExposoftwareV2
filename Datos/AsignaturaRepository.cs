@@ -20,9 +20,10 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into Asignatura (IdAsignatura,Nombre) values (@IdAsignatura, @Nombre)";
+                command.CommandText = @"Insert Into Asignatura (IdAsignatura,Nombre, IdArea) values (@IdAsignatura, @Nombre, @IdArea)";
                 command.Parameters.AddWithValue("@IdAsignatura", asignatura.IdAsignatura);
                 command.Parameters.AddWithValue("@Nombre", asignatura.NombreAsignatura);
+                command.Parameters.AddWithValue("@IdArea", asignatura.IdArea);
                 var filas = command.ExecuteNonQuery();
             }
         }
@@ -72,6 +73,7 @@ namespace Datos
             Asignatura asignatura = new Asignatura();
             asignatura.IdAsignatura = (string)dataReader["IdAsignatura"];
             asignatura.NombreAsignatura = (string)dataReader["Nombre"];
+            asignatura.IdArea = (string)dataReader["IdArea"];
             return asignatura;
         }
     }
