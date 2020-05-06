@@ -49,7 +49,12 @@ namespace exposoftwaredotnet.Controllers
             var response = _estudianteService.Guardar(estudiante);
             if (response.Error) 
             {
-                return BadRequest(response.Mensaje);
+                ModelState.AddModelError("Guardar Estudiante", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+                return BadRequest(problemDetails);
             }
             return Ok(response.Estudiante);
         }

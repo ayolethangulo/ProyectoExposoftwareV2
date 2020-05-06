@@ -1,5 +1,6 @@
 using Entity;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,11 +12,28 @@ namespace exposoftwaredotnet.Models
         public string Identificacion { get; set; }
         public string Estudiante1 { get; set; } 
         public string Estudiante2 { get; set; }
+
+        [Required(ErrorMessage = "La asignatura es requerida")]
         public string Asignatura { get; set; } 
+
+        [Required(ErrorMessage = "El título es requerido")]
         public string Titulo { get; set; }
+
+        [Required(ErrorMessage = "El semestre es requerido")]
+        [Range(3,10,ErrorMessage="Solo son aptos del 3 semestre en adelante")]
+
         public string Semestre { get; set; }
+
+        [Required(ErrorMessage = "El resumen es requerido")]
+        [StringLength(250, ErrorMessage = "Máximo 250 caracteres")]
         public string Resumen { get; set; } 
+
+        [Required(ErrorMessage = "La metodológiia es requerida")]
+         [StringLength(250, ErrorMessage = "Máximo 250 caracteres")]
         public string Metodologia { get; set; }
+
+        [Required(ErrorMessage = "El resultado es requerido")]
+         [StringLength(250, ErrorMessage = "Máximo 250 caracteres")]
         public string Resultados { get; set; }         
         
     }

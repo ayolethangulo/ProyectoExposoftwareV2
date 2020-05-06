@@ -21,6 +21,12 @@ namespace Logica
         {
             try
             {
+                var docenteBuscado = this.BuscarxIdentificacion(docente.Identificacion);
+                if (docenteBuscado != null)
+                {
+                    return new GuardarDocenteResponse("Error el docente ya se encuentra registrado");
+                }
+
                 _conexion.Open();
                 _repositorio.Guardar(docente);
                 _conexion.Close();

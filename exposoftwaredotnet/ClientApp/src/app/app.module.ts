@@ -15,7 +15,6 @@ import { DocenteService } from './services/docente.service';
 import { EstudianteService } from './services/estudiante.service';
 import { ProyectoService } from './services/proyecto.service';
 import { FooterComponent } from './footer/footer.component';
-import { PestanaRegistroComponent } from './inscripcion/pestana-registro/pestana-registro.component';
 import { AsignaturaService } from './services/asignatura.service';
 import { DatosLocalSService } from './services/datos-local-s.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -33,6 +32,7 @@ import { ConsultaResultadoComponent } from './DocenteLider/ConsultaResultado/con
 import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/inicio-lider.component';
 import { UsuarioService } from './services/usuario.service';
 import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
+import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes/registrar-docentes.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,6 @@ import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/r
     EstudianteRegistroComponent,
     ProyectoRegistroComponent,
     FooterComponent,
-    PestanaRegistroComponent,
     AlertModalComponent,
     InformacionComponent,
     LoginComiteEvaluadorComponent,
@@ -56,7 +55,8 @@ import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/r
     RegistrarPendonComponent,
     ConsultaResultadoComponent,
     InicioLiderComponent,
-    RegistrarUsuarioComponent
+    RegistrarUsuarioComponent,
+    RegistrarDocentesComponent
   ],
   imports: [
     ReactiveFormsModule,

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PestanaRegistroComponent } from './pestana-registro.component';
+import { RegistrarDocentesComponent } from './registrar-docentes.component';
 
-describe('PestanaRegistroComponent', () => {
-  let component: PestanaRegistroComponent;
-  let fixture: ComponentFixture<PestanaRegistroComponent>;
+describe('RegistrarDocentesComponent', () => {
+  let component: RegistrarDocentesComponent;
+  let fixture: ComponentFixture<RegistrarDocentesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PestanaRegistroComponent ]
+      declarations: [ RegistrarDocentesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PestanaRegistroComponent);
+    fixture = TestBed.createComponent(RegistrarDocentesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

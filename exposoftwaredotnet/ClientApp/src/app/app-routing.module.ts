@@ -1,7 +1,6 @@
 import { DocenteRegistroComponent } from './inscripcion/docente-registro/docente-registro.component';
 import { EstudianteRegistroComponent } from './inscripcion/estudiante-registro/estudiante-registro.component';
 import { ProyectoRegistroComponent } from './inscripcion/proyecto-registro/proyecto-registro.component';
-import { PestanaRegistroComponent } from './inscripcion/pestana-registro/pestana-registro.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,6 +16,7 @@ import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/in
 import { RegistrarPendonComponent } from './DocenteLider/RegistrarPendon/registrar-pendon/registrar-pendon.component';
 import { ConsultaResultadoComponent } from './DocenteLider/ConsultaResultado/consulta-resultado/consulta-resultado.component';
 import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
+import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes/registrar-docentes.component';
 
 
 const routes: Routes = [
@@ -31,10 +31,6 @@ const routes: Routes = [
   {
     path: 'estudianteRegistro',
     component: EstudianteRegistroComponent
-  },
-  {
-    path: 'pestanaRegistro',
-    component: PestanaRegistroComponent
   },
   {
     path: 'loginLider',
@@ -87,6 +83,10 @@ const routes: Routes = [
   {
     path: 'RegistrarUsuario',
     component: RegistrarUsuarioComponent
+  },
+  {
+    path: 'RegistrarDocentes',
+    component: RegistrarDocentesComponent
   }
 ];
 

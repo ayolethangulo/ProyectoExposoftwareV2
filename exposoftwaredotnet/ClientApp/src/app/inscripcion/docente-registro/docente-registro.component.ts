@@ -64,7 +64,6 @@ export class DocenteRegistroComponent implements OnInit {
       return;
     }
     this.add();
-    //this.buildForm();
   }
 
   add() {
@@ -99,17 +98,16 @@ export class DocenteRegistroComponent implements OnInit {
   }
 
   buscar(){
-    const idb = this.formGroup.get('identificacion').value
-    if(idb == ''){
+    const idb = this.formGroup.get('identificacion').value;
+    if( idb == '' ) {
       const messageBox = this.modalService.open(AlertModalComponent)
-      messageBox.componentInstance.title = "Resultado Operación";
-      messageBox.componentInstance.message = "Campo vacío, digite identificación.";
-    }else{
+      messageBox.componentInstance.title = 'Resultado Operación';
+      messageBox.componentInstance.message = 'Campo vacío, digite identificación.';
+    } else {
       this.docenteService.getId(idb).subscribe(d => {
         this.docente = d;
-        this.mapearDocente(this.docente)
+        this.mapearDocente(this.docente);
       });
-      
     }
   }
 

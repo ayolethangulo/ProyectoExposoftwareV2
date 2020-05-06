@@ -11,3 +11,8 @@ label, h5,h6{
 #botones{
     margin: 15px;
 }
+
+.container{
+    margin-left: 80px;
+	padding-left: 80px;
+}
