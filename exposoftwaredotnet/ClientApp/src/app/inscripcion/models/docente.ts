@@ -9,3 +9,4 @@ export class Docente {
     perfil: string;
     tipoDocente: string;
 }
+

@@ -49,7 +49,8 @@ CREATE TABLE [dbo].[LiderProyecto](
 
 CREATE TABLE [dbo].[Usuario](
 	[Usuario] [nvarchar](30) NOT NULL PRIMARY KEY,
-	[Contrtasena] [nvarchar](20) NULL,
+	[Contrasena] [nvarchar](20) NULL,
+	[TipoDocente] [nvarchar](50) NULL,
 	[Identificacion] [nvarchar](10),
 	FOREIGN KEY (Identificacion) REFERENCES Docente(Identificacion)
 )
@@ -105,3 +106,10 @@ CREATE TABLE [dbo].[Certificado](
 	
 )
 ---------------------------------------------------
+
+CREATE TABLE [dbo].[UsuarioComiteEvaluador](
+	[Identificacion] [nvarchar](50) NOT NULL PRIMARY KEY,
+	[Nombre] [nvarchar](50) NULL,
+	[CorreoElectronico] [nvarchar](50) null,
+	[Contrasenia][nvarchar](50) null,
+)

@@ -24,18 +24,22 @@ import { LoginComiteEvaluadorComponent } from './loginComiteEvaluador/login-comi
 import { LoginDocenteEvaluadorComponent } from './loginDocenteEvaluador/login-docente-evaluador/login-docente-evaluador.component';
 import { LoginLiderProyectoComponent } from './loginLiderProyecto/login-lider-proyecto/login-lider-proyecto.component';
 import { InicioComponent } from './ComiteEvaluador/inicio/inicio.component';
-import { RegistrarComiteEvaluadorComponent } from './ComiteEvaluador/registrar-comite-evaluador/registrar-comite-evaluador.component';
-import { RegistrarDocenteEvaluadorComponent } from './ComiteEvaluador/registrar-docente-evaluador/registrar-docente-evaluador.component';
 import { ModificarRubricaComponent } from './ComiteEvaluador/modificar-rubrica/modificar-rubrica.component';
 import { EvaluarPendonComponent } from './ComiteEvaluador/evaluar-pendon/evaluar-pendon.component';
 import { EvaluaInscripcionComponent } from './ComiteEvaluador/evalua-inscripcion/evalua-inscripcion.component';
 import { RegistrarPendonComponent } from './DocenteLider/RegistrarPendon/registrar-pendon/registrar-pendon.component';
 import { ConsultaResultadoComponent } from './DocenteLider/ConsultaResultado/consulta-resultado/consulta-resultado.component';
 import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/inicio-lider.component';
+<<<<<<< HEAD
 import { AsignaturaRegistroComponent } from './areaMateria/asignatura-registro/asignatura-registro.component';
 import { AsignaturaConsultaComponent } from './areaMateria/asignatura-consulta/asignatura-consulta.component';
 import { MenuTopComponent } from './adminGUI/menu-top/menu-top.component';
 import { MenuLateralComponent } from './adminGUI/menu-lateral/menu-lateral.component';
+=======
+import { UsuarioService } from './services/usuario.service';
+import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
+import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes/registrar-docentes.component';
+>>>>>>> 459a1cac23bde0d29867148c83b71a42f680bf3a
 
 @NgModule({
   declarations: [
@@ -52,18 +56,21 @@ import { MenuLateralComponent } from './adminGUI/menu-lateral/menu-lateral.compo
     LoginDocenteEvaluadorComponent,
     LoginLiderProyectoComponent,
     InicioComponent,
-    RegistrarComiteEvaluadorComponent,
-    RegistrarDocenteEvaluadorComponent,
     ModificarRubricaComponent,
     EvaluarPendonComponent,
     EvaluaInscripcionComponent,
     RegistrarPendonComponent,
     ConsultaResultadoComponent,
     InicioLiderComponent,
+<<<<<<< HEAD
     AsignaturaRegistroComponent,
     AsignaturaConsultaComponent,
     MenuTopComponent,
     MenuLateralComponent
+=======
+    RegistrarUsuarioComponent,
+    RegistrarDocentesComponent
+>>>>>>> 459a1cac23bde0d29867148c83b71a42f680bf3a
   ],
   imports: [
     ReactiveFormsModule,
@@ -82,7 +89,8 @@ import { MenuLateralComponent } from './adminGUI/menu-lateral/menu-lateral.compo
     EstudianteService,
     ProyectoService,
     AsignaturaService,
-    DatosLocalSService
+    DatosLocalSService,
+    UsuarioService
   ],
   bootstrap: [AppComponent]
 })

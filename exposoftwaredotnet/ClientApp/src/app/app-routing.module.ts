@@ -12,13 +12,16 @@ import { EvaluaInscripcionComponent } from './ComiteEvaluador/evalua-inscripcion
 import { EvaluarPendonComponent } from './ComiteEvaluador/evaluar-pendon/evaluar-pendon.component';
 import { InicioComponent } from './ComiteEvaluador/inicio/inicio.component';
 import { ModificarRubricaComponent } from './ComiteEvaluador/modificar-rubrica/modificar-rubrica.component';
-import { RegistrarComiteEvaluadorComponent } from './ComiteEvaluador/registrar-comite-evaluador/registrar-comite-evaluador.component';
-import { RegistrarDocenteEvaluadorComponent } from './ComiteEvaluador/registrar-docente-evaluador/registrar-docente-evaluador.component';
 import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/inicio-lider.component';
 import { RegistrarPendonComponent } from './DocenteLider/RegistrarPendon/registrar-pendon/registrar-pendon.component';
 import { ConsultaResultadoComponent } from './DocenteLider/ConsultaResultado/consulta-resultado/consulta-resultado.component';
+<<<<<<< HEAD
 import { AsignaturaRegistroComponent } from './areaMateria/asignatura-registro/asignatura-registro.component';
 import { AsignaturaConsultaComponent} from './areaMateria/asignatura-consulta/asignatura-consulta.component';
+=======
+import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
+import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes/registrar-docentes.component';
+>>>>>>> 459a1cac23bde0d29867148c83b71a42f680bf3a
 
 
 const routes: Routes = [
@@ -71,14 +74,6 @@ const routes: Routes = [
     component: ModificarRubricaComponent
   },
   {
-    path: 'registrarComiteEvaluador',
-    component: RegistrarComiteEvaluadorComponent
-  },
-  {
-    path: 'registrarDocenteEvaluador',
-    component: RegistrarDocenteEvaluadorComponent
-  },
-  {
     path: 'InicioDocenteLider',
     component: InicioLiderComponent
   },
@@ -91,12 +86,21 @@ const routes: Routes = [
     component: ConsultaResultadoComponent
   },
   {
+<<<<<<< HEAD
     path: 'AsignaturaRegistro',
     component: AsignaturaRegistroComponent
   },
   {
     path: 'AsignaturaConsulta',
     component: AsignaturaConsultaComponent
+=======
+    path: 'RegistrarUsuario',
+    component: RegistrarUsuarioComponent
+  },
+  {
+    path: 'RegistrarDocentes',
+    component: RegistrarDocentesComponent
+>>>>>>> 459a1cac23bde0d29867148c83b71a42f680bf3a
   }
 ];
 
