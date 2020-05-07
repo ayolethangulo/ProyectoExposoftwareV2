@@ -19,33 +19,32 @@ export class DocenteService {
   constructor(
     private http: HttpClient,
     @Inject('BASE_URL') baseUrl: string,
-    private handleErrorService: HandleHttpErrorService) 
-    { 
-      this.baseUrl = baseUrl;
-    }
+    private handleErrorService: HandleHttpErrorService) {
+    this.baseUrl = baseUrl;
+  }
 
-    get(): Observable<Docente[]> {
-      return this.http.get<Docente[]>(this.baseUrl + 'api/Docente')
+  get(): Observable<Docente[]> {
+    return this.http.get<Docente[]>(this.baseUrl + 'api/Docente')
       .pipe(
-      tap(_ => this.handleErrorService.log('datos enviados')),
-      catchError(this.handleErrorService.handleError<Docente[]>('Consulta Docente', null))
+        tap(_ => this.handleErrorService.log('datos enviados')),
+        catchError(this.handleErrorService.handleError<Docente[]>('Consulta Docente', null))
       );
-    }
-  
-    post(docente: Docente): Observable<Docente> {
-      return this.http.post<Docente>(this.baseUrl + 'api/Docente', docente)
-      .pipe(
-      tap(_ => this.handleErrorService.log('Docente registrado.')),
-      catchError(this.handleErrorService.handleError<Docente>('Registrar Docente', null))
-      );
-    }
+  }
 
-    getId(id: string): Observable<Docente> {
-      const url = `${this.baseUrl + 'api/Docente'}/${id}`;
-        return this.http.get<Docente>(url, httpOptions)
-        .pipe(
-          catchError(this.handleErrorService.handleError<Docente>('Docente no Registrado', null))
-        );
-    }
-    
+  post(docente: Docente): Observable<Docente> {
+    return this.http.post<Docente>(this.baseUrl + 'api/Docente', docente)
+      .pipe(
+        tap(_ => this.handleErrorService.log('Docente registrado.')),
+        catchError(this.handleErrorService.handleError<Docente>('Registrar Docente', null))
+      );
+  }
+
+  getId(id: string): Observable<Docente> {
+    const url = `${this.baseUrl + 'api/Docente'}/${id}`;
+    return this.http.get<Docente>(url, httpOptions)
+      .pipe(
+        catchError(this.handleErrorService.handleError<Docente>('Docente no Registrado', null))
+      );
+  }
+
 }

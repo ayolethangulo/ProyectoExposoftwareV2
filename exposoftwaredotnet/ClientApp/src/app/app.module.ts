@@ -36,6 +36,9 @@ import { MenuTopComponent } from './adminGUI/menu-top/menu-top.component';
 import { MenuLateralComponent } from './adminGUI/menu-lateral/menu-lateral.component';
 import { UsuarioService } from './services/usuario.service';
 import { AreaService } from './services/area.service';
+import { FiltroAsignaturaPipe } from './@base/pipe/filtro-asignatura.pipe';
+import { AreaRegistroComponent } from './areaMateria/area-registro/area-registro.component';
+import { AreaConsultaComponent } from './areaMateria/area-consulta/area-consulta.component';
 
 
 @NgModule({
@@ -62,7 +65,10 @@ import { AreaService } from './services/area.service';
     AsignaturaRegistroComponent,
     AsignaturaConsultaComponent,
     MenuTopComponent,
-    MenuLateralComponent
+    MenuLateralComponent,
+    FiltroAsignaturaPipe,
+    AreaRegistroComponent,
+    AreaConsultaComponent
   ],
   imports: [
     ReactiveFormsModule,

@@ -2,13 +2,7 @@
 <div class="row">
     <app-menu-lateral></app-menu-lateral>
     <div class="container">
-        <div class="col-6">
-            <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="Type to filter">
-        </div>
-
-        <hr>
-
-        <table class="table table-hover" *ngIf='asignaturas && asignaturas.length'>
+        <table class="table table-hover" *ngIf='areas && areas.length'>
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -18,10 +12,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let asignatura of asignaturas|filtroAsignatura:searchText;index as i ">
+                <tr *ngFor="let area of areas; index as i ">
                     <th scope="row">{{ i + 1 }}</th>
-                    <td>{{ asignatura.idAsignatura }} </td>
-                    <td>{{ asignatura.nombre }}</td>
+                    <td>{{ area.idArea }} </td>
+                    <td>{{ area.nombre }}</td>
                     <td><a href="">ver</a></td>
                 </tr>
             </tbody>

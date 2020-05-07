@@ -15,11 +15,11 @@ export class HandleHttpErrorService {
 
       if (error.status == '500') {
         this.mostrarError500(error);
-     }
-     if (error.status == '400') {
-       this.mostrarError400(error);
-     }
-    return of(result as T);
+      }
+      if (error.status == '400') {
+        this.mostrarError400(error);
+      }
+      return of(result as T);
     };
   }
   private mostrarError500(error: any) {

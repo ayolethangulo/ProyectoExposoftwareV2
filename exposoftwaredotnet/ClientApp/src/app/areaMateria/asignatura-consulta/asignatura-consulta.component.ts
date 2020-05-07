@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Asignatura } from '../models/asignatura';
+import { AsignaturaService } from '../../services/asignatura.service';
+
 
 @Component({
   selector: 'app-asignatura-consulta',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsignaturaConsultaComponent implements OnInit {
 
-  constructor() { }
+  searchText: string;
+  asignaturas: Asignatura[];
+  constructor(private asignaturaService: AsignaturaService) { }
 
   ngOnInit(): void {
+    this.asignaturaService.get().subscribe(result => {
+      this.asignaturas = result;
+    });
   }
 
 }

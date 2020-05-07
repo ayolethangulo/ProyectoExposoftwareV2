@@ -29,7 +29,7 @@
                         <select class="form-control" formControlName="asignatura" name="asignatura"
                         [ngClass]="{'is-invalid': control.asignatura.errors && formGroup.get('asignatura').touched}">
                             <option *ngFor="let asignatura of asignaturas" value={{asignatura.idAsignatura}}>
-                                {{asignatura.nombreAsignatura}}
+                                {{asignatura.nombre}}
                             </option>>
                         </select>
                         <div *ngIf="control.asignatura.errors && formGroup.get('asignatura').touched" class="invalid-feedback">

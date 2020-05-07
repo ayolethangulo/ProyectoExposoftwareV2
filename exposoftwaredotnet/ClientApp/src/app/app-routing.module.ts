@@ -17,7 +17,8 @@ import { RegistrarPendonComponent } from './DocenteLider/RegistrarPendon/registr
 import { ConsultaResultadoComponent } from './DocenteLider/ConsultaResultado/consulta-resultado/consulta-resultado.component';
 import { AsignaturaRegistroComponent } from './areaMateria/asignatura-registro/asignatura-registro.component';
 import { AsignaturaConsultaComponent} from './areaMateria/asignatura-consulta/asignatura-consulta.component';
-
+import { AreaRegistroComponent } from './areaMateria/area-registro/area-registro.component';
+import { AreaConsultaComponent } from './areaMateria/area-consulta/area-consulta.component';
 
 
 const routes: Routes = [
@@ -88,6 +89,14 @@ const routes: Routes = [
   {
     path: 'AsignaturaConsulta',
     component: AsignaturaConsultaComponent
+  },
+  {
+    path: 'AreaRegistro',
+    component: AreaRegistroComponent
+  },
+  {
+    path: 'AreaConsulta',
+    component: AreaConsultaComponent
   }
 
 ];

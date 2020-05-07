@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Docente } from '../models/docente';
 import { DocenteService } from '../../services/docente.service';
-import { FormGroup, FormBuilder, Validators,  AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { DatosLocalSService } from '../../services/datos-local-s.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
@@ -17,12 +17,12 @@ export class DocenteRegistroComponent implements OnInit {
 
   formGroup: FormGroup;
   docente: Docente;
-  id: string = '';
+  id: string;
   constructor(
-    private docenteService: DocenteService, 
+    private docenteService: DocenteService,
     private formBuilder: FormBuilder,
     private datosLocalS: DatosLocalSService,
-    private modalService: NgbModal) {}
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -48,12 +48,12 @@ export class DocenteRegistroComponent implements OnInit {
       celular: [this.docente.celular, Validators.maxLength(10)],
       correo: [this.docente.correo, Validators.required],
       perfil: [this.docente.perfil, Validators.required]
-     });
+    });
   }
 
   private ValidaVacio(control: AbstractControl) {
     const segundoNombre = control.value;
-    if (segundoNombre == '') {
+    if (segundoNombre == null) {
       return null;
     }
   }
@@ -90,28 +90,30 @@ export class DocenteRegistroComponent implements OnInit {
   get f() { return this.formGroup.controls; }
   get control() { return this.formGroup.controls; }
 
-  guardarLocal(id: string){
+  guardarLocal(id: string) {
     this.datosLocalS.post(id);
   }
 
-  buscar(){
+  buscar() {
     const idb = this.formGroup.get('identificacion').value;
-    if( idb == '' ) {
-      const messageBox = this.modalService.open(AlertModalComponent)
+    if (idb == '') {
+      const messageBox = this.modalService.open(AlertModalComponent);
       messageBox.componentInstance.title = 'Resultado Operación';
       messageBox.componentInstance.message = 'Campo vacío, digite identificación.';
     } else {
       this.docenteService.getId(idb).subscribe(d => {
         this.docente = d;
-        this.mapearDocente(this.docente);
+          this.mapearDocente(this.docente);
       });
     }
   }
 
-  mapearDocente(d: Docente){
+  mapearDocente(d: Docente) {
     this.guardarLocal(this.docente.identificacion);
     this.formGroup.get('primerNombre').setValue(d.primerNombre);
-    if(d.segundoNombre != ''){
+    if (d.segundoNombre == null) {
+      this.formGroup.get('SegundoNombre').setValue('');
+    } else {
       this.formGroup.get('SegundoNombre').setValue(d.segundoNombre);
     }
     this.formGroup.get('primerApellido').setValue(d.primerApellido);
@@ -119,8 +121,5 @@ export class DocenteRegistroComponent implements OnInit {
     this.formGroup.get('celular').setValue(d.celular);
     this.formGroup.get('correo').setValue(d.correo);
     this.formGroup.get('perfil').setValue(d.perfil);
-
   }
-
-
 }
