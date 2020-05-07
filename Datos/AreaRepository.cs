@@ -34,6 +34,16 @@ namespace Datos
                 command.ExecuteNonQuery();
             }
         }
+         public void Modificar( Area area)
+        {
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "update Area set idArea=@IdArea, nombre=@Nombre where IdArea=@IdArea";
+                command.Parameters.AddWithValue("@IdArea", area.IdArea);
+                command.Parameters.AddWithValue("@Nombre", area.Nombre);
+                command.ExecuteNonQuery();
+            }
+        }
         public List<Area> ConsultarTodos()
         {
             SqlDataReader dataReader;
@@ -53,13 +63,13 @@ namespace Datos
             }
             return areas;
         }
-        public Area BuscarPorId(string id)
+        public Area BuscarPorId(string idArea)
         {
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
                 command.CommandText = "select * from Area where IdArea=@IdArea";
-                command.Parameters.AddWithValue("@IdArea", id);
+                command.Parameters.AddWithValue("@IdArea", idArea);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 return DataReaderMapToPerson(dataReader);

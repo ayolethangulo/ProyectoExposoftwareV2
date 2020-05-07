@@ -59,9 +59,9 @@ namespace exposoftwaredotnet.Controllers
         }
         // DELETE: api/Area/5
         [HttpDelete("{idArea}")]
-        public ActionResult<string> Delete(string id)
+        public ActionResult<string> Delete(string idArea)
         {
-            string mensaje = _areaService.Eliminar(id);
+            string mensaje = _areaService.Eliminar(idArea);
             return Ok(mensaje);
         }
         private Area MapearArea(AreaInputModel areaInput)
@@ -75,9 +75,14 @@ namespace exposoftwaredotnet.Controllers
         }
         // PUT: api/Area/5
         [HttpPut("{idArea}")]
-        public ActionResult<string> Put(string id, Area area)
+        public ActionResult<string> Put(string idArea, Area area)
         {
-            throw new NotImplementedException();
+           var id=_areaService.BuscarxId(area.IdArea);
+            if(id==null){
+                return BadRequest("No encontrado");
+            }
+            var mensaje=_areaService.Modificar(area);
+           return Ok(mensaje) ;
         }
         
     }

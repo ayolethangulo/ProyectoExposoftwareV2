@@ -67,6 +67,31 @@ namespace Logica
             finally { _conexion.Close(); }
 
         }
+         public string Modificar(Area areaNueva)
+        {
+            try
+            {
+                _conexion.Open();
+                var areaVieja = _repositorio.BuscarPorId(areaNueva.IdArea);
+                if (areaVieja != null)
+                {
+                    _repositorio.Modificar(areaNueva);
+                    _conexion.Close();
+                    return ($"El registro {areaNueva.Nombre} se ha modificado satisfactoriamente.");
+                }
+                else
+                {
+                    return ($"Lo sentimos, {areaNueva.IdArea} no se encuentra registrada.");
+                }
+            }
+            catch (Exception e)
+            {
+
+                return $"Error de la Aplicación: {e.Message}";
+            }
+            finally { _conexion.Close(); }
+
+        }
         public Area BuscarxId(string id)
         {
             _conexion.Open();

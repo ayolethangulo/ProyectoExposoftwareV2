@@ -5,6 +5,10 @@ import { HandleHttpErrorService } from '../@base/handle-http-error.service';
 import { Observable, of} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +33,32 @@ export class AreaService {
         tap(_ => this.handleErrorService.log('datos enviados')),
         catchError(this.handleErrorService.handleError<Area>('Registrar Area', null))
       );
+  }
+  put(area: Area): Observable<any> {
+    const url = `${this.baseUrl}api/Area/${area.idArea}`;
+    return this.http.put(url, area, httpOptions)
+    .pipe(
+      tap(_ => this.handleErrorService.log('datos enviados')),
+      catchError(this.handleErrorService.handleError<any>('Editar area'))
+    );
+  }
+
+  getId(idArea: string): Observable<Area> {
+    const url = `${this.baseUrl + 'api/Area'}/${idArea}`;
+      return this.http.get<Area>(url, httpOptions)
+      .pipe(
+        tap(_ => this.handleErrorService.log('datos enviados')),
+        catchError(this.handleErrorService.handleError<Area>('Buscar Area', null))
+      );
+  }
+
+  delete(area: Area| string): Observable<string> {
+    const id = typeof area === 'string' ? area : area.idArea;
+    return this.http.delete<string>(this.baseUrl + 'api/Area/' + id)
+    .pipe(
+      tap(_ => this.handleErrorService.log('datos enviados')),
+      catchError(this.handleErrorService.handleError<string>('Elimiar area', null))
+    );
   }
 
 }
