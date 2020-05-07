@@ -20,6 +20,11 @@ namespace Logica
         {
             try
             {
+                var estudianteBuscado = this.BuscarxIdentificacion(estudiante.Identificacion);
+                if (estudianteBuscado != null)
+                {
+                    return new GuardarEstudianteResponse("Error el estudiante ya se encuentra registrado");
+                }
                 _conexion.Open();
                 _repositorio.Guardar(estudiante);
                 _conexion.Close();

@@ -42,7 +42,7 @@ namespace Datos
             List<Asignatura> asignaturas = new List<Asignatura>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select * from Asignatura ";
+                command.CommandText = "Select * from Asignatura";
                 dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
