@@ -20,7 +20,7 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into LiderProyecto (Identificacion,PrimerNombre,SegundoNombre,PrimerApellido,"+
+                command.CommandText = @"Insert Into Docente (Identificacion,PrimerNombre,SegundoNombre,PrimerApellido,"+
                                                     "SegundoApellido,Celular,Correo,Perfil,TipoDocente)"+
                                         "values (@Identificacion,@PrimerNombre,@SegundoNombre,@PrimerApellido,@SegundoApellido,"+
                                         "@Celular,@Correo,@Perfil,@TipoDocente)";
@@ -40,7 +40,7 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Delete from LiderProyecto where Identificacion=@Identificacion";
+                command.CommandText = "Delete from Docente where Identificacion=@Identificacion";
                 command.Parameters.AddWithValue("@Identificacion", docente.Identificacion);
                 command.ExecuteNonQuery();
             }
@@ -51,7 +51,7 @@ namespace Datos
             List<Docente> docentes = new List<Docente>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select * from LiderProyecto ";
+                command.CommandText = "Select * from Docente ";
                 dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -69,7 +69,7 @@ namespace Datos
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select * from LiderProyecto where Identificacion=@Identificacion";
+                command.CommandText = "select * from Docente where Identificacion=@Identificacion";
                 command.Parameters.AddWithValue("@Identificacion", identificacion);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();

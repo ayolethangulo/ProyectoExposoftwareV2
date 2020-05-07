@@ -15,18 +15,24 @@
     <table class="table table-hover">
       <thead>
         <tr class="bg-success">
+          <th scope="col">#</th>
           <th scope="col">Id Proyecto</th>
           <th scope="col">Estudiante 1</th>
           <th scope="col">Estudiante 2</th>
           <th scope="col">Asignatura</th>
           <th scope="col">Titulo</th>
           <th scope="col">Semestre</th>
+          <th scope="col">Resumen</th>
+          <th scope="col">Metodológia</th>
+          <th scope="col">Resultados</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let proyecto of proyecto; index as i ">
 
           <th scope="row">{{ i + 1 }}</th>
+
+          <td>{{ proyecto.idProyecto }}</td>
 
           <td>{{ proyecto.identificacion }}</td>
 
@@ -39,6 +45,10 @@
           <td>{{ proyecto.titulo }}</td>
 
           <td>{{ proyecto.semestre }}</td>
+
+          <td>{{ proyecto.resumen }}</td>
+          <td>{{ proyecto.metodologia }}</td>
+          <td>{{ proyecto.resultados }}</td>
 
         </tr>
 

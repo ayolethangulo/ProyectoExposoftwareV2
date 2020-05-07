@@ -12,3 +12,13 @@
 .sub-row{
    padding-right:500px;
 }
+label, h5,h6{
+    color: rgba(22, 21, 21, 0.637);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.caracteristicaBoton{
+    width: 10%;   
+    padding-top:1%;
+    padding-bottom: 1%;
+    margin: 10px;
+}

@@ -8,20 +8,20 @@ import { ProyectoService } from 'src/app/services/proyecto.service';
   styleUrls: ['./evalua-inscripcion.component.css']
 })
 export class EvaluaInscripcionComponent implements OnInit {
-  
-  searchText:string;
 
-  proyecto:Proyecto[];
+  searchText: string;
+
+  proyecto: Proyecto[];
 
   constructor(private proyectoService: ProyectoService) { }
-  
+
   ngOnInit() {
-  
-  this.proyectoService.get().subscribe(result => {
-  
-  this.proyecto = result;
-  
-  });
+
+    this.proyectoService.get().subscribe(result => {
+
+      this.proyecto = result;
+
+    });
 
   }
 }
