@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "u+ASkzHt2srnQjpBM0HqfrsEsRkR1tIA7XRP89nTAktJMPebEdbheC35DZx0rEzyhxDZV76xXSnUcwR5o0bmEw==",
+  "dgSpecHash": "AB1tWEGD59S+WfB0hBck4uMrpqt+12OwBLqTl79toUxO0th9A6ezTAN6YNvwj53843RXfT6ckFZ+3SIG1Xckaw==",
   "success": true,
-  "projectFilePath": "E:\\JOEL BOLIVAR GM\\Proyecto v2\\ProyectoExposoftwareV2\\Datos\\Datos.csproj",
+  "projectFilePath": "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Datos\\Datos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\JOELBOLIVARGC\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\JOELBOLIVARGC\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

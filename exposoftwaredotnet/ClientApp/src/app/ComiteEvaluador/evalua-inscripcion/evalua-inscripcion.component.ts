@@ -8,6 +8,8 @@ import { ProyectoService } from 'src/app/services/proyecto.service';
   styleUrls: ['./evalua-inscripcion.component.css']
 })
 export class EvaluaInscripcionComponent implements OnInit {
+  
+  searchText:string;
 
   proyecto:Proyecto[];
 

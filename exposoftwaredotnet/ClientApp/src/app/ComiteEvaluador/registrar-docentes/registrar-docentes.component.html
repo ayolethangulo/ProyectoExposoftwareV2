@@ -1,142 +1,140 @@
-<div class="btn-group-vertical" style="float:left">
-    <button type="button" class="btn btn-success " [routerLink]="['/inicio']"> Inicio</button>
-    <button type="button" class="btn btn-success " [routerLink]="['/evaluaInscripcion']"> Evaluar Inscripcion</button>
-    <button type="button" class="btn btn-success " [routerLink]="['/RegistrarUsuario']">Registrar Usuarios Docente</button>
-    <button type="button" class="btn btn-success " [routerLink]="['/RegistrarDocentes']">Registrar Docentes</button>
-    <button type="button" class="btn btn-success " [routerLink]="['/modificarRubrica']"> Modificar Rubrica</button>
-    <button type="button" class="btn btn-success " [routerLink]="['/evaluarPendon']"> Evaluar Pendón</button>
-</div>
+<app-menu-top></app-menu-top>
 
-<div class="container">
-    <h3>REGISTRAR DOCENTE</h3>
-    <form>
+<div class="row">
+    <app-menu-lateral></app-menu-lateral>
 
-        <div class="row">
+    <div class="container">
+        <h3>REGISTRAR DOCENTE</h3>
+        <form>
 
-            <div class="col">
+            <div class="row">
 
-                <div class="form-group">
+                <div class="col">
 
-                    <label>Identificacion</label>
+                    <div class="form-group">
 
-                    <input type="text" name="identificacion" [(ngModel)]="docente.identificacion"
-                        class="form-control" placeholder="Identificacion"/>
+                        <label>Identificacion</label>
 
+                        <input type="text" name="identificacion" [(ngModel)]="docente.identificacion"
+                            class="form-control" placeholder="Identificacion" />
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col">
+
+                    <div class="form-group">
+
+                        <label>Primer Nombre</label>
+
+                        <input type="text" name="PrimerNombre" [(ngModel)]="docente.primerNombre" class="form-control"
+                            placeholder="Primer Nombre" />
+
+                    </div>
+                </div>
+
+                <div class="col">
+
+                    <div class="form-group">
+
+                        <label>Segundo Nombre</label>
+
+                        <input type="text" name="SegundoNombre" [(ngModel)]="docente.segundoNombre" class="form-control"
+                            placeholder="Segundo Nombre" />
+
+                    </div>
                 </div>
             </div>
 
-        </div>
-        <div class="row">
+            <div class="row">
 
-            <div class="col">
+                <div class="col">
 
-                <div class="form-group">
+                    <div class="form-group">
 
-                    <label>Primer Nombre</label>
+                        <label>Primer Apellido</label>
 
-                    <input type="text" name="PrimerNombre" [(ngModel)]="docente.primerNombre"
-                        class="form-control" placeholder="Primer Nombre"/>
+                        <input type="text" name="PrimerApellido" [(ngModel)]="docente.primerApellido"
+                            class="form-control" placeholder="Primer Apellido" />
 
+                    </div>
+                </div>
+
+                <div class="col">
+
+                    <div class="form-group">
+
+                        <label>Segundo Nombre</label>
+
+                        <input type="text" name="SegundoApellido" [(ngModel)]="docente.segundoApellido"
+                            class="form-control" placeholder="Segundo Apellido" />
+
+                    </div>
                 </div>
             </div>
 
-            <div class="col">
+            <div class="row">
 
-                <div class="form-group">
+                <div class="col">
 
-                    <label>Segundo Nombre</label>
+                    <div class="form-group">
 
-                    <input type="text" name="SegundoNombre" [(ngModel)]="docente.segundoNombre"
-                        class="form-control" placeholder="Segundo Nombre"/>
+                        <label>Celular:</label>
 
+                        <input type="text" name="Celular" [(ngModel)]="docente.celular" class="form-control"
+                            placeholder="Celular" />
+
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
+                <div class="col">
 
-            <div class="col">
+                    <div class="form-group">
 
-                <div class="form-group">
+                        <label>Correo Electorico</label>
 
-                    <label>Primer Apellido</label>
+                        <input type="text" name="CorreoElectronico" [(ngModel)]="docente.correo" class="form-control"
+                            placeholder="Correo Electorico" />
 
-                    <input type="text" name="PrimerApellido" [(ngModel)]="docente.primerApellido"
-                        class="form-control" placeholder="Primer Apellido"/>
-
-                </div>
-            </div>
-
-            <div class="col">
-
-                <div class="form-group">
-
-                    <label>Segundo Nombre</label>
-
-                    <input type="text" name="SegundoApellido" [(ngModel)]="docente.segundoApellido"
-                        class="form-control" placeholder="Segundo Apellido"/>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col">
-
-                <div class="form-group">
-
-                    <label>Celular:</label>
-
-                    <input type="text" name="Celular" [(ngModel)]="docente.celular"
-                        class="form-control" placeholder="Celular"/>
-
+                    </div>
                 </div>
             </div>
 
-            <div class="col">
+            <div class="row">
 
-                <div class="form-group">
 
-                    <label>Correo Electorico</label>
+                <div class="col">
+                    <h6>Perfil: </h6>
 
-                    <input type="text" name="CorreoElectronico" [(ngModel)]="docente.correo"
-                        class="form-control" placeholder="Correo Electorico"/>
+                    <input type="text" name="Perfil" [(ngModel)]="docente.perfil" class="form-control"
+                        placeholder="Perfil" />
+                </div>
 
+                <div class="col ">
+                    <h6 class="posicion2">Tipo Docente: </h6>
+                    <div class="col-sm-10">
+                        <select name="TipoDocente" [(ngModel)]="docente.tipoDocente" size="2">
+
+                            <option selected>Selecciona</option>
+
+                            <option>Docente Evaluador</option>
+
+                            <option>Comite Evaluador</option>
+
+                            <option>Lider Proyecto</option>
+
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-success btn-sm caracteristicaBoton" (click)="add()"> Registrar
+                    </button>
                 </div>
             </div>
-        </div>
+        </form>
 
-        <div class="row">
-           
-            
-            <div class="col">
-                <h6>Perfil: </h6>
 
-                <input type="text" name="Perfil" [(ngModel)]="docente.perfil"
-                class="form-control" placeholder="Perfil"/>
-            </div>
-
-            <div class="col ">
-                <h6 class="posicion2">Tipo Docente: </h6>
-                <div class="col-sm-10">
-                    <select name="TipoDocente" [(ngModel)]="docente.tipoDocente" size="2">
-
-                        <option selected>Selecciona</option>
-
-                        <option>Docente Evaluador</option>
-
-                        <option>Comite Evaluador</option>
-
-                        <option>Lider Proyecto</option>
-
-                    </select>
-                </div>
-                <button type="button" class="btn btn-success btn-sm caracteristicaBoton" (click)="add()"> Registrar
-                </button>
-            </div>
-        </div>
-    </form>
-
+    </div>
 
 </div>

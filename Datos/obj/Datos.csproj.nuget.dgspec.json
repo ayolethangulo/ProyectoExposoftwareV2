@@ -1,35 +1,34 @@
 {
   "format": 1,
   "restore": {
-    "C:\\programacion-web\\exposoftwareProyecto\\Datos\\Datos.csproj": {}
+    "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Datos\\Datos.csproj": {}
   },
   "projects": {
-    "C:\\programacion-web\\exposoftwareProyecto\\Datos\\Datos.csproj": {
+    "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Datos\\Datos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\programacion-web\\exposoftwareProyecto\\Datos\\Datos.csproj",
+        "projectUniqueName": "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Datos\\Datos.csproj",
         "projectName": "Datos",
-        "projectPath": "C:\\programacion-web\\exposoftwareProyecto\\Datos\\Datos.csproj",
-        "packagesPath": "C:\\Users\\anayo\\.nuget\\packages\\",
-        "outputPath": "C:\\programacion-web\\exposoftwareProyecto\\Datos\\obj\\",
+        "projectPath": "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Datos\\Datos.csproj",
+        "packagesPath": "C:\\Users\\JOELBOLIVARGC\\.nuget\\packages\\",
+        "outputPath": "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Datos\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\anayo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\JOELBOLIVARGC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\programacion-web\\exposoftwareProyecto\\Entity\\Entity.csproj": {
-                "projectPath": "C:\\programacion-web\\exposoftwareProyecto\\Entity\\Entity.csproj"
+              "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Entity\\Entity.csproj": {
+                "projectPath": "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Entity\\Entity.csproj"
               }
             }
           }
@@ -68,29 +67,28 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\programacion-web\\exposoftwareProyecto\\Entity\\Entity.csproj": {
+    "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\programacion-web\\exposoftwareProyecto\\Entity\\Entity.csproj",
+        "projectUniqueName": "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "C:\\programacion-web\\exposoftwareProyecto\\Entity\\Entity.csproj",
-        "packagesPath": "C:\\Users\\anayo\\.nuget\\packages\\",
-        "outputPath": "C:\\programacion-web\\exposoftwareProyecto\\Entity\\obj\\",
+        "projectPath": "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Entity\\Entity.csproj",
+        "packagesPath": "C:\\Users\\JOELBOLIVARGC\\.nuget\\packages\\",
+        "outputPath": "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Entity\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\anayo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\JOELBOLIVARGC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -124,7 +122,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

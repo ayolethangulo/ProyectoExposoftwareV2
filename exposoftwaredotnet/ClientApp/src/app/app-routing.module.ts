@@ -19,7 +19,12 @@ import { AsignaturaRegistroComponent } from './areaMateria/asignatura-registro/a
 import { AsignaturaConsultaComponent} from './areaMateria/asignatura-consulta/asignatura-consulta.component';
 import { AreaRegistroComponent } from './areaMateria/area-registro/area-registro.component';
 import { AreaConsultaComponent } from './areaMateria/area-consulta/area-consulta.component';
+<<<<<<< HEAD
 import { AreaEdicionComponent } from './areaMateria/area-edicion/area-edicion.component';
+=======
+import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes/registrar-docentes.component';
+import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
+>>>>>>> 17e422b8c23dff7dae2e587ed2f6d43e960460a8
 
 
 const routes: Routes = [
@@ -100,8 +105,17 @@ const routes: Routes = [
     component: AreaConsultaComponent
   },
   {
+<<<<<<< HEAD
     path: 'AreaEdicion/:idArea',
     component: AreaEdicionComponent
+=======
+    path: 'RegistrarDocente',
+    component: RegistrarDocentesComponent
+  },
+  {
+    path: 'RegistrarUsuario',
+    component: RegistrarUsuarioComponent
+>>>>>>> 17e422b8c23dff7dae2e587ed2f6d43e960460a8
   }
 
 ];

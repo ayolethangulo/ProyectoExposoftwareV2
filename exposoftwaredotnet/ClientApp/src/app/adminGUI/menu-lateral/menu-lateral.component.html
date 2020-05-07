@@ -28,8 +28,19 @@
         </ng-template>
         <ng-template ngbPanelContent>
           <ul>
-            <li><a href="">Registrar Docentes</a></li>
+            <li><a [routerLink]="['/RegistrarDocente']">Registrar Docentes</a></li>
             <li><a href="">Consultar Docentes</a></li>
+          </ul>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel>
+        <ng-template ngbPanelTitle>
+          <span>Usuario</span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <ul>
+            <li><a [routerLink]="['/RegistrarUsuario']">Registrar Usuario</a></li>
+            <li><a href="">Consultar Usuario</a></li>
           </ul>
         </ng-template>
       </ngb-panel>
@@ -46,12 +57,12 @@
       </ngb-panel>
       <ngb-panel>
         <ng-template ngbPanelTitle>
-          <span>Proyecto</span>
+          <span>Evaluar</span>
         </ng-template>
         <ng-template ngbPanelContent>
           <ul>
-            <li><a href="">Registrar proyecto</a></li>
-            <li><a href="">Consultar proyecto</a></li>
+            <li><a [routerLink]="['/evaluaInscripcion']">Evaluar Inscripcion</a></li>
+            <li><a href="">Consultar Evaluacion</a></li>
           </ul>
         </ng-template>
       </ngb-panel>

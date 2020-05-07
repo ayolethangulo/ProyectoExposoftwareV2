@@ -25,3 +25,17 @@ E:\JOEL BOLIVAR GM\Proyecto v2\ProyectoExposoftwareV2\Logica\obj\Debug\netstanda
 E:\JOEL BOLIVAR GM\Proyecto v2\ProyectoExposoftwareV2\Logica\obj\Debug\netstandard2.0\Logica.csproj.CopyComplete
 E:\JOEL BOLIVAR GM\Proyecto v2\ProyectoExposoftwareV2\Logica\obj\Debug\netstandard2.0\Logica.dll
 E:\JOEL BOLIVAR GM\Proyecto v2\ProyectoExposoftwareV2\Logica\obj\Debug\netstandard2.0\Logica.pdb
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\bin\Debug\netstandard2.0\Logica.deps.json
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\bin\Debug\netstandard2.0\Logica.dll
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\bin\Debug\netstandard2.0\Logica.pdb
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\bin\Debug\netstandard2.0\Datos.dll
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\bin\Debug\netstandard2.0\Entity.dll
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\bin\Debug\netstandard2.0\Entity.pdb
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\bin\Debug\netstandard2.0\Datos.pdb
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\obj\Debug\netstandard2.0\Logica.csprojAssemblyReference.cache
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\obj\Debug\netstandard2.0\Logica.csproj.CoreCompileInputs.cache
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\obj\Debug\netstandard2.0\Logica.AssemblyInfoInputs.cache
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\obj\Debug\netstandard2.0\Logica.AssemblyInfo.cs
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\obj\Debug\netstandard2.0\Logica.csproj.CopyComplete
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\obj\Debug\netstandard2.0\Logica.dll
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Logica\obj\Debug\netstandard2.0\Logica.pdb
