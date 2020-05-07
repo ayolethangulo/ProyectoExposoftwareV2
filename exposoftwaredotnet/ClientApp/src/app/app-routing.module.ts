@@ -19,6 +19,8 @@ import { AsignaturaRegistroComponent } from './areaMateria/asignatura-registro/a
 import { AsignaturaConsultaComponent} from './areaMateria/asignatura-consulta/asignatura-consulta.component';
 import { AreaRegistroComponent } from './areaMateria/area-registro/area-registro.component';
 import { AreaConsultaComponent } from './areaMateria/area-consulta/area-consulta.component';
+import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes/registrar-docentes.component';
+import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
 
 
 const routes: Routes = [
@@ -97,6 +99,14 @@ const routes: Routes = [
   {
     path: 'AreaConsulta',
     component: AreaConsultaComponent
+  },
+  {
+    path: 'RegistrarDocente',
+    component: RegistrarDocentesComponent
+  },
+  {
+    path: 'RegistrarUsuario',
+    component: RegistrarUsuarioComponent
   }
 
 ];

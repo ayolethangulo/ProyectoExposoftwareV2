@@ -39,6 +39,9 @@ import { AreaService } from './services/area.service';
 import { FiltroAsignaturaPipe } from './@base/pipe/filtro-asignatura.pipe';
 import { AreaRegistroComponent } from './areaMateria/area-registro/area-registro.component';
 import { AreaConsultaComponent } from './areaMateria/area-consulta/area-consulta.component';
+import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
+import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes/registrar-docentes.component';
+import { FiltroInscripcionPipe } from './Pipe/filtro-inscripcion.pipe';
 
 
 @NgModule({
@@ -68,7 +71,10 @@ import { AreaConsultaComponent } from './areaMateria/area-consulta/area-consulta
     MenuLateralComponent,
     FiltroAsignaturaPipe,
     AreaRegistroComponent,
-    AreaConsultaComponent
+    AreaConsultaComponent,
+    RegistrarDocentesComponent,
+    RegistrarUsuarioComponent,
+    FiltroInscripcionPipe
   ],
   imports: [
     ReactiveFormsModule,

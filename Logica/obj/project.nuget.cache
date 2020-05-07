@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bqopk1R9777I5g2juv3pk51aNg0ZK9hAKqgFPKL36FuCYS8+xGCGgzvqE7i6cVsCOtynsRjdQICttuNr6e84qA==",
+  "dgSpecHash": "BwhpYIPWgr1cOLg/N1qlsX1p0H3qCLzw4S8kJI/ohoKuYEcrVboHOUGlbpXmmJFtNCEkQkjatflNd48xzej9ow==",
   "success": true,
-  "projectFilePath": "E:\\JOEL BOLIVAR GM\\Proyecto v2\\ProyectoExposoftwareV2\\Logica\\Logica.csproj",
+  "projectFilePath": "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Logica\\Logica.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\JOELBOLIVARGC\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\JOELBOLIVARGC\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

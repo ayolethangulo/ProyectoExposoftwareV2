@@ -21,3 +21,15 @@ E:\JOEL BOLIVAR GM\Proyecto v2\ProyectoExposoftwareV2\Datos\obj\Debug\netstandar
 E:\JOEL BOLIVAR GM\Proyecto v2\ProyectoExposoftwareV2\Datos\obj\Debug\netstandard2.0\Datos.csproj.CopyComplete
 E:\JOEL BOLIVAR GM\Proyecto v2\ProyectoExposoftwareV2\Datos\obj\Debug\netstandard2.0\Datos.dll
 E:\JOEL BOLIVAR GM\Proyecto v2\ProyectoExposoftwareV2\Datos\obj\Debug\netstandard2.0\Datos.pdb
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Datos\bin\Debug\netstandard2.0\Datos.deps.json
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Datos\bin\Debug\netstandard2.0\Datos.dll
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Datos\bin\Debug\netstandard2.0\Datos.pdb
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Datos\bin\Debug\netstandard2.0\Entity.dll
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Datos\bin\Debug\netstandard2.0\Entity.pdb
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Datos\obj\Debug\netstandard2.0\Datos.csprojAssemblyReference.cache
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Datos\obj\Debug\netstandard2.0\Datos.csproj.CoreCompileInputs.cache
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Datos\obj\Debug\netstandard2.0\Datos.AssemblyInfoInputs.cache
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Datos\obj\Debug\netstandard2.0\Datos.AssemblyInfo.cs
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Datos\obj\Debug\netstandard2.0\Datos.csproj.CopyComplete
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Datos\obj\Debug\netstandard2.0\Datos.dll
+E:\JOEL BOLIVAR GM\ProyectoExposoftwareV2\Datos\obj\Debug\netstandard2.0\Datos.pdb
