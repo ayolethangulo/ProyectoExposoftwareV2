@@ -25,8 +25,6 @@ export class RegistrarUsuarioComponent implements OnInit {
 
       if (p != null) {
 
-        alert('Usuario creada!');
-
         this.usuario = p;
 
       }

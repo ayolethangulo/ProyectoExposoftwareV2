@@ -103,7 +103,7 @@ export class DocenteRegistroComponent implements OnInit {
     } else {
       this.docenteService.getId(idb).subscribe(d => {
         this.docente = d;
-          this.mapearDocente(this.docente);
+        this.mapearDocente(this.docente);
       });
     }
   }
@@ -112,9 +112,9 @@ export class DocenteRegistroComponent implements OnInit {
     this.guardarLocal(this.docente.identificacion);
     this.formGroup.get('primerNombre').setValue(d.primerNombre);
     if (d.segundoNombre == null) {
-      this.formGroup.get('SegundoNombre').setValue('');
+      this.formGroup.get('segundoNombre').setValue('');
     } else {
-      this.formGroup.get('SegundoNombre').setValue(d.segundoNombre);
+      this.formGroup.get('segundoNombre').setValue(d.segundoNombre);
     }
     this.formGroup.get('primerApellido').setValue(d.primerApellido);
     this.formGroup.get('segundoApellido').setValue(d.segundoApellido);

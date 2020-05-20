@@ -24,9 +24,6 @@ export class RegistrarDocentesComponent implements OnInit {
     this.docenteService.post(this.docente).subscribe(p => {
 
       if (p != null) {
-
-        alert('Docente creada!');
-
         this.docente = p;
 
       }
