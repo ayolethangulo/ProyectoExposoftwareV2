@@ -95,7 +95,7 @@
                 <div class="text-center">
                     <button id="botones" class="btn btn-success" (click)="onSubmit()" [disabled]="formGroup.invalid">Guardar</button>
                     <button id="botones" class="btn btn-success" type="reset">Cancelar</button>
-                    <a [routerLink]="['/estudianteRegistro']">
+                    <a routerLink='/estudianteRegistro/{{control.identificacion.value}}'>
                         <button id="botones" class="btn btn-success" type="button" [disabled]="formGroup.invalid">Siguiente</button>
                     </a>
 
