@@ -80,6 +80,7 @@ export class DocenteRegistroComponent implements OnInit {
         }
       });
     } else {
+      alert('funciona');
       this.guardarLocal(this.docente.identificacion);
     }
 
