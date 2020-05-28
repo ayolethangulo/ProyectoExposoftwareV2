@@ -71,6 +71,9 @@
                 </div>
 
                 <div class="text-center">
+                    <a  [routerLink]="['/docenteRegistro']">
+                        <button class="btn btn-success" type="button">Antes</button>
+                    </a>
                     <button class="btn btn-success" (click)="onSubmit()" [disabled]="formGroup.invalid">Guardar</button>
                     <button class="btn btn-success" type="reset">Cancelar</button>
                     <a  [routerLink]="['/proyectoRegistro']">

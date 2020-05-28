@@ -35,7 +35,7 @@ const routes: Routes = [
     component: DocenteRegistroComponent
   },
   {
-    path: 'estudianteRegistro',
+    path: 'estudianteRegistro/:identificacion',
     component: EstudianteRegistroComponent
   },
   {
