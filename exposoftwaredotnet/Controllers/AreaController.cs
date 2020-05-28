@@ -33,9 +33,9 @@ namespace exposoftwaredotnet.Controllers
 
         // GET: api/Area/5
         [HttpGet("{idArea}")]
-        public ActionResult<AreaViewModel> Get(string id)
+        public ActionResult<AreaViewModel> Get(string idArea)
         {
-            var area = _areaService.BuscarxId(id);
+            var area = _areaService.BuscarxId(idArea);
             if (area == null) return NotFound();
             var areaViewModel = new AreaViewModel(area);
             return areaViewModel;
@@ -69,7 +69,7 @@ namespace exposoftwaredotnet.Controllers
             var area = new Area
             {
                 IdArea = areaInput.IdArea,
-                Nombre = areaInput.Nombre,
+                Nombre = areaInput.Nombre
             };
             return area;
         }

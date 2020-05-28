@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Area } from '../models/area';
 import { ActivatedRoute } from '@angular/router';
 import { AreaService } from '../../services/area.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
 
 @Component({
   selector: 'app-area-edicion',
@@ -9,28 +11,36 @@ import { AreaService } from '../../services/area.service';
   styleUrls: ['./area-edicion.component.css']
 })
 export class AreaEdicionComponent implements OnInit {
-
   area: Area;
-  constructor(private areaService: AreaService, private rutaActiva: ActivatedRoute) { }
+  constructor(private areaService: AreaService, private rutaActiva: ActivatedRoute,
+  private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.area = new Area();
-    const id = this.rutaActiva.snapshot.paramMap.get('idArea');
+    this.obtenerRuta();
+  }
+
+  obtenerRuta() {
+    const id = this.rutaActiva.snapshot.params.idArea;
     this.areaService.getId(id).subscribe(a => {
-      this.area = a;
-      this.area != null ? alert('Se Consulta el area') : alert('Error al Consultar');
+      if (a != null) {
+        this.area = a;
+      }
     });
   }
 
   update() {
     this.areaService.put(this.area).subscribe(a => {
-      alert(a);
+      const messageBox = this.modalService.open(AlertModalComponent)
+      messageBox.componentInstance.title = 'Resultado Operación';
+      messageBox.componentInstance.message = 'Actualizado correctamente!';
     });
   }
 
   delete() {
-    this.areaService.delete(this.area.idArea).subscribe(a => {
-      alert(a);
+    this.areaService.delete(this.area).subscribe(a => {
+      const messageBox = this.modalService.open(AlertModalComponent)
+      messageBox.componentInstance.title = 'Resultado Operación';
+      messageBox.componentInstance.message = 'Eliminado correctamente!';
     });
   }
 

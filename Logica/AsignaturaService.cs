@@ -68,6 +68,33 @@ namespace Logica
             finally { _conexion.Close(); }
 
         }
+
+         public string Modificar(Asignatura asignaturaNueva)
+        {
+            try
+            {
+                _conexion.Open();
+                var asignaturaVieja = _repositorio.BuscarPorId(asignaturaNueva.IdAsignatura);
+                if (asignaturaVieja != null)
+                {
+                    _repositorio.Modificar(asignaturaNueva);
+                    _conexion.Close();
+                    return ($"El registro {asignaturaNueva.Nombre} se ha modificado satisfactoriamente.");
+                }
+                else
+                {
+                    return ($"Lo sentimos, {asignaturaNueva.IdAsignatura} no se encuentra registrada.");
+                }
+            }
+            catch (Exception e)
+            {
+
+                return $"Error de la Aplicación: {e.Message}";
+            }
+            finally { _conexion.Close(); }
+
+        }
+
         public Asignatura BuscarxId(string id)
         {
             _conexion.Open();

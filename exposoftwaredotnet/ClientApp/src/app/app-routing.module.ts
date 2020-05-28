@@ -22,6 +22,7 @@ import { AreaConsultaComponent } from './areaMateria/area-consulta/area-consulta
 import { AreaEdicionComponent } from './areaMateria/area-edicion/area-edicion.component';
 import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes/registrar-docentes.component';
 import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
+import { AsignaturaEdicionComponent } from './areaMateria/asignatura-edicion/asignatura-edicion.component';
 
 
 const routes: Routes = [
@@ -94,6 +95,10 @@ const routes: Routes = [
     component: AsignaturaConsultaComponent
   },
   {
+    path: 'asignaturaEdicion/:idAsignatura',
+    component: AsignaturaEdicionComponent
+  },
+  {
     path: 'AreaRegistro',
     component: AreaRegistroComponent
   },
@@ -102,7 +107,7 @@ const routes: Routes = [
     component: AreaConsultaComponent
   },
   {
-    path: 'AreaEdicion/:idArea',
+    path: 'areaEdicion/:idArea',
     component: AreaEdicionComponent
   },
   {

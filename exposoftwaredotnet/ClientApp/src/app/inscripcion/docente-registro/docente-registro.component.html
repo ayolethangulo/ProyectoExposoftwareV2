@@ -6,6 +6,10 @@
         <div class="col-md-9 offset-md-1">
             <h5>Datos del Docente <span class="obligatorio">* Obligatorio</span></h5>
             <form [formGroup]="formGroup">
+                
+                <div class="form-group" >
+                    <input type="hidden" name="tipoDocente"  formControlName="tipoDocente">
+                 </div>
 
                 <div class="form-group">
                     <label for="identificacion">Identificación <span class="obligatorio">*</span></label>
@@ -93,10 +97,9 @@
 
 
                 <div class="text-center">
-                    <button id="botones" class="btn btn-success" (click)="onSubmit()" [disabled]="formGroup.invalid">Guardar</button>
                     <button id="botones" class="btn btn-success" type="reset">Cancelar</button>
                     <a [routerLink]="['/estudianteRegistro']">
-                        <button id="botones" class="btn btn-success" type="button" [disabled]="formGroup.invalid">Siguiente</button>
+                        <button id="botones" class="btn btn-success" type="button" (click)="onSubmit()" [disabled]="formGroup.invalid">Siguiente/Guardar</button>
                     </a>
 
                 </div>

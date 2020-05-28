@@ -16,7 +16,7 @@ namespace exposoftwaredotnet.Models
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "La Asignatura debe pertenecer a un area")]
-        public string IdArea { get; set; }
+        public string NombreArea { get; set; }
     }
 
     public class AsignaturaViewModel : AsignaturaInputModel
@@ -27,7 +27,7 @@ namespace exposoftwaredotnet.Models
         public AsignaturaViewModel(Asignatura asignatura){
             IdAsignatura = asignatura.IdAsignatura;
             Nombre = asignatura.Nombre;
-            IdArea = asignatura.IdArea;
+            NombreArea = asignatura.NombreArea;
         }
     }
 }

@@ -10,16 +10,22 @@ namespace Logica
         private readonly ConnectionManager _conexion;
         private readonly ProyectoRepository _repositorio;
 
+
         public ProyectoService(string connectionString)
         {
             _conexion = new ConnectionManager(connectionString);
             _repositorio = new ProyectoRepository(_conexion);
+
         }
 
         public GuardarProyectoResponse Guardar(Proyecto proyecto)
         {
             try
             {
+                if (proyecto.Identificacion == null)
+                {
+                    return new GuardarProyectoResponse("Error Debe registrar el docente");
+                }
                 _conexion.Open();
                 _repositorio.Guardar(proyecto);
                 _conexion.Close();

@@ -30,7 +30,7 @@
                         [ngClass]="{'is-invalid': control.asignatura.errors && formGroup.get('asignatura').touched}">
                             <option *ngFor="let asignatura of asignaturas" value={{asignatura.idAsignatura}}>
                                 {{asignatura.nombre}}
-                            </option>>
+                            </option>
                         </select>
                         <div *ngIf="control.asignatura.errors && formGroup.get('asignatura').touched" class="invalid-feedback">
                             <div *ngIf="control.asignatura.errors.required">Campo requerido</div>
@@ -59,7 +59,7 @@
 
                 <div class="form-group">
                     <label for="resumen">Resumen <span id="text-resumen">(Debe llevar el propósito, objetivos, metodología, a quien va dirigido
-                        y resultados) Máx 250 palabras</span> <span class="obligatorio">*</span></label>
+                        y resultados) Máx 250 caracteres</span> <span class="obligatorio">*</span></label>
                     <textarea class="form-control" formControlName="resumen" rows="3" name="resumen"
                     [ngClass]="{'is-invalid': control.resumen.errors && formGroup.get('resumen').touched}"></textarea>
                     <div *ngIf="control.resumen.errors && formGroup.get('resumen').touched" class="invalid-feedback">

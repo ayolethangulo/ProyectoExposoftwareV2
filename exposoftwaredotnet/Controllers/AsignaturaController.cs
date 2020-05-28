@@ -33,9 +33,9 @@ namespace exposoftwaredotnet.Controllers
 
         // GET: api/Asignatura/5
         [HttpGet("{idAsignatura}")]
-        public ActionResult<AsignaturaViewModel> Get(string id)
+        public ActionResult<AsignaturaViewModel> Get(string idAsignatura)
         {
-            var asignatura = _asignaturaService.BuscarxId(id);
+            var asignatura = _asignaturaService.BuscarxId(idAsignatura);
             if (asignatura == null) return NotFound();
             var asignaturaViewModel = new AsignaturaViewModel(asignatura);
             return asignaturaViewModel;
@@ -59,9 +59,9 @@ namespace exposoftwaredotnet.Controllers
         }
         // DELETE: api/Asignatura/5
         [HttpDelete("{idAsignatura}")]
-        public ActionResult<string> Delete(string id)
+        public ActionResult<string> Delete(string idAsignatura)
         {
-            string mensaje = _asignaturaService.Eliminar(id);
+            string mensaje = _asignaturaService.Eliminar(idAsignatura);
             return Ok(mensaje);
         }
         private Asignatura MapearAsignatura(AsignaturaInputModel asignaturaInput)
@@ -70,15 +70,20 @@ namespace exposoftwaredotnet.Controllers
             {
                 IdAsignatura = asignaturaInput.IdAsignatura,
                 Nombre = asignaturaInput.Nombre,
-                IdArea = asignaturaInput.IdArea
+                NombreArea = asignaturaInput.NombreArea
             };
             return asignatura;
         }
         // PUT: api/Asignatura/5
         [HttpPut("{idAsignatura}")]
-        public ActionResult<string> Put(string id, Asignatura asignatura)
+        public ActionResult<string> Put(string idAsignatura, Asignatura asignatura)
         {
-            throw new NotImplementedException();
+            var id=_asignaturaService.BuscarxId(asignatura.IdAsignatura);
+            if(id==null){
+                return BadRequest("No encontrado");
+            }
+            var mensaje=_asignaturaService.Modificar(asignatura);
+           return Ok(mensaje) ;
         }
         
     }

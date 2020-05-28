@@ -32,13 +32,13 @@ export class AsignaturaRegistroComponent implements OnInit {
     this.asignatura = new Asignatura();
     this.asignatura.idAsignatura = '';
     this.asignatura.nombre = '';
-    this.asignatura.idArea = '';
+    this.asignatura.nombreArea = '';
 
 
     this.formGroup = this.formBuilder.group({
       idAsignatura: [this.asignatura.idAsignatura, Validators.required],
       nombre: [this.asignatura.nombre, Validators.required],
-      idArea: [this.asignatura.idArea, Validators.required]
+      nombreArea: [this.asignatura.nombreArea, Validators.required]
      });
   }
   onSubmit() {

@@ -19,6 +19,7 @@ export class ProyectoRegistroComponent implements OnInit {
   proyecto: Proyecto;
   asignaturas: Asignatura[];
   ids: string[];
+  tamano: number;
 
   constructor(
     private proyectoService: ProyectoService,
@@ -63,17 +64,16 @@ export class ProyectoRegistroComponent implements OnInit {
       return;
     }
     this.add();
-    this.buildForm();
+    this.ngOnInit();
   }
 
   add() {
     this.proyecto = this.formGroup.value;
     this.proyectoService.post(this.proyecto).subscribe(p => {
       if (p != null) {
-
         this.proyecto = p;
+        this.datosLocalS.clearStore();
       }
-      localStorage.clear();
     });
   }
 

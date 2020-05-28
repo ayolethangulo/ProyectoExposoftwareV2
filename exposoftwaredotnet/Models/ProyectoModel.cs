@@ -9,7 +9,10 @@ namespace exposoftwaredotnet.Models
 {
     public class ProyectoInputModel
     {
+        [Required(ErrorMessage = "Primero debe registrar al docente")]
         public string Identificacion { get; set; }
+
+        [Required(ErrorMessage = "Debe registrar minimo un autor")]
         public string Estudiante1 { get; set; } 
         public string Estudiante2 { get; set; }
 

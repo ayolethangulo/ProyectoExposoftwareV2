@@ -18,6 +18,8 @@ export class DocenteRegistroComponent implements OnInit {
   formGroup: FormGroup;
   docente: Docente;
   id: string;
+  tipo: string = 'Lider de proyecto';
+  bandera: number = 0;
   constructor(
     private docenteService: DocenteService,
     private formBuilder: FormBuilder,
@@ -38,6 +40,7 @@ export class DocenteRegistroComponent implements OnInit {
     this.docente.celular = '';
     this.docente.correo = '';
     this.docente.perfil = '';
+    this.docente.tipoDocente = this.tipo;
 
     this.formGroup = this.formBuilder.group({
       identificacion: [this.docente.identificacion, Validators.required],
@@ -47,7 +50,8 @@ export class DocenteRegistroComponent implements OnInit {
       segundoApellido: [this.docente.segundoApellido, Validators.required],
       celular: [this.docente.celular, Validators.maxLength(10)],
       correo: [this.docente.correo, Validators.required],
-      perfil: [this.docente.perfil, Validators.required]
+      perfil: [this.docente.perfil, Validators.required],
+      tipoDocente: this.docente.tipoDocente
     });
   }
 
@@ -66,13 +70,19 @@ export class DocenteRegistroComponent implements OnInit {
   }
 
   add() {
-    this.docente = this.formGroup.value;
-    this.guardarLocal(this.docente.identificacion);
-    this.docenteService.post(this.docente).subscribe(d => {
-      if (d != null) {
-        this.docente = d;
-      }
-    });
+    this.datosLocalS.clearStore();
+    if (this.bandera != 1) {
+      this.docente = this.formGroup.value;
+      this.guardarLocal(this.docente.identificacion);
+      this.docenteService.post(this.docente).subscribe(d => {
+        if (d != null) {
+          this.docente = d;
+        }
+      });
+    } else {
+      this.guardarLocal(this.docente.identificacion);
+    }
+
   }
 
   public getError(controlName: string): string {
@@ -102,14 +112,20 @@ export class DocenteRegistroComponent implements OnInit {
       messageBox.componentInstance.message = 'Campo vacío, digite identificación.';
     } else {
       this.docenteService.getId(idb).subscribe(d => {
-        this.docente = d;
-        this.mapearDocente(this.docente);
+        if (d != null) {
+          this.docente = d;
+          this.mapearDocente(this.docente);
+        } else {
+          const messageBox = this.modalService.open(AlertModalComponent);
+          messageBox.componentInstance.title = 'Resultado Operación';
+          messageBox.componentInstance.message = 'Docente no registrado';
+        }
       });
     }
   }
 
   mapearDocente(d: Docente) {
-    this.guardarLocal(this.docente.identificacion);
+    this.bandera = 1;
     this.formGroup.get('primerNombre').setValue(d.primerNombre);
     if (d.segundoNombre == null) {
       this.formGroup.get('segundoNombre').setValue('');

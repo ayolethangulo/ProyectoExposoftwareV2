@@ -43,6 +43,7 @@ import { AreaEdicionComponent } from './areaMateria/area-edicion/area-edicion.co
 import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
 import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes/registrar-docentes.component';
 import { FiltroInscripcionPipe } from './Pipe/filtro-inscripcion.pipe';
+import { AsignaturaEdicionComponent } from './areaMateria/asignatura-edicion/asignatura-edicion.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { FiltroInscripcionPipe } from './Pipe/filtro-inscripcion.pipe';
     AreaEdicionComponent,
     RegistrarDocentesComponent,
     RegistrarUsuarioComponent,
-    FiltroInscripcionPipe
+    FiltroInscripcionPipe,
+    AsignaturaEdicionComponent
   ],
   imports: [
     ReactiveFormsModule,

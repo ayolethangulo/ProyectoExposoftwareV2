@@ -33,6 +33,9 @@ namespace exposoftwaredotnet.Models
 
         [Required(ErrorMessage = "El perfil es requerido")]
         public string Perfil { get; set; }  
+
+        [Required(ErrorMessage = "El tipo del docente es requerido")]
+        public string TipoDocente { get; set; }
     }
       public class DocenteViewModel : DocenteInputModel
         {
@@ -52,6 +55,5 @@ namespace exposoftwaredotnet.Models
                 Perfil = docente.Perfil;
                 TipoDocente = docente.TipoDocente;
             }
-         public string TipoDocente { get; set; }
         }
 }

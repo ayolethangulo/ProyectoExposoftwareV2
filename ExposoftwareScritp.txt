@@ -10,8 +10,7 @@ CREATE TABLE [dbo].[Area](
 CREATE TABLE [dbo].[Asignatura](
 	[IdAsignatura] [nvarchar](4) NOT NULL PRIMARY KEY,
 	[Nombre] [nvarchar](50) NULL,
-	[IdArea] [nvarchar](4) not null,
-	FOREIGN KEY (IdArea) REFERENCES Area(IdArea)
+	[NombreArea] [nvarchar](50) not null,
 )
 
 /* aun no creo esta tabla creo que faltan campos*/

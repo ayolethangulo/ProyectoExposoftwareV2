@@ -76,7 +76,8 @@ namespace exposoftwaredotnet.Controllers
                 SegundoApellido = docenteInput.SegundoApellido,
                 Celular = docenteInput.Celular,
                 Correo = docenteInput.Correo,
-                Perfil = docenteInput.Perfil
+                Perfil = docenteInput.Perfil,
+                TipoDocente = docenteInput.TipoDocente
             };
             return docente;
         }

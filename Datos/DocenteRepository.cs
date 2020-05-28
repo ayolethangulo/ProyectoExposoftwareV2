@@ -32,7 +32,7 @@ namespace Datos
                 command.Parameters.AddWithValue("@Celular", docente.Celular);
                 command.Parameters.AddWithValue("@Correo", docente.Correo);
                 command.Parameters.AddWithValue("@Perfil", docente.Perfil);
-                command.Parameters.AddWithValue("@TipoDocente", "Lider de proyecto");
+                command.Parameters.AddWithValue("@TipoDocente", docente.TipoDocente);
                 var filas = command.ExecuteNonQuery();
             }
         }

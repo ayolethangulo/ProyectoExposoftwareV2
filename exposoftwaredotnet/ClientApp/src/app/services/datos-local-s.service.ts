@@ -10,21 +10,21 @@ export class DatosLocalSService {
 
   constructor() { }
 
-  get(): string[]{
+  get(): string[] {
     return JSON.parse(localStorage.getItem('datos'));
   }
 
-  post(id: string){
+  post(id: string) {
     let ids: string[] = [];
-    if (this.get() != null){
+    if (this.get() != null) {
       ids = this.get();
     }
     ids.push(id);
     localStorage.setItem('datos', JSON.stringify(ids));
   }
 
-  clearStore(){
+  clearStore() {
     localStorage.clear();
   }
-  
+
 }

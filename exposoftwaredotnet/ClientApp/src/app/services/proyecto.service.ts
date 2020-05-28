@@ -14,24 +14,23 @@ export class ProyectoService {
   constructor(
     private http: HttpClient,
     @Inject('BASE_URL') baseUrl: string,
-    private handleErrorService: HandleHttpErrorService) 
-    {
-      this.baseUrl = baseUrl;
-    }
+    private handleErrorService: HandleHttpErrorService) {
+    this.baseUrl = baseUrl;
+  }
 
-    get(): Observable<Proyecto[]> {
-      return this.http.get<Proyecto[]>(this.baseUrl + 'api/Proyecto')
+  get(): Observable<Proyecto[]> {
+    return this.http.get<Proyecto[]>(this.baseUrl + 'api/Proyecto')
       .pipe(
-      tap(_ => this.handleErrorService.log('datos enviados')),
-      catchError(this.handleErrorService.handleError<Proyecto[]>('Consulta Proyecto', null))
+        tap(_ => this.handleErrorService.log('datos enviados')),
+        catchError(this.handleErrorService.handleError<Proyecto[]>('Consulta Proyecto', null))
       );
-    }
-  
-    post(proyecto: Proyecto): Observable<Proyecto> {
-      return this.http.post<Proyecto>(this.baseUrl + 'api/Proyecto', proyecto)
+  }
+
+  post(proyecto: Proyecto): Observable<Proyecto> {
+    return this.http.post<Proyecto>(this.baseUrl + 'api/Proyecto', proyecto)
       .pipe(
-      tap(_ => this.handleErrorService.log('Proyecto registrado')),
-      catchError(this.handleErrorService.handleError<Proyecto>('Registrar Proyecto', null))
+        tap(_ => this.handleErrorService.log('Proyecto registrado')),
+        catchError(this.handleErrorService.handleError<Proyecto>('Registrar Proyecto', null))
       );
-    }
+  }
 }

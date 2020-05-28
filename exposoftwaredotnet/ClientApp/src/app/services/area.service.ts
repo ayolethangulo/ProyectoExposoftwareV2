@@ -30,7 +30,7 @@ export class AreaService {
   post(area: Area): Observable<Area> {
     return this.http.post<Area>(this.baseUrl + 'api/Area', area)
       .pipe(
-        tap(_ => this.handleErrorService.log('datos enviados')),
+        tap(_ => this.handleErrorService.log('Area registrada Correctamente!')),
         catchError(this.handleErrorService.handleError<Area>('Registrar Area', null))
       );
   }
@@ -38,7 +38,7 @@ export class AreaService {
     const url = `${this.baseUrl}api/Area/${area.idArea}`;
     return this.http.put(url, area, httpOptions)
     .pipe(
-      tap(_ => this.handleErrorService.log('datos enviados')),
+      tap(_ => this.handleErrorService.log('Se ha actualizado correctamente!')),
       catchError(this.handleErrorService.handleError<any>('Editar area'))
     );
   }
@@ -47,7 +47,6 @@ export class AreaService {
     const url = `${this.baseUrl + 'api/Area'}/${idArea}`;
       return this.http.get<Area>(url, httpOptions)
       .pipe(
-        tap(_ => this.handleErrorService.log('datos enviados')),
         catchError(this.handleErrorService.handleError<Area>('Buscar Area', null))
       );
   }
@@ -56,7 +55,7 @@ export class AreaService {
     const id = typeof area === 'string' ? area : area.idArea;
     return this.http.delete<string>(this.baseUrl + 'api/Area/' + id)
     .pipe(
-      tap(_ => this.handleErrorService.log('datos enviados')),
+      tap(_ => this.handleErrorService.log('Se ha eliminado correctamente!')),
       catchError(this.handleErrorService.handleError<string>('Elimiar area', null))
     );
   }

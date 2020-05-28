@@ -20,10 +20,10 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into Asignatura (IdAsignatura,Nombre, IdArea) values (@IdAsignatura, @Nombre, @IdArea)";
+                command.CommandText = @"Insert Into Asignatura (IdAsignatura,Nombre, NombreArea) values (@IdAsignatura, @Nombre, @NombreArea)";
                 command.Parameters.AddWithValue("@IdAsignatura", asignatura.IdAsignatura);
                 command.Parameters.AddWithValue("@Nombre", asignatura.Nombre);
-                command.Parameters.AddWithValue("@IdArea", asignatura.IdArea);
+                command.Parameters.AddWithValue("@NombreArea", asignatura.NombreArea);
                 var filas = command.ExecuteNonQuery();
             }
         }
@@ -33,6 +33,17 @@ namespace Datos
             {
                 command.CommandText = "Delete from Asignatura where IdAsignatura=@IdAsignatura";
                 command.Parameters.AddWithValue("@IdAsignatura", asignatura.IdAsignatura);
+                command.ExecuteNonQuery();
+            }
+        }
+        public void Modificar( Asignatura asignatura)
+        {
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "update Asignatura set idAsignatura=@IdAsignatura, nombre=@Nombre,nombreArea=@NombreArea  where IdAsignatura=@IdAsignatura";
+                command.Parameters.AddWithValue("@IdAsignatura", asignatura.IdAsignatura);
+                command.Parameters.AddWithValue("@Nombre", asignatura.Nombre);
+                command.Parameters.AddWithValue("@NombreArea", asignatura.NombreArea);
                 command.ExecuteNonQuery();
             }
         }
@@ -73,7 +84,7 @@ namespace Datos
             Asignatura asignatura = new Asignatura();
             asignatura.IdAsignatura = (string)dataReader["IdAsignatura"];
             asignatura.Nombre = (string)dataReader["Nombre"];
-            asignatura.IdArea = (string)dataReader["IdArea"];
+            asignatura.NombreArea = (string)dataReader["NombreArea"];
             return asignatura;
         }
     }
