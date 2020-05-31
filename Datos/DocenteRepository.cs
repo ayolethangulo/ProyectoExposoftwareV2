@@ -45,6 +45,25 @@ namespace Datos
                 command.ExecuteNonQuery();
             }
         }
+
+         public void Modificar( Docente docente)
+        {
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "update Docente set identificacion=@Identificacion, primerNombre=@PrimerNombre,segundoNombre=@SegundoNombre,tipoDocente=@TipoDocente  where Identificacion=@Identificacion";
+                command.Parameters.AddWithValue("@Identificacion", docente.Identificacion);
+                command.Parameters.AddWithValue("@PrimerNombre", docente.PrimerNombre);
+                command.Parameters.AddWithValue("@SegundoNombre", docente.SegundoNombre);
+                command.Parameters.AddWithValue("@PrimerApellido", docente.PrimerApellido);
+                command.Parameters.AddWithValue("@SegundoApellido", docente.SegundoApellido);
+                command.Parameters.AddWithValue("@Celular", docente.Celular);
+                command.Parameters.AddWithValue("@Correo", docente.Correo);
+                command.Parameters.AddWithValue("@Perfil", docente.Perfil);
+                command.Parameters.AddWithValue("@TipoDocente", docente.TipoDocente);
+                command.ExecuteNonQuery();
+            }
+        }
+
         public List<Docente> ConsultarTodos()
         {
             SqlDataReader dataReader;

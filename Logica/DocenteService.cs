@@ -70,6 +70,33 @@ namespace Logica
             finally { _conexion.Close(); }
 
         }
+
+         public string Modificar(Docente docenteNueva)
+        {
+            try
+            {
+                _conexion.Open();
+                var docenteVieja = _repositorio.BuscarPorIdentificacion(docenteNueva.Identificacion);
+                if (docenteVieja != null)
+                {
+                    _repositorio.Modificar(docenteNueva);
+                    _conexion.Close();
+                    return ($"El registro {docenteNueva.PrimerNombre} se ha modificado satisfactoriamente.");
+                }
+                else
+                {
+                    return ($"Lo sentimos, {docenteNueva.Identificacion} no se encuentra registrada.");
+                }
+            }
+            catch (Exception e)
+            {
+
+                return $"Error de la Aplicación: {e.Message}";
+            }
+            finally { _conexion.Close(); }
+
+        }
+
         public Docente BuscarxIdentificacion(string identificacion)
         {
             _conexion.Open();

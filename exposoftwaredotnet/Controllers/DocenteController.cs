@@ -16,7 +16,7 @@ namespace exposoftwaredotnet.Controllers
     [ApiController]
     public class DocenteController: ControllerBase
     {
-          private readonly DocenteService _docenteService;
+        private readonly DocenteService _docenteService;
         public IConfiguration Configuration { get; }
         public DocenteController(IConfiguration configuration)
         {
@@ -65,6 +65,7 @@ namespace exposoftwaredotnet.Controllers
             string mensaje = _docenteService.Eliminar(identificacion);
             return Ok(mensaje);
         }
+
         private Docente MapearDocente(DocenteInputModel docenteInput)
         {
             var docente = new Docente
@@ -85,7 +86,12 @@ namespace exposoftwaredotnet.Controllers
         [HttpPut("{identificacion}")]
         public ActionResult<string> Put(string identificacion, Docente docente)
         {
-            throw new NotImplementedException();
+            var id=_docenteService.BuscarxIdentificacion(docente.Identificacion);
+            if(id==null){
+                return BadRequest("No encontrado");
+            }
+            var mensaje=_docenteService.Modificar(docente);
+           return Ok(mensaje) ;
         }
     }
 }

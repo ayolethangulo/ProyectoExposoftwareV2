@@ -24,6 +24,7 @@ import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes
 import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
 import { AsignaturaEdicionComponent } from './areaMateria/asignatura-edicion/asignatura-edicion.component';
 import { ConsultarDocentesComponent } from './comiteEvaluador/consultar-docentes/consultar-docentes.component';
+import { EdicionDocentesComponent } from './ComiteEvaluador/edicion-docentes/edicion-docentes.component';
 
 
 const routes: Routes = [
@@ -122,6 +123,10 @@ const routes: Routes = [
   {
     path: 'consultarDocente',
     component: ConsultarDocentesComponent
+  },
+  {
+    path: 'edicionDocentes/:identificacion',
+    component: EdicionDocentesComponent
   }
 
 ];

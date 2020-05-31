@@ -47,6 +47,7 @@ import { AsignaturaEdicionComponent } from './areaMateria/asignatura-edicion/asi
 import { ConsultarDocentesComponent } from './comiteEvaluador/consultar-docentes/consultar-docentes.component';
 import { FiltroDocentePipe } from './pipe/filtro-docente.pipe';
 import { FiltroAreaPipe } from './@base/pipe/filtro-area.pipe';
+import { EdicionDocentesComponent } from './ComiteEvaluador/edicion-docentes/edicion-docentes.component';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import { FiltroAreaPipe } from './@base/pipe/filtro-area.pipe';
     AsignaturaEdicionComponent,
     ConsultarDocentesComponent,
     FiltroDocentePipe,
-    FiltroAreaPipe
+    FiltroAreaPipe,
+    EdicionDocentesComponent
   ],
   imports: [
     ReactiveFormsModule,

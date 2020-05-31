@@ -46,4 +46,22 @@ export class DocenteService {
       );
   }
 
+  put(docente: Docente): Observable<any> {
+    const url = `${this.baseUrl}api/Docente/${docente.identificacion}`;
+    return this.http.put(url, docente, httpOptions)
+    .pipe(
+      tap(_ => this.handleErrorService.log('Se ha actualizado correctamente!')),
+      catchError(this.handleErrorService.handleError<any>('Editar docente'))
+    );
+  }
+
+  delete(docente: Docente| string): Observable<string> {
+    const id = typeof docente === 'string' ? docente : docente.identificacion;
+    return this.http.delete<string>(this.baseUrl + 'api/Docente/' + id)
+    .pipe(
+      tap(_ => this.handleErrorService.log('Se ha eliminado correctamente!')),
+      catchError(this.handleErrorService.handleError<string>('Elimiar docente', null))
+    );
+  }
+
 }
