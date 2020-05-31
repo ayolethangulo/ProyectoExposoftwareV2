@@ -23,6 +23,9 @@ import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes
 import { AsignaturaEdicionComponent } from './areaMateria/asignatura-edicion/asignatura-edicion.component';
 import { ConsultarDocentesComponent } from './comiteEvaluador/consultar-docentes/consultar-docentes.component';
 import { EdicionDocentesComponent } from './ComiteEvaluador/edicion-docentes/edicion-docentes.component';
+import { RubricaRegistroComponent } from './areaMateria/rubrica-registro/rubrica-registro.component';
+import { RubricaConsultaComponent } from './areaMateria/rubrica-consulta/rubrica-consulta.component';
+import { RubricaEdicionComponent } from './areaMateria/rubrica-edicion/rubrica-edicion.component';
 
 
 const routes: Routes = [
@@ -117,9 +120,19 @@ const routes: Routes = [
   {
     path: 'edicionDocentes/:identificacion',
     component: EdicionDocentesComponent
+  },
+  {
+    path: 'rubricaRegistro',
+    component: RubricaRegistroComponent
+  },
+  {
+    path: 'rubricaConsulta',
+    component: RubricaConsultaComponent
+  },
+  {
+    path: 'rubricaEdicion/:idRubrica',
+    component: RubricaEdicionComponent
   }
-
-
 ];
 
 @NgModule({

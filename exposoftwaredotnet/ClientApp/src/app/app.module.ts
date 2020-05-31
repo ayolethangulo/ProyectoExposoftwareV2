@@ -45,6 +45,10 @@ import { ConsultarDocentesComponent } from './comiteEvaluador/consultar-docentes
 import { FiltroDocentePipe } from './pipe/filtro-docente.pipe';
 import { FiltroAreaPipe } from './@base/pipe/filtro-area.pipe';
 import { EdicionDocentesComponent } from './ComiteEvaluador/edicion-docentes/edicion-docentes.component';
+import { RubricaRegistroComponent } from './areaMateria/rubrica-registro/rubrica-registro.component';
+import { RubricaConsultaComponent } from './areaMateria/rubrica-consulta/rubrica-consulta.component';
+import { RubricaEdicionComponent } from './areaMateria/rubrica-edicion/rubrica-edicion.component';
+import { RubricaService } from './services/rubrica.service';
 
 
 @NgModule({
@@ -82,6 +86,9 @@ import { EdicionDocentesComponent } from './ComiteEvaluador/edicion-docentes/edi
     FiltroDocentePipe,
     FiltroAreaPipe,
     EdicionDocentesComponent,
+    RubricaRegistroComponent,
+    RubricaConsultaComponent,
+    RubricaEdicionComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -101,7 +108,8 @@ import { EdicionDocentesComponent } from './ComiteEvaluador/edicion-docentes/edi
     ProyectoService,
     AsignaturaService,
     DatosLocalSService,
-    AreaService
+    AreaService,
+    RubricaService
   ],
   bootstrap: [AppComponent]
 })

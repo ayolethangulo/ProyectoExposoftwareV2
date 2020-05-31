@@ -1,0 +1,202 @@
+using System;
+using Datos;
+using Entity;
+using System.Collections.Generic;
+
+namespace Logica
+{
+    public class RubricaService
+    {
+       private readonly ConnectionManager _conexion;
+        private readonly RubricaRepository _repositorio;
+
+        public RubricaService(string connectionString)
+        {
+            _conexion = new ConnectionManager(connectionString);
+            _repositorio = new RubricaRepository(_conexion);
+        }
+        
+        public GuardarRubricaResponse Guardar(Rubrica rubrica)
+        {
+            try
+            {
+                 var rubricaBuscada = this.BuscarxId(rubrica.IdRubrica);
+                if (rubricaBuscada!= null)
+                {
+                    return new GuardarRubricaResponse("Error el codigo de la rúbrica ya se encuentra registrada");
+                }
+                _conexion.Open();
+                _repositorio.Guardar(rubrica);
+                _conexion.Close();
+                return new GuardarRubricaResponse(rubrica);
+            }
+            catch (Exception e)
+            {
+                return new GuardarRubricaResponse($"Error de la Aplicacion: {e.Message}");
+            }
+            finally { _conexion.Close(); }
+        }
+
+         public GuardarItemsRubricaResponse GuardarItem(ItemsRubrica item)
+        {
+            try
+            {
+                _conexion.Open();
+                _repositorio.GuardarItem(item);
+                _conexion.Close();
+                return new GuardarItemsRubricaResponse(item);
+            }
+            catch (Exception e)
+            {
+                return new GuardarItemsRubricaResponse($"Error de la Aplicacion: {e.Message}");
+            }
+            finally { _conexion.Close(); }
+        }
+
+        public List<Rubrica> ConsultarTodos()
+        {
+            _conexion.Open();
+            List<Rubrica> rubricas = _repositorio.ConsultarTodos();
+            _conexion.Close();
+            return rubricas;
+        }
+         public List<ItemsRubrica> ConsultarTodosItem()
+        {
+            _conexion.Open();
+            List<ItemsRubrica> items = _repositorio.ConsultarTodosItem();
+            _conexion.Close();
+            return items;
+        }
+        public string Eliminar(string id)
+        {
+            try
+            {
+                _conexion.Open();
+                var rubrica = _repositorio.BuscarPorId(id);
+                if (rubrica != null)
+                {
+                    _repositorio.Eliminar(rubrica);
+                    _conexion.Close();
+                    return ($"El registro se ha eliminado satisfactoriamente.");
+                }
+                else
+                {
+                    return ($"Lo sentimos, no se encuentra registrada.");
+                }
+            }
+            catch (Exception e)
+            {
+
+                return $"Error de la Aplicación: {e.Message}";
+            }
+            finally { _conexion.Close(); }
+
+        }
+
+        public string EliminarItem(string id)
+        {
+            try
+            {
+                _conexion.Open();
+                _repositorio.EliminarItem(id);
+                _conexion.Close();
+                 return ($"El registro se ha eliminado satisfactoriamente.");
+            }
+            catch (Exception e)
+            {
+
+                return $"Error de la Aplicación: {e.Message}";
+            }
+            finally { _conexion.Close(); }
+
+        }
+
+         public string Modificar(Rubrica rubricaNueva)
+        {
+            try
+            {
+                _conexion.Open();
+                var rubricaVieja = _repositorio.BuscarPorId(rubricaNueva.IdRubrica);
+                if (rubricaVieja != null)
+                {
+                    _repositorio.Modificar(rubricaNueva);
+                    _conexion.Close();
+                    return ($"El registro {rubricaNueva.IdRubrica} se ha modificado satisfactoriamente.");
+                }
+                else
+                {
+                    return ($"Lo sentimos, {rubricaNueva.IdRubrica} no se encuentra registrada.");
+                }
+            }
+            catch (Exception e)
+            {
+
+                return $"Error de la Aplicación: {e.Message}";
+            }
+            finally { _conexion.Close(); }
+
+        }
+
+        public string ModificarItem(ItemsRubrica itemNueva)
+        {
+            try
+            {
+                _conexion.Open();
+                _repositorio.ModificarItem(itemNueva);
+                _conexion.Close();
+                return ($"El registro {itemNueva.IdRubrica} se ha modificado satisfactoriamente.");
+            }
+            catch (Exception e)
+            {
+
+                return $"Error de la Aplicación: {e.Message}";
+            }
+            finally { _conexion.Close(); }
+        }
+
+        public Rubrica BuscarxId(string id)
+        {
+            _conexion.Open();
+            Rubrica rubrica = _repositorio.BuscarPorId(id);
+            _conexion.Close();
+            return rubrica;
+        }
+
+    }
+     public class GuardarRubricaResponse 
+    {
+        public GuardarRubricaResponse(Rubrica rubrica)
+        {
+            Error = false;
+            Rubrica = rubrica;
+        }
+        public GuardarRubricaResponse(string mensaje)
+        {
+            Error = true;
+            Mensaje = mensaje;
+        }
+        public bool Error { get; set; }
+        public string Mensaje { get; set; }
+        public Rubrica Rubrica { get; set; }
+
+    } 
+
+     public class GuardarItemsRubricaResponse 
+    {
+        public GuardarItemsRubricaResponse(ItemsRubrica item)
+        {
+            Error = false;
+            ItemsRubrica = item;
+        }
+        public GuardarItemsRubricaResponse(string mensaje)
+        {
+            Error = true;
+            Mensaje = mensaje;
+        }
+        public bool Error { get; set; }
+        public string Mensaje { get; set; }
+        public ItemsRubrica ItemsRubrica { get; set; }
+
+    }
+    
+}
