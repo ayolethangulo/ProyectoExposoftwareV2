@@ -80,7 +80,6 @@ export class DocenteRegistroComponent implements OnInit {
         }
       });
     } else {
-      alert('funciona');
       this.guardarLocal(this.docente.identificacion);
     }
 
@@ -138,5 +137,17 @@ export class DocenteRegistroComponent implements OnInit {
     this.formGroup.get('celular').setValue(d.celular);
     this.formGroup.get('correo').setValue(d.correo);
     this.formGroup.get('perfil').setValue(d.perfil);
+    this.formGroup.get('tipoDocente').setValue(d.tipoDocente);
+    if (d.tipoDocente == 'Comite Evaluador') {
+      const messageBox = this.modalService.open(AlertModalComponent);
+      messageBox.componentInstance.title = 'Resultado Operación';
+      messageBox.componentInstance.message = 'El docente es comité evaluador, no debe registrar proyectos';
+    } else if (d.tipoDocente == 'Docente evaluador') {
+      const messageBox = this.modalService.open(AlertModalComponent);
+      messageBox.componentInstance.title = 'Resultado Operación';
+      messageBox.componentInstance.message = 'Docente seleccionado como docente evaluador, no puede registrar proyectos';
+    } else if (d.tipoDocente == 'Ninguno') {
+      this.formGroup.get('tipoDocente').setValue('');
+    }
   }
 }

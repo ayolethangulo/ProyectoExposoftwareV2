@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let area of areas|filtroArea:searchText">
+                <tr *ngFor="let area of areas|filtroArea:searchText;index as i ">
                     <th scope="row">{{ i + 1 }}</th>
                     <td>{{ area.idArea }} </td>
                     <td>{{ area.nombre }}</td>

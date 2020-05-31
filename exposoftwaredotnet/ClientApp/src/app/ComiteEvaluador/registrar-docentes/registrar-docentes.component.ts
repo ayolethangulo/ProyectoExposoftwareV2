@@ -118,10 +118,6 @@ export class RegistrarDocentesComponent implements OnInit {
     this.formGroup.get('celular').setValue(d.celular);
     this.formGroup.get('correo').setValue(d.correo);
     this.formGroup.get('perfil').setValue(d.perfil);
-    if (d.tipoDocente == null) {
-      this.formGroup.get('tipoDocente').setValue('');
-    } else {
-      this.formGroup.get('tipoDocente').setValue(d.tipoDocente);
-    }
+    this.formGroup.get('tipoDocente').setValue(d.tipoDocente);
   }
 }

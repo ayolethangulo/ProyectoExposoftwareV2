@@ -5,7 +5,6 @@ import { AsignaturaService } from '../../services/asignatura.service';
 import { Asignatura } from '../../areaMateria/models/asignatura';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { DatosLocalSService } from '../../services/datos-local-s.service';
-import { DocenteService } from 'src/app/services/docente.service';
 
 @Component({
   selector: 'app-proyecto-registro',

@@ -3,7 +3,6 @@ import { Estudiante } from '../models/estudiante';
 import { EstudianteService } from '../../services/estudiante.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { DatosLocalSService } from '../../services/datos-local-s.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-estudiante-registro',
@@ -17,12 +16,9 @@ export class EstudianteRegistroComponent implements OnInit {
   estudiante: Estudiante;
   constructor(
     private estudianteService: EstudianteService, private formBuilder: FormBuilder,
-    private _route: ActivatedRoute, private datosLocalS: DatosLocalSService) {
-    console.log(this._route.snapshot.paramMap.get('identificacion'));
-  }
+   private datosLocalS: DatosLocalSService) {}
 
   ngOnInit(): void {
-    const idu = this._route.snapshot.paramMap.get('identificacion');
     this.buildForm();
   }
 
