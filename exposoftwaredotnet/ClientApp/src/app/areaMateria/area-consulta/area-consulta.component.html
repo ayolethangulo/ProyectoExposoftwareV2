@@ -2,6 +2,10 @@
 <div class="row">
     <app-menu-lateral></app-menu-lateral>
     <div class="container">
+        <div class="col-6">
+            <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="Buscar Area">
+        </div>
+
         <table class="table table-hover" *ngIf='areas && areas.length'>
             <thead>
                 <tr>
@@ -12,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let area of areas; index as i ">
+                <tr *ngFor="let area of areas|filtroArea:searchText">
                     <th scope="row">{{ i + 1 }}</th>
                     <td>{{ area.idArea }} </td>
                     <td>{{ area.nombre }}</td>

@@ -9,6 +9,7 @@ import { AreaService } from 'src/app/services/area.service';
 })
 export class AreaConsultaComponent implements OnInit {
 
+  searchText: string;
   areas: Area[];
   constructor(private areaService: AreaService) { }
 

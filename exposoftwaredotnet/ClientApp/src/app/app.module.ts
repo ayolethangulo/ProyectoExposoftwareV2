@@ -44,6 +44,9 @@ import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/r
 import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes/registrar-docentes.component';
 import { FiltroInscripcionPipe } from './Pipe/filtro-inscripcion.pipe';
 import { AsignaturaEdicionComponent } from './areaMateria/asignatura-edicion/asignatura-edicion.component';
+import { ConsultarDocentesComponent } from './comiteEvaluador/consultar-docentes/consultar-docentes.component';
+import { FiltroDocentePipe } from './pipe/filtro-docente.pipe';
+import { FiltroAreaPipe } from './@base/pipe/filtro-area.pipe';
 
 
 @NgModule({
@@ -78,7 +81,10 @@ import { AsignaturaEdicionComponent } from './areaMateria/asignatura-edicion/asi
     RegistrarDocentesComponent,
     RegistrarUsuarioComponent,
     FiltroInscripcionPipe,
-    AsignaturaEdicionComponent
+    AsignaturaEdicionComponent,
+    ConsultarDocentesComponent,
+    FiltroDocentePipe,
+    FiltroAreaPipe
   ],
   imports: [
     ReactiveFormsModule,

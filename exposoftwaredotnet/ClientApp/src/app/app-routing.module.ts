@@ -23,6 +23,7 @@ import { AreaEdicionComponent } from './areaMateria/area-edicion/area-edicion.co
 import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes/registrar-docentes.component';
 import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
 import { AsignaturaEdicionComponent } from './areaMateria/asignatura-edicion/asignatura-edicion.component';
+import { ConsultarDocentesComponent } from './comiteEvaluador/consultar-docentes/consultar-docentes.component';
 
 
 const routes: Routes = [
@@ -117,6 +118,10 @@ const routes: Routes = [
   {
     path: 'RegistrarUsuario',
     component: RegistrarUsuarioComponent
+  },
+  {
+    path: 'consultarDocente',
+    component: ConsultarDocentesComponent
   }
 
 ];

@@ -8,9 +8,8 @@ export class FiltroAsignaturaPipe implements PipeTransform {
 
   transform(asignatura: Asignatura[], searchText: string): any {
     if (searchText == null) { return asignatura; }
-    return asignatura.filter(a =>
-    a.nombre.toLowerCase()
-    .indexOf(searchText.toLowerCase()) !== -1);
+    return asignatura.filter(a => a.nombre.toLowerCase().indexOf(searchText.toLowerCase()) !== -1 ||
+    a.nombreArea.toLowerCase().indexOf(searchText.toLowerCase()) !== -1);
   }
 
 }
