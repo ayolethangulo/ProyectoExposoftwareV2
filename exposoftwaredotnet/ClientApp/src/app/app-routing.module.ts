@@ -11,7 +11,6 @@ import { LoginLiderProyectoComponent } from './loginLiderProyecto/login-lider-pr
 import { EvaluaInscripcionComponent } from './ComiteEvaluador/evalua-inscripcion/evalua-inscripcion.component';
 import { EvaluarPendonComponent } from './ComiteEvaluador/evaluar-pendon/evaluar-pendon.component';
 import { InicioComponent } from './ComiteEvaluador/inicio/inicio.component';
-import { ModificarRubricaComponent } from './ComiteEvaluador/modificar-rubrica/modificar-rubrica.component';
 import { InicioLiderComponent } from './DocenteLider/InicioLider/inicio-lider/inicio-lider.component';
 import { RegistrarPendonComponent } from './DocenteLider/RegistrarPendon/registrar-pendon/registrar-pendon.component';
 import { ConsultaResultadoComponent } from './DocenteLider/ConsultaResultado/consulta-resultado/consulta-resultado.component';
@@ -21,7 +20,6 @@ import { AreaRegistroComponent } from './areaMateria/area-registro/area-registro
 import { AreaConsultaComponent } from './areaMateria/area-consulta/area-consulta.component';
 import { AreaEdicionComponent } from './areaMateria/area-edicion/area-edicion.component';
 import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes/registrar-docentes.component';
-import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
 import { AsignaturaEdicionComponent } from './areaMateria/asignatura-edicion/asignatura-edicion.component';
 import { ConsultarDocentesComponent } from './comiteEvaluador/consultar-docentes/consultar-docentes.component';
 import { EdicionDocentesComponent } from './ComiteEvaluador/edicion-docentes/edicion-docentes.component';
@@ -73,10 +71,6 @@ const routes: Routes = [
     component: InicioComponent
   },
   {
-    path: 'modificarRubrica',
-    component: ModificarRubricaComponent
-  },
-  {
     path: 'InicioDocenteLider',
     component: InicioLiderComponent
   },
@@ -117,10 +111,6 @@ const routes: Routes = [
     component: RegistrarDocentesComponent
   },
   {
-    path: 'RegistrarUsuario',
-    component: RegistrarUsuarioComponent
-  },
-  {
     path: 'consultarDocente',
     component: ConsultarDocentesComponent
   },
@@ -128,6 +118,7 @@ const routes: Routes = [
     path: 'edicionDocentes/:identificacion',
     component: EdicionDocentesComponent
   }
+
 
 ];
 

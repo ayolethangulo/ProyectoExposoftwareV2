@@ -24,7 +24,6 @@ import { LoginComiteEvaluadorComponent } from './loginComiteEvaluador/login-comi
 import { LoginDocenteEvaluadorComponent } from './loginDocenteEvaluador/login-docente-evaluador/login-docente-evaluador.component';
 import { LoginLiderProyectoComponent } from './loginLiderProyecto/login-lider-proyecto/login-lider-proyecto.component';
 import { InicioComponent } from './ComiteEvaluador/inicio/inicio.component';
-import { ModificarRubricaComponent } from './ComiteEvaluador/modificar-rubrica/modificar-rubrica.component';
 import { EvaluarPendonComponent } from './ComiteEvaluador/evaluar-pendon/evaluar-pendon.component';
 import { EvaluaInscripcionComponent } from './ComiteEvaluador/evalua-inscripcion/evalua-inscripcion.component';
 import { RegistrarPendonComponent } from './DocenteLider/RegistrarPendon/registrar-pendon/registrar-pendon.component';
@@ -34,13 +33,11 @@ import { AsignaturaRegistroComponent } from './areaMateria/asignatura-registro/a
 import { AsignaturaConsultaComponent } from './areaMateria/asignatura-consulta/asignatura-consulta.component';
 import { MenuTopComponent } from './adminGUI/menu-top/menu-top.component';
 import { MenuLateralComponent } from './adminGUI/menu-lateral/menu-lateral.component';
-import { UsuarioService } from './services/usuario.service';
 import { AreaService } from './services/area.service';
 import { FiltroAsignaturaPipe } from './@base/pipe/filtro-asignatura.pipe';
 import { AreaRegistroComponent } from './areaMateria/area-registro/area-registro.component';
 import { AreaConsultaComponent } from './areaMateria/area-consulta/area-consulta.component';
 import { AreaEdicionComponent } from './areaMateria/area-edicion/area-edicion.component';
-import { RegistrarUsuarioComponent } from './ComiteEvaluador/registrar-usuario/registrar-usuario.component';
 import { RegistrarDocentesComponent } from './ComiteEvaluador/registrar-docentes/registrar-docentes.component';
 import { FiltroInscripcionPipe } from './Pipe/filtro-inscripcion.pipe';
 import { AsignaturaEdicionComponent } from './areaMateria/asignatura-edicion/asignatura-edicion.component';
@@ -65,7 +62,6 @@ import { EdicionDocentesComponent } from './ComiteEvaluador/edicion-docentes/edi
     LoginDocenteEvaluadorComponent,
     LoginLiderProyectoComponent,
     InicioComponent,
-    ModificarRubricaComponent,
     EvaluarPendonComponent,
     EvaluaInscripcionComponent,
     RegistrarPendonComponent,
@@ -80,13 +76,12 @@ import { EdicionDocentesComponent } from './ComiteEvaluador/edicion-docentes/edi
     AreaConsultaComponent,
     AreaEdicionComponent,
     RegistrarDocentesComponent,
-    RegistrarUsuarioComponent,
     FiltroInscripcionPipe,
     AsignaturaEdicionComponent,
     ConsultarDocentesComponent,
     FiltroDocentePipe,
     FiltroAreaPipe,
-    EdicionDocentesComponent
+    EdicionDocentesComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -106,7 +101,6 @@ import { EdicionDocentesComponent } from './ComiteEvaluador/edicion-docentes/edi
     ProyectoService,
     AsignaturaService,
     DatosLocalSService,
-    UsuarioService,
     AreaService
   ],
   bootstrap: [AppComponent]

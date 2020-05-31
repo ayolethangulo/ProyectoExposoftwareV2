@@ -13,28 +13,20 @@ CREATE TABLE [dbo].[Asignatura](
 	[NombreArea] [nvarchar](50) not null,
 )
 
-/* aun no creo esta tabla creo que faltan campos*/
-
 CREATE TABLE [dbo].[Rubrica](
 	[IdRubrica] [nvarchar](4) NOT NULL PRIMARY KEY,
 	[IdArea] [nvarchar](4) not null,
 	FOREIGN KEY (IdArea) REFERENCES Area(IdArea)
 )
+
+CREATE TABLE [dbo].[ItemsRubrica](
+	[IdRubrica] [nvarchar](4) NOT NULL,
+	[item] [nvarchar](2) not null,
+	[descripcion] [nvarchar](100) not null,
+)
 -------------------------------------------------------
 
 CREATE TABLE [dbo].[Docente](
-	[Identificacion] [nvarchar](10) NOT NULL PRIMARY KEY,
-	[PrimerNombre] [nvarchar](20) NULL,
-	[SegundoNombre] [nvarchar](20) NULL,
-	[PrimerApellido] [nvarchar](20) NULL,
-	[SegundoApellido] [nvarchar](20) NULL,
-	[Celular] [nvarchar](10) NULL,
-	[Correo] [nvarchar](50) NULL,
-	[Perfil] [nvarchar](50) null,
-	[TipoDocente] [nvarchar](30) NULL,
-)
-
-CREATE TABLE [dbo].[LiderProyecto](
 	[Identificacion] [nvarchar](10) NOT NULL PRIMARY KEY,
 	[PrimerNombre] [nvarchar](20) NULL,
 	[SegundoNombre] [nvarchar](20) NULL,
