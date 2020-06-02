@@ -22,26 +22,34 @@
                             {{area.nombre}}
                         </option>
                     </select>
-                    <div *ngIf="control.idArea.errors && formGroupRubrica.get('idArea').touched" class="invalid-feedback">
+                    <div *ngIf="control.idArea.errors && formGroupRubrica.get('idArea').touched"
+                        class="invalid-feedback">
                         <div *ngIf="control.idArea.errors.required">Campo requerido</div>
                     </div>
                 </div>
             </div>
+            <button id="botones" class="btn btn-success" (click)="agregarItems()">Agregar Item</button>
             <form [formGroup]="formGroupItems">
-                <div class="form-row">
-                    <div class="col-3">
-                        <label for="item">Item <span class="obligatorio">*</span></label>
-                        <input type="text" name="item" formControlName="item" class="form-control">
-                    </div>
-                    <div class="col-5">
-                        <label for="descripcion">Descripción <span class="obligatorio">*</span></label>
-                        <input type="text" name="descripcion" formControlName="descripcion" class="form-control">
+                <div formArrayName="items" *ngFor="let item of items.controls; let i = index">
+                    <div [formGroupName]="i">
+                        <div class="form-group row">
+                            <label class="col-md-1" [attr.for]="'item' + i">Item</label>
+                            <div class="col-md-3">
+                                <input type="text" [attr.id]="'item' + i" class="form-control" formControlName="item">
+                            </div>
+                            <label class="col-md-1" [attr.for]="'descripcion' + i">Descripcion</label>
+                            <div class="col-md-5">
+                                <input type="text" [attr.id]="'descripcion' + i" class="form-control" formControlName="descripcion">
+                            </div>
+                            <button class="btn btn-danger" (click)="removerItems(i)">Remover</button>
+                        </div>
                     </div>
                 </div>
-            <button id="botones" class="btn btn-success" (click)="agregarItems()">Agregar Item</button>
-        </form>
+
+            </form>
             <div class="text-center">
-                <button id="botones" class="btn btn-success"  (click)="onSubmit()" [disabled]="formGroupRubrica.invalid">Guardar</button>
+                <button id="botones" class="btn btn-success" (click)="onSubmit()"
+                    [disabled]="formGroupRubrica.invalid">Guardar</button>
                 <button id="botones" class="btn btn-success" type="reset">Cancelar</button>
             </div>
         </form>

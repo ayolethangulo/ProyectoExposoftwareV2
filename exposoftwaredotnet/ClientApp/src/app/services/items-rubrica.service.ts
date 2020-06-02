@@ -31,7 +31,6 @@ export class ItemsRubricaService {
   post(itemsRubrica: ItemsRubrica): Observable<ItemsRubrica> {
     return this.http.post<ItemsRubrica>(this.baseUrl + 'api/ItemsRubrica', itemsRubrica)
       .pipe(
-        tap(_ => this.handleErrorService.log('item Rúbrica registrada Correctamente!')),
         catchError(this.handleErrorService.handleError<ItemsRubrica>('Registrar itemRúbrica', null))
       );
   }

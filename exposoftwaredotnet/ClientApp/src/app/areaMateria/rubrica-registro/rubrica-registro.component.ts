@@ -28,6 +28,10 @@ export class RubricaRegistroComponent implements OnInit {
     this.cargarArea();
   }
 
+  get items() {
+    return this.formGroupItems.get('items') as FormArray;
+  }
+
   private buildFormRubrica() {
     this.rubrica = new Rubrica();
     this.rubrica.idRubrica = '';
@@ -40,15 +44,8 @@ export class RubricaRegistroComponent implements OnInit {
   }
 
   private buildFormItem() {
-    this.itemsRubrica = new ItemsRubrica();
-    this.itemsRubrica.idRubrica = '1';
-    this.itemsRubrica.item = '';
-    this.itemsRubrica.descripcion = '';
-
     this.formGroupItems = this.formBuilder.group({
-      idRubrica: [this.itemsRubrica.idRubrica, Validators.required],
-      item: [this.itemsRubrica.item, Validators.required],
-      descripcion: [this.itemsRubrica.descripcion, Validators.required]
+      items: this.formBuilder.array([])
     });
   }
 
@@ -64,17 +61,36 @@ export class RubricaRegistroComponent implements OnInit {
     this.rubricaService.post(this.rubrica).subscribe(r => {
       if (r != null) {
         this.rubrica = r;
+        this.recorrerArrayItems();
       }
     });
   }
 
-  agregarItems() {
-    this.itemsRubrica = this.formGroupItems.value;
-    this.itemsRubricaService.post(this.itemsRubrica).subscribe(ir => {
-      if (ir != null) {
+  recorrerArrayItems() {
+    const array = this.formGroupItems.value.items;
+    for (let index = 0; index < array.length; index++) {
+      this.itemsRubrica = new ItemsRubrica();
+      this.itemsRubrica = array[index];
+      this.itemsRubricaService.post(this.itemsRubrica).subscribe(ir => {
+        if (ir != null) {
         this.itemsRubrica = ir;
-      }
+        }
     });
+    }
+  }
+
+  agregarItems() {
+    const id = this.formGroupRubrica.get('idRubrica').value;
+    const itemsFormGroup = this.formBuilder.group({
+      idRubrica: id,
+      item: '',
+      descripcion: ''
+    });
+    this.items.push(itemsFormGroup);
+  }
+
+  removerItems(indice: number) {
+    this.items.removeAt(indice);
   }
 
   public cargarArea() {

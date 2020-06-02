@@ -13,11 +13,11 @@ namespace exposoftwaredotnet.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ItemsRubricaControllers: ControllerBase
+    public class ItemsRubricaController: ControllerBase
     {
         private readonly ItemsRubricaService _itemsRubricaService;
         public IConfiguration Configuration { get; }
-        public ItemsRubricaControllers(IConfiguration configuration)
+        public ItemsRubricaController(IConfiguration configuration)
         {
             Configuration = configuration;
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
