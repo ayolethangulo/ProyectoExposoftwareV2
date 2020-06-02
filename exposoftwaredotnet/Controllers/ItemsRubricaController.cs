@@ -15,19 +15,19 @@ namespace exposoftwaredotnet.Controllers
     [ApiController]
     public class ItemsRubricaControllers: ControllerBase
     {
-        private readonly RubricaService _rubricaService;
+        private readonly ItemsRubricaService _itemsRubricaService;
         public IConfiguration Configuration { get; }
         public ItemsRubricaControllers(IConfiguration configuration)
         {
             Configuration = configuration;
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            _rubricaService = new RubricaService(connectionString);
+            _itemsRubricaService = new ItemsRubricaService(connectionString);
         }
         // GET: api/ItemsRubrica
         [HttpGet]
         public IEnumerable<ItemsRubricaViewModel> Gets()
         {
-            var items = _rubricaService.ConsultarTodosItem().Select(i=> new ItemsRubricaViewModel(i));
+            var items = _itemsRubricaService.ConsultarTodos().Select(ir=> new ItemsRubricaViewModel(ir));
             return items;
         }
 
@@ -35,8 +35,8 @@ namespace exposoftwaredotnet.Controllers
         [HttpPost]
         public ActionResult<ItemsRubricaViewModel> Post(ItemsRubricaInputModel itemRubricaInput)
         {
-            ItemsRubrica item = MapearItemRubrica(itemRubricaInput);
-            var response = _rubricaService.GuardarItem(item);
+            ItemsRubrica itemsRubrica = MapearItemRubrica(itemRubricaInput);
+            var response = _itemsRubricaService.Guardar(itemsRubrica);
             if (response.Error) 
             {
                ModelState.AddModelError("Guardar itemRubrica", response.Mensaje);
@@ -52,7 +52,7 @@ namespace exposoftwaredotnet.Controllers
         [HttpDelete("{idRubrica}")]
         public ActionResult<string> Delete(string idRubrica)
         {
-            string mensaje = _rubricaService.EliminarItem(idRubrica);
+            string mensaje = _itemsRubricaService.Eliminar(idRubrica);
             return Ok(mensaje);
         }
         
@@ -70,7 +70,7 @@ namespace exposoftwaredotnet.Controllers
         [HttpPut("{idRubrica}")]
         public ActionResult<string> Put(string idRubrica, ItemsRubrica item)
         {
-            var mensaje=_rubricaService.ModificarItem(item);
+            var mensaje=_itemsRubricaService.Modificar(item);
            return Ok(mensaje) ;
         }
         

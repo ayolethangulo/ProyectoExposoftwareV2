@@ -21,8 +21,8 @@ CREATE TABLE [dbo].[Rubrica](
 
 CREATE TABLE [dbo].[ItemsRubrica](
 	[IdRubrica] [nvarchar](4) NOT NULL,
-	[item] [nvarchar](2) not null,
-	[descripcion] [nvarchar](100) not null,
+	[Item] [nvarchar](2) not null,
+	[Descripcion] [nvarchar](100) not null,
 )
 -------------------------------------------------------
 

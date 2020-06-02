@@ -49,6 +49,7 @@ import { RubricaRegistroComponent } from './areaMateria/rubrica-registro/rubrica
 import { RubricaConsultaComponent } from './areaMateria/rubrica-consulta/rubrica-consulta.component';
 import { RubricaEdicionComponent } from './areaMateria/rubrica-edicion/rubrica-edicion.component';
 import { RubricaService } from './services/rubrica.service';
+import { ItemsRubricaService } from './services/items-rubrica.service';
 
 
 @NgModule({
@@ -109,7 +110,8 @@ import { RubricaService } from './services/rubrica.service';
     AsignaturaService,
     DatosLocalSService,
     AreaService,
-    RubricaService
+    RubricaService,
+    ItemsRubricaService
   ],
   bootstrap: [AppComponent]
 })

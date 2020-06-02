@@ -10,8 +10,7 @@ namespace Datos
     {
         private readonly SqlConnection _connection;
         private readonly List<Rubrica> _rubricas = new List<Rubrica>();
-        private readonly List<ItemsRubrica> _itemsrubricas = new List<ItemsRubrica>();
-        
+
         public RubricaRepository(ConnectionManager connection)
         {
             _connection = connection._conexion;
@@ -28,18 +27,6 @@ namespace Datos
             }
         }
 
-        public void GuardarItem(ItemsRubrica item)
-        {
-            using (var command = _connection.CreateCommand())
-            {
-                command.CommandText = @"Insert Into ItemsRubrica (IdRubrica,Item,Descripcion) values (@IdRubrica, @Item,@Descripcion)";
-                command.Parameters.AddWithValue("@IdRubrica", item.IdRubrica);
-                command.Parameters.AddWithValue("@Item", item.Item);
-                command.Parameters.AddWithValue("@Descripcion", item.Descripcion);
-                var filas = command.ExecuteNonQuery();
-            }
-        }
-
         public void Eliminar(Rubrica rubrica)
         {
             using (var command = _connection.CreateCommand())
@@ -49,15 +36,7 @@ namespace Datos
                 command.ExecuteNonQuery();
             }
         }
-        public void EliminarItem(string id)
-        {
-            using (var command = _connection.CreateCommand())
-            {
-                command.CommandText = "Delete from ItemsRubrica where IdRubrica=@IdRubrica";
-                command.Parameters.AddWithValue("@IdRubrica", id);
-                command.ExecuteNonQuery();
-            }
-        }
+       
         public void Modificar( Rubrica rubrica)
         {
             using (var command = _connection.CreateCommand())
@@ -68,17 +47,7 @@ namespace Datos
                 command.ExecuteNonQuery();
             }
         }
-        public void ModificarItem(ItemsRubrica item)
-        {
-            using (var command = _connection.CreateCommand())
-            {
-                command.CommandText = "update ItemsRubrica set idRubrica=@IdRubrica, item=@Item, descripcion=@Descripcion where IdRubrica=@IdRubrica";
-                command.Parameters.AddWithValue("@IdRubrica", item.IdRubrica);
-                command.Parameters.AddWithValue("@Item", item.Item);
-                command.Parameters.AddWithValue("@Descripcion", item.Descripcion);
-                command.ExecuteNonQuery();
-            }
-        }
+       
         public List<Rubrica> ConsultarTodos()
         {
             SqlDataReader dataReader;
@@ -99,26 +68,7 @@ namespace Datos
             return rubricas;
         }
 
-        public List<ItemsRubrica> ConsultarTodosItem()
-        {
-            SqlDataReader dataReader;
-            List<ItemsRubrica> items = new List<ItemsRubrica>();
-            using (var command = _connection.CreateCommand())
-            {
-                command.CommandText = "Select * from ItemsRubrica";
-                dataReader = command.ExecuteReader();
-                if (dataReader.HasRows)
-                {
-                    while (dataReader.Read())
-                    {
-                        ItemsRubrica item = DataReaderMapToItem(dataReader);
-                        items.Add(item);
-                    }
-                }
-            }
-            return items;
-        }
-
+       
         public Rubrica BuscarPorId(string id)
         {
             SqlDataReader dataReader;
@@ -140,15 +90,5 @@ namespace Datos
             return rubrica;
         }
 
-        private ItemsRubrica DataReaderMapToItem(SqlDataReader dataReader)
-        {
-            if(!dataReader.HasRows) return null;
-            ItemsRubrica item = new ItemsRubrica();
-            item.IdRubrica = (string)dataReader["IdRubrica"];
-            item.Item = (string)dataReader["Item"];
-            item.Descripcion = (string)dataReader["Descripcion"];
-            return item;
-        }
-        
-    }
+    }   
 }
