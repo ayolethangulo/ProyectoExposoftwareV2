@@ -22,10 +22,11 @@ export class ItemsRubricaService {
   ) {
     this.baseUrl = baseUrl;
   }
-  get(): Observable<ItemsRubrica[]> {
-    return this.http.get<ItemsRubrica[]>(this.baseUrl + 'api/ItemsRubrica')
+  get(idRubrica: string): Observable<ItemsRubrica[]> {
+    const url = `${this.baseUrl + 'api/ItemsRubrica'}/${idRubrica}`;
+      return this.http.get<ItemsRubrica[]>(url, httpOptions)
       .pipe(
-        catchError(this.handleErrorService.handleError<ItemsRubrica[]>('Consulta itemRubrica', null))
+        catchError(this.handleErrorService.handleError<ItemsRubrica[]>('Buscar Rubrica', null))
       );
   }
   post(itemsRubrica: ItemsRubrica): Observable<ItemsRubrica> {

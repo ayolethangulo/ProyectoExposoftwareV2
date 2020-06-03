@@ -32,10 +32,10 @@ namespace Logica
             finally { _conexion.Close(); }
         }
 
-        public List<ItemsRubrica> ConsultarTodos()
+        public List<ItemsRubrica> ConsultarTodos(string id)
         {
             _conexion.Open();
-            List<ItemsRubrica> items = _repositorio.ConsultarTodos();
+            List<ItemsRubrica> items = _repositorio.ConsultarTodos(id);
             _conexion.Close();
             return items;
         }

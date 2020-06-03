@@ -24,10 +24,10 @@ namespace exposoftwaredotnet.Controllers
             _itemsRubricaService = new ItemsRubricaService(connectionString);
         }
         // GET: api/ItemsRubrica
-        [HttpGet]
-        public IEnumerable<ItemsRubricaViewModel> Gets()
+        [HttpGet("{idRubrica}")]
+        public IEnumerable<ItemsRubricaViewModel> Gets(string idRubrica)
         {
-            var items = _itemsRubricaService.ConsultarTodos().Select(ir=> new ItemsRubricaViewModel(ir));
+            var items = _itemsRubricaService.ConsultarTodos(idRubrica).Select(ir=> new ItemsRubricaViewModel(ir));
             return items;
         }
 

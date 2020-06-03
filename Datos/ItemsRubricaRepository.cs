@@ -48,13 +48,14 @@ namespace Datos
                 command.ExecuteNonQuery();
             }
         }
-         public List<ItemsRubrica> ConsultarTodos()
+         public List<ItemsRubrica> ConsultarTodos(string id)
         {
             SqlDataReader dataReader;
             List<ItemsRubrica> items = new List<ItemsRubrica>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select * from ItemsRubrica";
+                command.CommandText = "Select * from ItemsRubrica where IdRubrica=@IdRubrica";
+                command.Parameters.AddWithValue("@IdRubrica", id);
                 dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
