@@ -77,6 +77,8 @@ export class RubricaRegistroComponent implements OnInit {
         }
     });
     }
+    this.buildFormRubrica();
+    this.buildFormItem();
   }
 
   agregarItems() {

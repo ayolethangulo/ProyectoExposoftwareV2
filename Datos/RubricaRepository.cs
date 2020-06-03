@@ -81,6 +81,18 @@ namespace Datos
                 return DataReaderMapToRubrica(dataReader);
             }
         }
+         public Rubrica BuscarPorArea(string idArea)
+        {
+            SqlDataReader dataReader;
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from Rubrica where IdArea=@IdArea";
+                command.Parameters.AddWithValue("@IdArea", idArea);
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                return DataReaderMapToRubrica(dataReader);
+            }
+        }
         private Rubrica DataReaderMapToRubrica(SqlDataReader dataReader)
         {
             if(!dataReader.HasRows) return null;

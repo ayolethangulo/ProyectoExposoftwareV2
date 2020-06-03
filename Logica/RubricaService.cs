@@ -21,14 +21,22 @@ namespace Logica
             try
             {
                 var rubricaBuscada = this.BuscarxId(rubrica.IdRubrica);
+                var areaBuscada = this.BuscarxArea(rubrica.IdArea);
                 if (rubricaBuscada != null)
                 {
                     return new GuardarRubricaResponse("Error el codigo de la rúbrica ya se encuentra registrada");
                 }
-                _conexion.Open();
-                _repositorio.Guardar(rubrica);
-                _conexion.Close();
-                return new GuardarRubricaResponse(rubrica);
+                else if (areaBuscada != null)
+                {
+                    return new GuardarRubricaResponse("Error el area ya tiene una rubrica registrada");
+                }
+                else
+                {
+                    _conexion.Open();
+                    _repositorio.Guardar(rubrica);
+                    _conexion.Close();
+                    return new GuardarRubricaResponse(rubrica);
+                }
             }
             catch (Exception e)
             {
@@ -99,6 +107,14 @@ namespace Logica
         {
             _conexion.Open();
             Rubrica rubrica = _repositorio.BuscarPorId(id);
+            _conexion.Close();
+            return rubrica;
+        }
+
+        public Rubrica BuscarxArea(string idArea)
+        {
+            _conexion.Open();
+            Rubrica rubrica = _repositorio.BuscarPorArea(idArea);
             _conexion.Close();
             return rubrica;
         }
