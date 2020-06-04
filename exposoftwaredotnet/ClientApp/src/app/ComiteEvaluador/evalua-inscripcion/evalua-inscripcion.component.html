@@ -1,67 +1,78 @@
 <app-menu-top></app-menu-top>
-
 <div class="row">
-  <app-menu-lateral></app-menu-lateral>
+    <app-menu-lateral></app-menu-lateral>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h5>Evaluar proyecto</h5>
+                <form>
+                    <div class="form-row">
+                        <div class="col">
+                            <label>Código del proyecto</label>
+                        <input type="text" name="idProyecto" [(ngModel)]="proyecto.idProyecto" class="form-control" />
+                        </div>
+                        <div class="col">
+                            <label>Líder del proyecto</label>
+                            <input type="text" name="identificacion"  [(ngModel)]="proyecto.identificacion" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label>Autor</label>
+                            <input type="text" name="estudiante1"  [(ngModel)]="proyecto.estudiante1" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label>Autor</label>
+                            <input type="text" name="estudiante2"  [(ngModel)]="proyecto.estudiante2" class="form-control">
+                        </div>
+                    </div>
 
+                     <div class="form-row">
+                         <label>Título del proyecto</label>
+                         <input type="text" name="titulo" [(ngModel)]="proyecto.titulo" class="form-control">
+                     </div>
+     
+                     <div class="form-row">
+     
+                         <div class="col">
+                             <label>Asignatura</label>
+                             <input type="text" name="asignatura" [(ngModel)]="proyecto.asignatura" class="form-control">
+                         </div>
+     
+                         <div class="col">
+                             <label for="semestre">Semestre </label>
+                             <input type="text" name="semestre" [(ngModel)]="proyecto.semestre" class="form-control">
+                         </div>
+     
+                     </div>
+     
+                     <div class="form-group">
+                         <label >Resumen</label>
+                         <textarea class="form-control" [(ngModel)]="proyecto.resumen" rows="3" name="resumen"></textarea>
+                     </div>
+     
+                     <div class="form-group">
+                         <label>Metodologia de desarrollo del proyecto</label>
+                         <textarea class="form-control" [(ngModel)]="proyecto.metodologia" rows="3" name="metodologia"></textarea>
+                     </div>
+     
+                     <div class="form-group">
+                         <label >Resultados y solución </label>
+                         <textarea class="form-control" [(ngModel)]="proyecto.resultados"  rows="3" name="resultados"></textarea>
+                     </div>
+                     <div class="col-5">
+                        <label for="estado">Estado </label>
+                        <input type="text" name="estado" [(ngModel)]="proyecto.estado" class="form-control">
+                    </div>
+                     <div class="text-center">
+                        <a [routerLink]="['/inscripcionConsulta']">
+                            <button class="btn btn-primary mr-1" (click)="update()">Actualizar</button>
+                        </a>
+                        <a [routerLink]="['/inscripcionConsulta']">
+                            <button class="btn btn-secondary" type="reset">Cancel</button>
+                        </a>
+                    </div>
+                </form>
 
-  <div class="container">
-    <p>Escribe nombre a buscar:</p>
-  
-      
-    <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="Escribe nombre">
-
-    
-    <p></p>
-    <table class="table table-hover">
-      <thead>
-        <tr class="bg-success">
-          <th scope="col">#</th>
-          <th scope="col">Id Proyecto</th>
-          <th scope="col">Estudiante 1</th>
-          <th scope="col">Estudiante 2</th>
-          <th scope="col">Asignatura</th>
-          <th scope="col">Titulo</th>
-          <th scope="col">Semestre</th>
-          <th scope="col">Resumen</th>
-          <th scope="col">Metodológia</th>
-          <th scope="col">Resultados</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let proyecto of proyecto; index as i ">
-
-          <th scope="row">{{ i + 1 }}</th>
-
-          <td>{{ proyecto.idProyecto }}</td>
-
-          <td>{{ proyecto.identificacion }}</td>
-
-          <td>{{ proyecto.estudiante1 }}</td>
-
-          <td>{{ proyecto.estudiante2 }}</td>
-
-          <td>{{ proyecto.asignatura }}</td>
-
-          <td>{{ proyecto.titulo }}</td>
-
-          <td>{{ proyecto.semestre }}</td>
-
-          <td>{{ proyecto.resumen }}</td>
-          <td>{{ proyecto.metodologia }}</td>
-          <td>{{ proyecto.resultados }}</td>
-
-        </tr>
-
-      </tbody>
-      <div class="cuadrado">
-        <h6>Digite El codigo del proyecto que desea Evaluar: </h6>
-        <input class="form-control" type="text" placeholder="Escribe La identificacion">
-      </div>
-      <div class="botonEvaluar">
-        <button type="button" class="btn btn-success btn-sm btn-block caracteristicaBoton" [routerLink]="['/']"> EVALUAR
-        </button>
-      </div>
-
-    </table>
-  </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -45,12 +45,12 @@ namespace Logica
             _conexion.Close();
             return proyectos;
         }
-        public string Eliminar(string identificacion)
+        public string Eliminar(string idProyecto)
         {
             try
             {
                 _conexion.Open();
-                var proyecto = _repositorio.BuscarPorIdentificacion(identificacion);
+                var proyecto = _repositorio.BuscarPorIdentificacion(idProyecto);
                 if (proyecto != null)
                 {
                     _repositorio.Eliminar(proyecto);
@@ -59,7 +59,33 @@ namespace Logica
                 }
                 else
                 {
-                    return ($"Lo sentimos, {identificacion} no se encuentra registrada.");
+                    return ($"Lo sentimos, {idProyecto} no se encuentra registrada.");
+                }
+            }
+            catch (Exception e)
+            {
+
+                return $"Error de la Aplicación: {e.Message}";
+            }
+            finally { _conexion.Close(); }
+
+        }
+
+           public string Modificar(Proyecto proyectoNueva)
+        {
+            try
+            {
+                _conexion.Open();
+                var proyectoVieja = _repositorio.BuscarPorIdentificacion(proyectoNueva.IdProyecto);
+                if (proyectoVieja != null)
+                {
+                    _repositorio.Modificar(proyectoNueva);
+                    _conexion.Close();
+                    return ($"El registro {proyectoNueva.Titulo} se ha modificado satisfactoriamente.");
+                }
+                else
+                {
+                    return ($"Lo sentimos, {proyectoNueva.IdProyecto} no se encuentra registrada.");
                 }
             }
             catch (Exception e)

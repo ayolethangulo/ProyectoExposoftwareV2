@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <button id="botones" class="btn btn-success" (click)="agregarItems()">Agregar Item</button>
+           <br>
             <form [formGroup]="formGroupItems">
                 <div formArrayName="items" *ngFor="let item of items.controls; let i = index">
                     <div [formGroupName]="i">
@@ -37,8 +37,8 @@
                             <div class="col-md-3">
                                 <input type="text" [attr.id]="'item' + i" class="form-control" formControlName="item">
                             </div>
-                            <label class="col-md-1" [attr.for]="'descripcion' + i">Descripcion</label>
-                            <div class="col-md-5">
+                            <label class="col-md-2" [attr.for]="'descripcion' + i">Descripcion</label>
+                            <div class="col-md-4">
                                 <input type="text" [attr.id]="'descripcion' + i" class="form-control" formControlName="descripcion">
                             </div>
                             <button class="btn btn-danger" (click)="removerItems(i)">Remover</button>
@@ -47,6 +47,7 @@
                 </div>
 
             </form>
+            <button id="botones" class="btn btn-success" (click)="agregarItems()">Agregar Item</button>
             <div class="text-center">
                 <button id="botones" class="btn btn-success" (click)="onSubmit()"
                     [disabled]="formGroupRubrica.invalid">Guardar</button>

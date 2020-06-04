@@ -13,7 +13,7 @@ import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.compo
 export class AreaEdicionComponent implements OnInit {
   area: Area;
   constructor(private areaService: AreaService, private rutaActiva: ActivatedRoute,
-  private modalService: NgbModal) { }
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.obtenerRuta();

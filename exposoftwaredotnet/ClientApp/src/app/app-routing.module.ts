@@ -26,6 +26,7 @@ import { EdicionDocentesComponent } from './ComiteEvaluador/edicion-docentes/edi
 import { RubricaRegistroComponent } from './areaMateria/rubrica-registro/rubrica-registro.component';
 import { RubricaConsultaComponent } from './areaMateria/rubrica-consulta/rubrica-consulta.component';
 import { RubricaEdicionComponent } from './areaMateria/rubrica-edicion/rubrica-edicion.component';
+import { InscripcionConsultaComponent } from './ComiteEvaluador/inscripcion-consulta/inscripcion-consulta.component';
 
 
 const routes: Routes = [
@@ -62,8 +63,12 @@ const routes: Routes = [
 
   },
   {
-    path: 'evaluaInscripcion',
+    path: 'evaluaInscripcion/:idProyecto',
     component: EvaluaInscripcionComponent
+  },
+  {
+    path: 'inscripcionConsulta',
+    component: InscripcionConsultaComponent
   },
   {
     path: 'evaluarPendon',

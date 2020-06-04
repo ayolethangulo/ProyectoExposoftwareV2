@@ -30,11 +30,11 @@ export class EdicionDocentesComponent implements OnInit {
   }
 
   update() {
-    this.docenteService.put(this.docente).subscribe(d => {
-      const messageBox = this.modalService.open(AlertModalComponent)
-      messageBox.componentInstance.title = 'Resultado Operación';
-      messageBox.componentInstance.message = 'Actualizado correctamente!';
-    });
+      this.docenteService.put(this.docente).subscribe(d => {
+        const messageBox = this.modalService.open(AlertModalComponent)
+        messageBox.componentInstance.title = 'Resultado Operación';
+        messageBox.componentInstance.message = 'Actualizado correctamente!';
+      });
   }
 
   delete() {

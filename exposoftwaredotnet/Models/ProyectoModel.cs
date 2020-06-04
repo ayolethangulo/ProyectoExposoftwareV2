@@ -48,6 +48,7 @@ namespace exposoftwaredotnet.Models
             }
             public ProyectoViewModel(Proyecto proyecto)
             {
+                IdProyecto = proyecto.IdProyecto;
                 Identificacion = proyecto.Identificacion;
                 Estudiante1 = proyecto.Estudiante1;
                 Estudiante2 = proyecto.Estudiante2;
@@ -59,6 +60,7 @@ namespace exposoftwaredotnet.Models
                 Resultados = proyecto.Resultados;
                 Estado = proyecto.Estado;
             }
+            public string IdProyecto { get; set; }
             public string Estado { get; set; }
         }
 }

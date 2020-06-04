@@ -1,35 +1,8 @@
-.btn-group-vertical{
-    padding-top:1px;
-    padding-right: 10px;   
+
+label, h5,h6{
+    color: rgb(12, 12, 12);
+    font-family: Arial, Helvetica, sans-serif;
 }
-
-.btn-success {
-    padding-top:23px;
-    padding-bottom:23px;
-    font-weight:500;   
-}
-
-table {
-
-}
-
-text{
-    width: 70%;  
-}
-
-.cuadrado{
-    width: 156%;  
-    height: 100%; 
-    padding-top:5%;
-}
-
-.botonEvaluar{
-    padding-top:3%;
-    padding-left: 50%;
-}
-
-.caracteristicaBoton{
-    font-size:113%;   
-    padding-top:3%;
-    padding-bottom: 3%;
+label{
+    font-size: 12px;
 }

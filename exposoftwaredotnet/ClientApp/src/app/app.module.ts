@@ -50,6 +50,7 @@ import { RubricaConsultaComponent } from './areaMateria/rubrica-consulta/rubrica
 import { RubricaEdicionComponent } from './areaMateria/rubrica-edicion/rubrica-edicion.component';
 import { RubricaService } from './services/rubrica.service';
 import { ItemsRubricaService } from './services/items-rubrica.service';
+import { InscripcionConsultaComponent } from './ComiteEvaluador/inscripcion-consulta/inscripcion-consulta.component';
 
 
 @NgModule({
@@ -90,6 +91,7 @@ import { ItemsRubricaService } from './services/items-rubrica.service';
     RubricaRegistroComponent,
     RubricaConsultaComponent,
     RubricaEdicionComponent,
+    InscripcionConsultaComponent,
   ],
   imports: [
     ReactiveFormsModule,

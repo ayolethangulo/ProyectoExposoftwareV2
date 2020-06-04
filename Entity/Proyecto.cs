@@ -2,6 +2,7 @@ namespace Entity
 {
     public class Proyecto
     {
+        public string IdProyecto { get; set; }
         public string Identificacion { get; set; }
         public string Estudiante1 { get; set; }
         public string Estudiante2 { get; set; }

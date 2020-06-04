@@ -32,10 +32,10 @@ namespace exposoftwaredotnet.Controllers
         }
 
         // GET: api/Proyecto/5
-        [HttpGet("{identificacion}")]
-        public ActionResult<ProyectoViewModel> Get(string identificacion)
+        [HttpGet("{idProyecto}")]
+        public ActionResult<ProyectoViewModel> Get(string idProyecto)
         {
-            var proyecto = _proyectoService.BuscarxIdentificacion(identificacion);
+            var proyecto = _proyectoService.BuscarxIdentificacion(idProyecto);
             if (proyecto == null) return NotFound();
             var proyectoViewModel = new ProyectoViewModel(proyecto);
             return proyectoViewModel;
@@ -58,10 +58,10 @@ namespace exposoftwaredotnet.Controllers
             return Ok(response.Proyecto);
         }
         // DELETE: api/Proyecto/5
-        [HttpDelete("{identificacion}")]
-        public ActionResult<string> Delete(string identificacion)
+        [HttpDelete("{idProyecto}")]
+        public ActionResult<string> Delete(string idProyecto)
         {
-            string mensaje = _proyectoService.Eliminar(identificacion);
+            string mensaje = _proyectoService.Eliminar(idProyecto);
             return Ok(mensaje);
         }
         private Proyecto MapearProyecto(ProyectoInputModel proyectoInput)
@@ -81,10 +81,15 @@ namespace exposoftwaredotnet.Controllers
             return proyecto;
         }
         // PUT: api/Proyecto/5
-        [HttpPut("{identificacion}")]
-        public ActionResult<string> Put(string identificacion, Proyecto proyecto)
+        [HttpPut("{idProyecto}")]
+        public ActionResult<string> Put(string idProyecto, Proyecto proyecto)
         {
-            throw new NotImplementedException();
+            var id=_proyectoService.BuscarxIdentificacion(proyecto.IdProyecto);
+            if(id==null){
+                return BadRequest("No encontrado");
+            }
+            var mensaje=_proyectoService.Modificar(proyecto);
+           return Ok(mensaje) ;
         }
         
     }

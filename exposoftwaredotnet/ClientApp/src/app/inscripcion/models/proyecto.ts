@@ -1,4 +1,5 @@
 export class Proyecto {
+idProyecto: string;
 identificacion: string;
 estudiante1: string;
 estudiante2: string;

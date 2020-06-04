@@ -22,7 +22,7 @@ namespace Datos
                                                     "Metodologia,Resultados, Estado)"+
                                         "values (@IdProyecto,@Identificacion,@Estudiante1,@Estudiante2,@Asignatura,@Titulo,@Semestre,@Resumen,"+
                                         "@Metodologia,@Resultados, @Estado)";
-                command.Parameters.AddWithValue("@IdProyecto", "002");                        
+                command.Parameters.AddWithValue("@IdProyecto", "003");                        
                 command.Parameters.AddWithValue("@Identificacion", proyecto.Identificacion);
                 command.Parameters.AddWithValue("@Estudiante1", proyecto.Estudiante1);
                 command.Parameters.AddWithValue("@Estudiante2", proyecto.Estudiante2);
@@ -41,8 +41,27 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Delete from Proyecto where Identificacion=@Identificacion";
+                command.CommandText = "Delete from Proyecto where IdProyecto=@IdProyecto";
+                command.Parameters.AddWithValue("@IdProyecto", proyecto.IdProyecto);
+                command.ExecuteNonQuery();
+            }
+        }
+         public void Modificar( Proyecto proyecto)
+        {
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "update Proyecto set idProyecto=@idProyecto, estado=@Estado where IdProyecto=@IdProyecto";
+                command.Parameters.AddWithValue("@IdProyecto", proyecto.IdProyecto);                        
                 command.Parameters.AddWithValue("@Identificacion", proyecto.Identificacion);
+                command.Parameters.AddWithValue("@Estudiante1", proyecto.Estudiante1);
+                command.Parameters.AddWithValue("@Estudiante2", proyecto.Estudiante2);
+                command.Parameters.AddWithValue("@Asignatura", proyecto.Asignatura);
+                command.Parameters.AddWithValue("@Titulo", proyecto.Titulo);
+                command.Parameters.AddWithValue("@Semestre", proyecto.Semestre);
+                command.Parameters.AddWithValue("@Resumen", proyecto.Resumen);
+                command.Parameters.AddWithValue("@Metodologia", proyecto.Metodologia);
+                command.Parameters.AddWithValue("@Resultados", proyecto.Resultados);
+                command.Parameters.AddWithValue("@Estado", proyecto.Estado);
                 command.ExecuteNonQuery();
             }
         }
@@ -70,8 +89,8 @@ namespace Datos
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select * from Proyecto where Identificacion=@Identificacion";
-                command.Parameters.AddWithValue("@Identificacion", identificacion);
+                command.CommandText = "select * from Proyecto where IdProyecto=@IdProyecto";
+                command.Parameters.AddWithValue("@IdProyecto", identificacion);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 return DataReaderMapToPerson(dataReader);
@@ -81,6 +100,7 @@ namespace Datos
         {
             if(!dataReader.HasRows) return null;
             Proyecto proyecto = new Proyecto();
+            proyecto.IdProyecto = (string)dataReader["IdProyecto"];
             proyecto.Identificacion = (string)dataReader["Identificacion"];
             proyecto.Estudiante1 = (string)dataReader["Estudiante1"];
             proyecto.Estudiante2 = (string)dataReader["Estudiante2"];
