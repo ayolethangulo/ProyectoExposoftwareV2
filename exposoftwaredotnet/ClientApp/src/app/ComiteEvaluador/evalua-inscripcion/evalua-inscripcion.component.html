@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h5>Evaluar proyecto</h5>
+                <h5>EVALUAR PROYECTO</h5>
                 <form>
                     <div class="form-row">
                         <div class="col">
@@ -58,16 +58,27 @@
                          <label >Resultados y solución </label>
                          <textarea class="form-control" [(ngModel)]="proyecto.resultados"  rows="3" name="resultados"></textarea>
                      </div>
-                     <div class="col-5">
-                        <label for="estado">Estado </label>
-                        <input type="text" name="estado" [(ngModel)]="proyecto.estado" class="form-control">
-                    </div>
+                     <div class="form-row">
+                        <div class="col-3">
+                            <label for="estado">Estado </label>
+                            <select class="form-control"[(ngModel)]="proyecto.estado" name="estado">
+                                <option>Aceptado</option>
+                                <option>Modificar</option>
+                                <option>Rechazado</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label >Observaciones</label>
+                            <textarea class="form-control"   rows="1" name="observaciones"></textarea>
+                        </div>
+                     </div>
+                     
                      <div class="text-center">
                         <a [routerLink]="['/inscripcionConsulta']">
-                            <button class="btn btn-primary mr-1" (click)="update()">Actualizar</button>
+                            <button id="botones" class="btn btn-primary mr-1" (click)="update()">Actualizar</button>
                         </a>
                         <a [routerLink]="['/inscripcionConsulta']">
-                            <button class="btn btn-secondary" type="reset">Cancel</button>
+                            <button id="botones" class="btn btn-secondary" type="reset">Cancel</button>
                         </a>
                     </div>
                 </form>

@@ -34,6 +34,9 @@ namespace exposoftwaredotnet.Models
 
         [Required(ErrorMessage = "El perfil es requerido")]
         public string Perfil { get; set; }  
+        
+        [Required(ErrorMessage = "El Area es requerido")]
+        public string NombreArea { get; set; }
 
         [Required(ErrorMessage = "El tipo del docente es requerido")]
         public string TipoDocente { get; set; }
@@ -54,6 +57,7 @@ namespace exposoftwaredotnet.Models
                 Celular = docente.Celular;
                 Correo = docente.Correo;
                 Perfil = docente.Perfil;
+                NombreArea = docente.NombreArea;
                 TipoDocente = docente.TipoDocente;
             }
         }

@@ -27,6 +27,9 @@ import { RubricaRegistroComponent } from './areaMateria/rubrica-registro/rubrica
 import { RubricaConsultaComponent } from './areaMateria/rubrica-consulta/rubrica-consulta.component';
 import { RubricaEdicionComponent } from './areaMateria/rubrica-edicion/rubrica-edicion.component';
 import { InscripcionConsultaComponent } from './ComiteEvaluador/inscripcion-consulta/inscripcion-consulta.component';
+import { PendonConsultaComponent } from './ComiteEvaluador/pendon-consulta/pendon-consulta.component';
+import { InicioEvaluadorComponent } from './docenteEvaluador/inicio-evaluador/inicio-evaluador.component';
+import { RegistrarCalificacionComponent } from './docenteEvaluador/registrar-calificacion/registrar-calificacion.component';
 
 
 const routes: Routes = [
@@ -75,11 +78,15 @@ const routes: Routes = [
     component: EvaluarPendonComponent
   },
   {
+    path: 'pendonConsulta',
+    component: PendonConsultaComponent
+  },
+  {
     path: 'inicio',
     component: InicioComponent
   },
   {
-    path: 'InicioDocenteLider',
+    path: 'inicioDocenteLider',
     component: InicioLiderComponent
   },
   {
@@ -137,6 +144,14 @@ const routes: Routes = [
   {
     path: 'rubricaEdicion/:idRubrica',
     component: RubricaEdicionComponent
+  },
+  {
+    path: 'inicioEvaluador',
+    component: InicioEvaluadorComponent
+  },
+  {
+    path: 'registrarCalificacion',
+    component: RegistrarCalificacionComponent
   }
 ];
 

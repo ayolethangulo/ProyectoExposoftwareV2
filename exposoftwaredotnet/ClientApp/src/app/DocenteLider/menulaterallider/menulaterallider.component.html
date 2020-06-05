@@ -1,0 +1,36 @@
+<div class="lateral">
+    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" type="success">
+      <ngb-panel>
+        <ng-template ngbPanelTitle>
+          <span>Proyecto</span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <ul>
+            <li><a [routerLink]="['/']">Consultar proyecto</a></li>
+          </ul>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel>
+        <ng-template ngbPanelTitle>
+          <span>Pendón</span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <ul>
+            <li><a [routerLink]="['/']">Información del pendón</a></li>
+            <li><a [routerLink]="['/']">Registrar pendón</a></li>
+            <li><a [routerLink]="['/']">Consultar pendón</a></li>
+          </ul>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel>
+        <ng-template ngbPanelTitle>
+          <span>Calificación</span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <ul>
+            <li><a [routerLink]="['/consultarDocente']">Consultar calificación</a></li>
+          </ul>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>

@@ -40,6 +40,7 @@ export class DocenteRegistroComponent implements OnInit {
     this.docente.celular = '';
     this.docente.correo = '';
     this.docente.perfil = '';
+    this.docente.nombreArea = '';
     this.docente.tipoDocente = this.tipo;
 
     this.formGroup = this.formBuilder.group({
@@ -51,6 +52,7 @@ export class DocenteRegistroComponent implements OnInit {
       celular: [this.docente.celular, Validators.maxLength(10)],
       correo: [this.docente.correo, Validators.required],
       perfil: [this.docente.perfil, Validators.required],
+      nombreArea: [this.docente.perfil, Validators.required],
       tipoDocente: this.docente.tipoDocente
     });
   }
@@ -137,6 +139,7 @@ export class DocenteRegistroComponent implements OnInit {
     this.formGroup.get('celular').setValue(d.celular);
     this.formGroup.get('correo').setValue(d.correo);
     this.formGroup.get('perfil').setValue(d.perfil);
+    this.formGroup.get('nombreArea').setValue(d.nombreArea);
     this.formGroup.get('tipoDocente').setValue(d.tipoDocente);
     if (d.tipoDocente == 'Comite Evaluador') {
       const messageBox = this.modalService.open(AlertModalComponent);

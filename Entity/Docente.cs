@@ -12,6 +12,7 @@ namespace Entity
         public string Celular { get; set; } 
         public string Correo { get; set; }
         public string Perfil { get; set; }
+        public string NombreArea { get; set; }
         public string TipoDocente { get; set; } 
     }
 }

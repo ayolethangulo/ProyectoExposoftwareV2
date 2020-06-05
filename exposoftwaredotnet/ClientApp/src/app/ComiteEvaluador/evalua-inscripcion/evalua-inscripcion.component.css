@@ -1,8 +1,11 @@
 
 label, h5,h6{
-    color: rgb(12, 12, 12);
+    color:#202124;
     font-family: Arial, Helvetica, sans-serif;
 }
 label{
-    font-size: 12px;
+    font-size: 14px;
 }
+ #botones{
+        margin: 15px;
+    }

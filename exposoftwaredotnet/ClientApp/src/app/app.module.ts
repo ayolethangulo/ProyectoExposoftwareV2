@@ -51,6 +51,10 @@ import { RubricaEdicionComponent } from './areaMateria/rubrica-edicion/rubrica-e
 import { RubricaService } from './services/rubrica.service';
 import { ItemsRubricaService } from './services/items-rubrica.service';
 import { InscripcionConsultaComponent } from './ComiteEvaluador/inscripcion-consulta/inscripcion-consulta.component';
+import { PendonConsultaComponent } from './ComiteEvaluador/pendon-consulta/pendon-consulta.component';
+import { InicioEvaluadorComponent } from './docenteEvaluador/inicio-evaluador/inicio-evaluador.component';
+import { RegistrarCalificacionComponent } from './docenteEvaluador/registrar-calificacion/registrar-calificacion.component';
+import { MenulateralliderComponent } from './DocenteLider/menulaterallider/menulaterallider.component';
 
 
 @NgModule({
@@ -92,6 +96,10 @@ import { InscripcionConsultaComponent } from './ComiteEvaluador/inscripcion-cons
     RubricaConsultaComponent,
     RubricaEdicionComponent,
     InscripcionConsultaComponent,
+    PendonConsultaComponent,
+    InicioEvaluadorComponent,
+    RegistrarCalificacionComponent,
+    MenulateralliderComponent,
   ],
   imports: [
     ReactiveFormsModule,

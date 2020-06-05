@@ -33,6 +33,7 @@ export class RegistrarDocentesComponent implements OnInit {
     this.docente.celular = '';
     this.docente.correo = '';
     this.docente.perfil = '';
+    this.docente.nombreArea = '';
     this.docente.tipoDocente = '';
 
     this.formGroup = this.formBuilder.group({
@@ -44,6 +45,7 @@ export class RegistrarDocentesComponent implements OnInit {
       celular: [this.docente.celular, Validators.maxLength(10)],
       correo: [this.docente.correo, Validators.required],
       perfil: [this.docente.perfil, Validators.required],
+      nombreArea: [this.docente.perfil, Validators.required],
       tipoDocente: [this.docente.tipoDocente, Validators.required]
     });
   }
@@ -118,6 +120,7 @@ export class RegistrarDocentesComponent implements OnInit {
     this.formGroup.get('celular').setValue(d.celular);
     this.formGroup.get('correo').setValue(d.correo);
     this.formGroup.get('perfil').setValue(d.perfil);
+    this.formGroup.get('nombreArea').setValue(d.perfil);
     this.formGroup.get('tipoDocente').setValue(d.tipoDocente);
   }
 }

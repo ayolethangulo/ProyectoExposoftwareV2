@@ -21,9 +21,9 @@ namespace Datos
             using (var command = _connection.CreateCommand())
             {
                 command.CommandText = @"Insert Into Docente (Identificacion,PrimerNombre,SegundoNombre,PrimerApellido,"+
-                                                    "SegundoApellido,Celular,Correo,Perfil,TipoDocente)"+
+                                                    "SegundoApellido,Celular,Correo,Perfil,NombreArea,TipoDocente)"+
                                         "values (@Identificacion,@PrimerNombre,@SegundoNombre,@PrimerApellido,@SegundoApellido,"+
-                                        "@Celular,@Correo,@Perfil,@TipoDocente)";
+                                        "@Celular,@Correo,@Perfil,@NombreArea,@TipoDocente)";
                 command.Parameters.AddWithValue("@Identificacion", docente.Identificacion);
                 command.Parameters.AddWithValue("@PrimerNombre", docente.PrimerNombre);
                 command.Parameters.AddWithValue("@SegundoNombre", docente.SegundoNombre);
@@ -32,6 +32,7 @@ namespace Datos
                 command.Parameters.AddWithValue("@Celular", docente.Celular);
                 command.Parameters.AddWithValue("@Correo", docente.Correo);
                 command.Parameters.AddWithValue("@Perfil", docente.Perfil);
+                command.Parameters.AddWithValue("@NombreArea", docente.NombreArea);
                 command.Parameters.AddWithValue("@TipoDocente", docente.TipoDocente);
                 var filas = command.ExecuteNonQuery();
             }
@@ -107,6 +108,7 @@ namespace Datos
             docente.Celular = (string)dataReader["Celular"];
             docente.Correo = (string)dataReader["Correo"];
             docente.Perfil = (string)dataReader["Perfil"];
+            docente.NombreArea = (string)dataReader["NombreArea"];
             docente.TipoDocente = (string)dataReader["TipoDocente"];
             return docente;
         }

@@ -7,6 +7,7 @@ export class Docente {
     celular: string;
     correo: string;
     perfil: string;
+    nombreArea: string;
     tipoDocente: string;
 }
 
