@@ -50,6 +50,7 @@ namespace Logica
                 if (item != null)
                 {
                     _context.ItemsRubricas.Remove(item);
+                    _context.SaveChanges();
                     return ($"El registro se ha eliminado satisfactoriamente.");
                 }
                 else

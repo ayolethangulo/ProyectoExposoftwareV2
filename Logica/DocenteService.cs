@@ -46,6 +46,7 @@ namespace Logica
                 if (docente != null)
                 {
                     _context.Docentes.Remove(docente);
+                    _context.SaveChanges();
                     return ($"El registro {docente.PrimerNombre} se ha eliminado satisfactoriamente.");
                 }
                 else

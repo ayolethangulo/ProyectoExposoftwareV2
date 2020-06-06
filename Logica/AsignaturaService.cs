@@ -46,6 +46,7 @@ namespace Logica
                 if (asignatura != null)
                 {
                     _context.Asignaturas.Remove(asignatura);
+                    _context.SaveChanges();
                     return ($"El registro se ha eliminado satisfactoriamente.");
                 }
                 else

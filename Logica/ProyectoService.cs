@@ -46,6 +46,7 @@ namespace Logica
                 if (proyecto != null)
                 {
                     _context.Proyectos.Remove(proyecto);
+                    _context.SaveChanges();
                     return ($"El registro se ha eliminado satisfactoriamente.");
                 }
                 else

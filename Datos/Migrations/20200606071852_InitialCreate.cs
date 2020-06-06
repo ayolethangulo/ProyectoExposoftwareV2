@@ -126,19 +126,7 @@ namespace Datos.Migrations
                     table.PrimaryKey("PK_Inscripciones", x => x.IdInscripcion);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "ItemsRubricas",
-                columns: table => new
-                {
-                    IdRubrica = table.Column<string>(type: "nvarchar(4)", nullable: false),
-                    Item = table.Column<string>(type: "nvarchar(2)", nullable: true),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ItemsRubricas", x => x.IdRubrica);
-                });
-
+        
             migrationBuilder.CreateTable(
                 name: "Pendons",
                 columns: table => new
@@ -231,9 +219,6 @@ namespace Datos.Migrations
 
             migrationBuilder.DropTable(
                 name: "Inscripciones");
-
-            migrationBuilder.DropTable(
-                name: "ItemsRubricas");
 
             migrationBuilder.DropTable(
                 name: "Pendons");

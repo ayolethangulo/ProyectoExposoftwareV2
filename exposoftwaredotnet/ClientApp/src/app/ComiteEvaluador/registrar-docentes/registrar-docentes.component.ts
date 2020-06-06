@@ -4,7 +4,8 @@ import { Docente } from 'src/app/inscripcion/models/docente';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
-
+import { Area } from '../../areaMateria/models/area';
+import { AreaService } from 'src/app/services/area.service';
 
 @Component({
   selector: 'app-registrar-docentes',
@@ -15,12 +16,13 @@ export class RegistrarDocentesComponent implements OnInit {
 
   formGroup: FormGroup;
   docente: Docente;
-  constructor(private docenteService: DocenteService,
-    private formBuilder: FormBuilder,
-    private modalService: NgbModal) { }
+  areas: Area[];
+  constructor(private docenteService: DocenteService, private formBuilder: FormBuilder,
+    private modalService: NgbModal, private areaService: AreaService) { }
 
   ngOnInit() {
     this.buildForm();
+    this.cargarArea();
   }
 
   private buildForm() {
@@ -70,6 +72,11 @@ export class RegistrarDocentesComponent implements OnInit {
       if (d != null) {
         this.docente = d;
       }
+    });
+  }
+  public cargarArea() {
+    this.areaService.get().subscribe(result => {
+      this.areas = result;
     });
   }
 

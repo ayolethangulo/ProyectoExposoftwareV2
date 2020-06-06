@@ -46,6 +46,7 @@ namespace Logica
                 if (area != null)
                 {
                     _context.Areas.Remove(area);
+                    _context.SaveChanges();
                     return ($"El registro se ha eliminado satisfactoriamente.");
                 }
                 else

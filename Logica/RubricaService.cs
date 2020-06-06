@@ -55,6 +55,7 @@ namespace Logica
                 if (rubrica != null)
                 {
                     _context.Rubricas.Remove(rubrica);
+                    _context.SaveChanges();
                     return ($"El registro se ha eliminado satisfactoriamente.");
                 }
                 else

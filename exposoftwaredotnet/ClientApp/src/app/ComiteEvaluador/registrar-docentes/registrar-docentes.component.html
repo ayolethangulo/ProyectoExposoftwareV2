@@ -104,8 +104,8 @@
                             <label for="nombreArea">Area<span class="obligatorio">*</span> </label>
                             <select class="form-control" formControlName="nombreArea" name="nombreArea"
                                 [ngClass]="{'is-invalid': control.nombreArea.errors && formGroup.get('nombreArea').touched}">
-                                <option>
-                                    area.nombre
+                                <option *ngFor="let area of areas" value={{area.nombre}}>
+                                    {{area.nombre}}
                                 </option>
                             </select>
                             <div *ngIf="control.nombreArea.errors && formGroup.get('nombreArea').touched" class="invalid-feedback">

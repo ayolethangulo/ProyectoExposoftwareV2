@@ -214,22 +214,6 @@ namespace Datos.Migrations
                     b.ToTable("Inscripciones");
                 });
 
-            modelBuilder.Entity("Entity.ItemsRubrica", b =>
-                {
-                    b.Property<string>("IdRubrica")
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Item")
-                        .HasColumnType("nvarchar(2)");
-
-                    b.HasKey("IdRubrica");
-
-                    b.ToTable("ItemsRubricas");
-                });
-
             modelBuilder.Entity("Entity.Pendon", b =>
                 {
                     b.Property<int>("IdPendon")

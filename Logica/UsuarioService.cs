@@ -48,6 +48,7 @@ namespace Logica
                 if (usuario != null)
                 {
                   _context.Usuarios.Remove(usuario);
+                  _context.SaveChanges();
                     return ($"El registro {usuario.User} se ha eliminado satisfactoriamente.");
                 }
                 else
