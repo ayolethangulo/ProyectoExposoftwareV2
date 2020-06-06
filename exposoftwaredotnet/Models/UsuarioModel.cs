@@ -9,7 +9,7 @@ namespace exposoftwaredotnet.Models
     public class UsuarioInputModel
     { 
         public string Identificacion { get; set; }
-        public string UsuarioNombre { get; set; } 
+        public string User { get; set; } 
         public string Contrasena { get; set; }
         public string TipoDocente { get; set; }        
     }
@@ -22,7 +22,7 @@ namespace exposoftwaredotnet.Models
             public UsuarioViewModel(Usuario usuario)
             {
                 Identificacion = usuario.Identificacion;
-                UsuarioNombre = usuario.UsuarioNombre;
+                User = usuario.User;
                 Contrasena = usuario.Contrasena;
                 TipoDocente = usuario.TipoDocente;
                 

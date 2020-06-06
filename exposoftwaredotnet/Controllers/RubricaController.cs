@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Entity;
 using Logica;
+using Datos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -16,12 +17,9 @@ namespace exposoftwaredotnet.Controllers
     public class RubricaController: ControllerBase
     {
         private readonly RubricaService _rubricaService;
-        public IConfiguration Configuration { get; }
-        public RubricaController(IConfiguration configuration)
+        public RubricaController(ExposoftwareContext context)
         {
-            Configuration = configuration;
-            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            _rubricaService = new RubricaService(connectionString);
+            _rubricaService = new RubricaService(context);
         }
         // GET: api/Rubrica
         [HttpGet]

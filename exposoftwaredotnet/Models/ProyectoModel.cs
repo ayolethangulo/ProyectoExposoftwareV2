@@ -9,12 +9,9 @@ namespace exposoftwaredotnet.Models
 {
     public class ProyectoInputModel
     {
+
         [Required(ErrorMessage = "Primero debe registrar al docente")]
         public string Identificacion { get; set; }
-
-        [Required(ErrorMessage = "Debe registrar minimo un autor")]
-        public string Estudiante1 { get; set; } 
-        public string Estudiante2 { get; set; }
 
         [Required(ErrorMessage = "La asignatura es requerida")]
         public string Asignatura { get; set; } 
@@ -37,7 +34,7 @@ namespace exposoftwaredotnet.Models
 
         [Required(ErrorMessage = "El resultado es requerido")]
          [StringLength(250, ErrorMessage = "Máximo 250 caracteres")]
-        public string Resultados { get; set; }         
+        public string Resultados { get; set; } 
         
     }
      public class ProyectoViewModel : ProyectoInputModel
@@ -50,8 +47,6 @@ namespace exposoftwaredotnet.Models
             {
                 IdProyecto = proyecto.IdProyecto;
                 Identificacion = proyecto.Identificacion;
-                Estudiante1 = proyecto.Estudiante1;
-                Estudiante2 = proyecto.Estudiante2;
                 Asignatura = proyecto.Asignatura;
                 Titulo = proyecto.Titulo;
                 Semestre = proyecto.Semestre;
@@ -59,8 +54,10 @@ namespace exposoftwaredotnet.Models
                 Metodologia = proyecto.Metodologia;
                 Resultados = proyecto.Resultados;
                 Estado = proyecto.Estado;
+                Observacion = proyecto.Observacion;
             }
-            public string IdProyecto { get; set; }
+            public int IdProyecto { get; set; }
             public string Estado { get; set; }
+            public string Observacion { get; set; }
         }
 }

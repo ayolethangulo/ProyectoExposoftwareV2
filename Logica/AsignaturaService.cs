@@ -2,57 +2,50 @@ using System;
 using Datos;
 using Entity;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Logica
 {
     public class AsignaturaService
     {
-      private readonly ConnectionManager _conexion;
-        private readonly AsignaturaRepository _repositorio;
+        private readonly ExposoftwareContext _context;
 
-        public AsignaturaService(string connectionString)
+        public AsignaturaService(ExposoftwareContext context)
         {
-            _conexion = new ConnectionManager(connectionString);
-            _repositorio = new AsignaturaRepository(_conexion);
+            _context = context;
         }
-        
+
         public GuardarAsignaturaResponse Guardar(Asignatura asignatura)
         {
             try
             {
-                 var asignaturaBuscada = this.BuscarxId(asignatura.IdAsignatura);
-                if (asignaturaBuscada!= null)
-                {
-                    return new GuardarAsignaturaResponse("Error la asignatura ya se encuentra registrada");
-                }
-                _conexion.Open();
-                _repositorio.Guardar(asignatura);
-                _conexion.Close();
+                var asignaturaBuscada = _context.Asignaturas.Find(asignatura.IdAsignatura);
+                if (asignaturaBuscada != null)
+                {
+                    return new GuardarAsignaturaResponse("Error la asignatura ya se encuentra registrada");
+                }
+                _context.Asignaturas.Add(asignatura);
+                _context.SaveChanges();
                 return new GuardarAsignaturaResponse(asignatura);
             }
             catch (Exception e)
             {
                 return new GuardarAsignaturaResponse($"Error de la Aplicacion: {e.Message}");
             }
-            finally { _conexion.Close(); }
         }
         public List<Asignatura> ConsultarTodos()
         {
-            _conexion.Open();
-            List<Asignatura> asignaturas = _repositorio.ConsultarTodos();
-            _conexion.Close();
+            List<Asignatura> asignaturas = _context.Asignaturas.ToList();
             return asignaturas;
         }
         public string Eliminar(string id)
         {
             try
             {
-                _conexion.Open();
-                var asignatura = _repositorio.BuscarPorId(id);
+                var asignatura = _context.Asignaturas.Find(id);
                 if (asignatura != null)
                 {
-                    _repositorio.Eliminar(asignatura);
-                    _conexion.Close();
+                    _context.Asignaturas.Remove(asignatura);
                     return ($"El registro se ha eliminado satisfactoriamente.");
                 }
                 else
@@ -65,20 +58,18 @@ namespace Logica
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
-
         }
 
-         public string Modificar(Asignatura asignaturaNueva)
+        public string Modificar(Asignatura asignaturaNueva)
         {
             try
             {
-                _conexion.Open();
-                var asignaturaVieja = _repositorio.BuscarPorId(asignaturaNueva.IdAsignatura);
+                var asignaturaVieja = _context.Asignaturas.Find(asignaturaNueva.IdAsignatura);
                 if (asignaturaVieja != null)
                 {
-                    _repositorio.Modificar(asignaturaNueva);
-                    _conexion.Close();
+                    asignaturaVieja.Nombre = asignaturaNueva.Nombre;
+                    _context.Asignaturas.Update(asignaturaVieja);
+                    _context.SaveChanges();
                     return ($"El registro {asignaturaNueva.Nombre} se ha modificado satisfactoriamente.");
                 }
                 else
@@ -91,20 +82,16 @@ namespace Logica
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
-
         }
 
         public Asignatura BuscarxId(string id)
         {
-            _conexion.Open();
-            Asignatura asignatura = _repositorio.BuscarPorId(id);
-            _conexion.Close();
+            Asignatura asignatura = _context.Asignaturas.Find(id);
             return asignatura;
         }
 
     }
-     public class GuardarAsignaturaResponse 
+    public class GuardarAsignaturaResponse
     {
         public GuardarAsignaturaResponse(Asignatura asignatura)
         {

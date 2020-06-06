@@ -2,26 +2,25 @@ using System;
 using Datos;
 using Entity;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Logica
 {
     public class RubricaService
     {
-        private readonly ConnectionManager _conexion;
-        private readonly RubricaRepository _repositorio;
+        private readonly ExposoftwareContext _context;
 
-        public RubricaService(string connectionString)
+        public RubricaService(ExposoftwareContext context)
         {
-            _conexion = new ConnectionManager(connectionString);
-            _repositorio = new RubricaRepository(_conexion);
+            _context = context;
         }
 
         public GuardarRubricaResponse Guardar(Rubrica rubrica)
         {
             try
             {
-                var rubricaBuscada = this.BuscarxId(rubrica.IdRubrica);
-                var areaBuscada = this.BuscarxArea(rubrica.IdArea);
+                var rubricaBuscada = _context.Rubricas.Find(rubrica.IdRubrica);
+                var areaBuscada = _context.Rubricas.Find(rubrica.IdArea);
                 if (rubricaBuscada != null)
                 {
                     return new GuardarRubricaResponse("Error el codigo de la rúbrica ya se encuentra registrada");
@@ -32,9 +31,8 @@ namespace Logica
                 }
                 else
                 {
-                    _conexion.Open();
-                    _repositorio.Guardar(rubrica);
-                    _conexion.Close();
+                    _context.Rubricas.Add(rubrica);
+                    _context.SaveChanges();
                     return new GuardarRubricaResponse(rubrica);
                 }
             }
@@ -42,26 +40,21 @@ namespace Logica
             {
                 return new GuardarRubricaResponse($"Error de la Aplicacion: {e.Message}");
             }
-            finally { _conexion.Close(); }
         }
 
         public List<Rubrica> ConsultarTodos()
         {
-            _conexion.Open();
-            List<Rubrica> rubricas = _repositorio.ConsultarTodos();
-            _conexion.Close();
+            List<Rubrica> rubricas = _context.Rubricas.ToList();
             return rubricas;
         }
         public string Eliminar(string id)
         {
             try
             {
-                _conexion.Open();
-                var rubrica = _repositorio.BuscarPorId(id);
+                var rubrica = _context.Rubricas.Find(id);
                 if (rubrica != null)
                 {
-                    _repositorio.Eliminar(rubrica);
-                    _conexion.Close();
+                    _context.Rubricas.Remove(rubrica);
                     return ($"El registro se ha eliminado satisfactoriamente.");
                 }
                 else
@@ -74,19 +67,17 @@ namespace Logica
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
-
         }
         public string Modificar(Rubrica rubricaNueva)
         {
             try
             {
-                _conexion.Open();
-                var rubricaVieja = _repositorio.BuscarPorId(rubricaNueva.IdRubrica);
+                var rubricaVieja = _context.Rubricas.Find(rubricaNueva.IdRubrica);
                 if (rubricaVieja != null)
                 {
-                    _repositorio.Modificar(rubricaNueva);
-                    _conexion.Close();
+                    rubricaVieja.IdArea = rubricaNueva.IdArea;
+                    _context.Rubricas.Update(rubricaVieja);
+                    _context.SaveChanges();
                     return ($"El registro {rubricaNueva.IdRubrica} se ha modificado satisfactoriamente.");
                 }
                 else
@@ -99,23 +90,17 @@ namespace Logica
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
-
         }
 
         public Rubrica BuscarxId(string id)
         {
-            _conexion.Open();
-            Rubrica rubrica = _repositorio.BuscarPorId(id);
-            _conexion.Close();
+            Rubrica rubrica = _context.Rubricas.Find(id);
             return rubrica;
         }
 
         public Rubrica BuscarxArea(string idArea)
         {
-            _conexion.Open();
-            Rubrica rubrica = _repositorio.BuscarPorArea(idArea);
-            _conexion.Close();
+            Rubrica rubrica = _context.Rubricas.Find(idArea);
             return rubrica;
         }
 

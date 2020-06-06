@@ -2,46 +2,41 @@ using System;
 using Datos;
 using Entity;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Logica
 {
     public class EstudianteService
     {
-         private readonly ConnectionManager _conexion;
-        private readonly EstudianteRepository _repositorio;
+        private readonly ExposoftwareContext _context;
 
-        public EstudianteService(string connectionString)
+        public EstudianteService(ExposoftwareContext context)
         {
-            _conexion = new ConnectionManager(connectionString);
-            _repositorio = new EstudianteRepository(_conexion);
+            _context = context;
         }
-        
+
         public GuardarEstudianteResponse Guardar(Estudiante estudiante)
         {
             try
             {
-                var estudianteBuscado = this.BuscarxIdentificacion(estudiante.Identificacion);
-                if (estudianteBuscado != null)
-                {
-                    return new GuardarEstudianteResponse("Error el estudiante ya se encuentra registrado");
-                }
-                _conexion.Open();
-                _repositorio.Guardar(estudiante);
-                _conexion.Close();
+                var estudianteBuscado = _context.Estudiantes.Find(estudiante.Identificacion);
+                if (estudianteBuscado != null)
+                {
+                    return new GuardarEstudianteResponse("Error el estudiante ya se encuentra registrado");
+                }
+                _context.Estudiantes.Add(estudiante);
+                _context.SaveChanges();
                 return new GuardarEstudianteResponse(estudiante);
             }
             catch (Exception e)
             {
                 return new GuardarEstudianteResponse($"Error de la Aplicacion: {e.Message}");
             }
-            finally { _conexion.Close(); }
         }
 
         public List<Estudiante> ConsultarTodos()
         {
-            _conexion.Open();
-            List<Estudiante> estudiantes = _repositorio.ConsultarTodos();
-            _conexion.Close();
+            List<Estudiante> estudiantes = _context.Estudiantes.ToList();
             return estudiantes;
         }
 
@@ -49,12 +44,10 @@ namespace Logica
         {
             try
             {
-                _conexion.Open();
-                var estudiante = _repositorio.BuscarPorIdentificacion(identificacion);
+                var estudiante = _context.Estudiantes.Find(identificacion);
                 if (estudiante != null)
                 {
-                    _repositorio.Eliminar(estudiante);
-                    _conexion.Close();
+                    _context.Estudiantes.Remove(estudiante);
                     return ($"El registro {estudiante.PrimerNombre} se ha eliminado satisfactoriamente.");
                 }
                 else
@@ -67,20 +60,16 @@ namespace Logica
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
-
         }
         public Estudiante BuscarxIdentificacion(string identificacion)
         {
-            _conexion.Open();
-            Estudiante estudiante = _repositorio.BuscarPorIdentificacion(identificacion);
-            _conexion.Close();
+            Estudiante estudiante = _context.Estudiantes.Find(identificacion);
             return estudiante;
         }
-        
+
     }
 
-     public class GuardarEstudianteResponse 
+    public class GuardarEstudianteResponse
     {
         public GuardarEstudianteResponse(Estudiante estudiante)
         {
@@ -97,6 +86,6 @@ namespace Logica
         public Estudiante Estudiante { get; set; }
 
     }
-        
-    
+
+
 }

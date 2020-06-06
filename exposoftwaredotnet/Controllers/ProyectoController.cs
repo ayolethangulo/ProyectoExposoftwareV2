@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Entity;
 using Logica;
+using Datos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -16,12 +17,9 @@ namespace exposoftwaredotnet.Controllers
     public class ProyectoController: ControllerBase
     {
         private readonly ProyectoService _proyectoService;
-        public IConfiguration Configuration { get; }
-        public ProyectoController(IConfiguration configuration)
+        public ProyectoController(ExposoftwareContext context)
         {
-            Configuration = configuration;
-            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            _proyectoService = new ProyectoService(connectionString);
+            _proyectoService = new ProyectoService(context);
         }
         // GET: api/Proyecto
         [HttpGet]
@@ -33,7 +31,7 @@ namespace exposoftwaredotnet.Controllers
 
         // GET: api/Proyecto/5
         [HttpGet("{idProyecto}")]
-        public ActionResult<ProyectoViewModel> Get(string idProyecto)
+        public ActionResult<ProyectoViewModel> Get(int idProyecto)
         {
             var proyecto = _proyectoService.BuscarxIdentificacion(idProyecto);
             if (proyecto == null) return NotFound();
@@ -59,7 +57,7 @@ namespace exposoftwaredotnet.Controllers
         }
         // DELETE: api/Proyecto/5
         [HttpDelete("{idProyecto}")]
-        public ActionResult<string> Delete(string idProyecto)
+        public ActionResult<string> Delete(int idProyecto)
         {
             string mensaje = _proyectoService.Eliminar(idProyecto);
             return Ok(mensaje);
@@ -69,8 +67,6 @@ namespace exposoftwaredotnet.Controllers
             var proyecto = new Proyecto
             {
                 Identificacion = proyectoInput.Identificacion,
-                Estudiante1 = proyectoInput.Estudiante1,
-                Estudiante2 = proyectoInput.Estudiante2,
                 Asignatura = proyectoInput.Asignatura,
                 Titulo = proyectoInput.Titulo,
                 Semestre = proyectoInput.Semestre,

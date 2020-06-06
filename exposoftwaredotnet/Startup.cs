@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Datos;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +24,10 @@ namespace exposoftwaredotnet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+             // Configurar cadena de Conexion con EF
+            var connectionString=Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<ExposoftwareContext>(e=>e.UseSqlServer(connectionString));
+
             services.AddControllersWithViews();
             //Agregar OpenApi Swagger
             services.AddSwaggerGen(c =>

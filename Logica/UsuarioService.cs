@@ -2,54 +2,53 @@ using System;
 using Datos;
 using Entity;
 using System.Collections.Generic;
+using System.Linq;
+
 
 
 namespace Logica
 {
     public class UsuarioService
     {
-        private readonly ConnectionManager _conexion;
-        private readonly UsuarioRepository _repositorio;
+     private readonly ExposoftwareContext _context;
 
-        public UsuarioService(string connectionString)
+        public UsuarioService(ExposoftwareContext context)
         {
-            _conexion = new ConnectionManager(connectionString);
-            _repositorio = new UsuarioRepository(_conexion);
+            _context = context;
         }
         
         public GuardarUsuarioResponse Guardar(Usuario usuario)
         {
             try
             {
-                _conexion.Open();
-                _repositorio.Guardar(usuario);
-                _conexion.Close();
+                var usuarioBuscada = _context.Usuarios.Find(usuario.User);
+                if (usuarioBuscada != null)
+                {
+                    return new GuardarUsuarioResponse("Error el usuario ya se encuentra registrada");
+                }
+                _context.Usuarios.Add(usuario);
+                _context.SaveChanges();
                 return new GuardarUsuarioResponse(usuario);
             }
             catch (Exception e)
             {
                 return new GuardarUsuarioResponse($"Error de la Aplicacion: {e.Message}");
             }
-            finally { _conexion.Close(); }
         }
         public List<Usuario> ConsultarTodos()
         {
-            _conexion.Open();
-            List<Usuario> usuarios = _repositorio.ConsultarTodos();
-            _conexion.Close();
+            List<Usuario> usuarios = _context.Usuarios.ToList();
             return usuarios;
         }
         public string Eliminar(string identificacion)
         {
             try
             {
-                _conexion.Open();
-                var usuario = _repositorio.BuscarPorIdentificacion(identificacion);
+                var usuario = _context.Usuarios.Find(identificacion);
                 if (usuario != null)
                 {
-                    _repositorio.Eliminar(usuario);
-                    _conexion.Close();
-                    return ($"El registro {usuario.UsuarioNombre} se ha eliminado satisfactoriamente.");
+                  _context.Usuarios.Remove(usuario);
+                    return ($"El registro {usuario.User} se ha eliminado satisfactoriamente.");
                 }
                 else
                 {
@@ -61,14 +60,10 @@ namespace Logica
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
-
         }
         public Usuario BuscarxIdentificacion(string identificacion)
         {
-            _conexion.Open();
-            Usuario usuario = _repositorio.BuscarPorIdentificacion(identificacion);
-            _conexion.Close();
+            Usuario usuario =_context.Usuarios.Find(identificacion);
             return usuario;
         }
 

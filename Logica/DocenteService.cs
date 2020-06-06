@@ -2,59 +2,50 @@
 using Datos;
 using Entity;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace Logica
 {
     public class DocenteService
     {
-        private readonly ConnectionManager _conexion;
-        private readonly DocenteRepository _repositorio;
-
-        public DocenteService(string connectionString)
+        private readonly ExposoftwareContext _context;
+        public DocenteService(ExposoftwareContext context)
         {
-            _conexion = new ConnectionManager(connectionString);
-            _repositorio = new DocenteRepository(_conexion);
+            _context = context;
         }
-        
+
         public GuardarDocenteResponse Guardar(Docente docente)
         {
             try
             {
-                var docenteBuscado = this.BuscarxIdentificacion(docente.Identificacion);
-                if (docenteBuscado != null)
-                {
-                    return new GuardarDocenteResponse("Error el docente ya se encuentra registrado");
-                }
-
-                _conexion.Open();
-                _repositorio.Guardar(docente);
-                _conexion.Close();
+                var docenteBuscado = _context.Docentes.Find(docente.Identificacion);
+                if (docenteBuscado != null)
+                {
+                    return new GuardarDocenteResponse("Error el docente ya se encuentra registrado");
+                }
+                _context.Docentes.Add(docente);
+                _context.SaveChanges();
                 return new GuardarDocenteResponse(docente);
             }
             catch (Exception e)
             {
                 return new GuardarDocenteResponse($"Error de la Aplicacion: {e.Message}");
             }
-            finally { _conexion.Close(); }
         }
         public List<Docente> ConsultarTodos()
         {
-            _conexion.Open();
-            List<Docente> docentes = _repositorio.ConsultarTodos();
-            _conexion.Close();
+            List<Docente> docentes = _context.Docentes.ToList();
             return docentes;
         }
         public string Eliminar(string identificacion)
         {
             try
             {
-                _conexion.Open();
-                var docente = _repositorio.BuscarPorIdentificacion(identificacion);
+                var docente = _context.Docentes.Find(identificacion);
                 if (docente != null)
                 {
-                    _repositorio.Eliminar(docente);
-                    _conexion.Close();
+                    _context.Docentes.Remove(docente);
                     return ($"El registro {docente.PrimerNombre} se ha eliminado satisfactoriamente.");
                 }
                 else
@@ -67,20 +58,26 @@ namespace Logica
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
-
         }
 
-         public string Modificar(Docente docenteNueva)
+        public string Modificar(Docente docenteNueva)
         {
             try
             {
-                _conexion.Open();
-                var docenteVieja = _repositorio.BuscarPorIdentificacion(docenteNueva.Identificacion);
+                var docenteVieja = _context.Docentes.Find(docenteNueva.Identificacion);
                 if (docenteVieja != null)
                 {
-                    _repositorio.Modificar(docenteNueva);
-                    _conexion.Close();
+                    docenteVieja.PrimerNombre = docenteNueva.PrimerNombre;
+                    docenteVieja.SegundoNombre = docenteNueva.SegundoNombre;
+                    docenteVieja.PrimerApellido = docenteNueva.PrimerApellido;
+                    docenteVieja.SegundoApellido = docenteNueva.SegundoApellido;
+                    docenteVieja.Celular = docenteNueva.Celular;
+                    docenteVieja.Correo = docenteNueva.Correo;
+                    docenteVieja.Perfil = docenteNueva.Perfil;
+                    docenteVieja.NombreArea = docenteNueva.NombreArea;
+                    docenteVieja.TipoDocente = docenteNueva.TipoDocente;
+                    _context.Docentes.Update(docenteVieja);
+                    _context.SaveChanges();
                     return ($"El registro {docenteNueva.PrimerNombre} se ha modificado satisfactoriamente.");
                 }
                 else
@@ -93,20 +90,16 @@ namespace Logica
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
-
         }
 
         public Docente BuscarxIdentificacion(string identificacion)
         {
-            _conexion.Open();
-            Docente docente = _repositorio.BuscarPorIdentificacion(identificacion);
-            _conexion.Close();
+            Docente docente = _context.Docentes.Find(identificacion);
             return docente;
         }
 
     }
-     public class GuardarDocenteResponse 
+    public class GuardarDocenteResponse
     {
         public GuardarDocenteResponse(Docente docente)
         {
@@ -123,5 +116,5 @@ namespace Logica
         public Docente Docente { get; set; }
 
     }
-    
+
 }

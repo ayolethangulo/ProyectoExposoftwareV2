@@ -2,56 +2,50 @@ using System;
 using Datos;
 using Entity;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace Logica
 {
     public class AreaService
     {
-        private readonly ConnectionManager _conexion;
-        private readonly AreaRepository _repositorio;
+        private readonly ExposoftwareContext _context;
 
-        public AreaService(string connectionString)
+        public AreaService(ExposoftwareContext context)
         {
-            _conexion = new ConnectionManager(connectionString);
-            _repositorio = new AreaRepository(_conexion);
+            _context = context;
         }
-        
+
         public GuardarAreaResponse Guardar(Area area)
         {
             try
             {
-                 var areaBuscada = this.BuscarxId(area.IdArea);
-                if (areaBuscada!= null)
-                {
-                    return new GuardarAreaResponse("Error el area ya se encuentra registrada");
-                }
-                _conexion.Open();
-                _repositorio.Guardar(area);
-                _conexion.Close();
+                var areaBuscada = _context.Areas.Find(area.IdArea);
+                if (areaBuscada != null)
+                {
+                    return new GuardarAreaResponse("Error el area ya se encuentra registrada");
+                }
+                _context.Areas.Add(area);
+                _context.SaveChanges();
                 return new GuardarAreaResponse(area);
             }
             catch (Exception e)
             {
                 return new GuardarAreaResponse($"Error de la Aplicacion: {e.Message}");
             }
-            finally { _conexion.Close(); }
         }
         public List<Area> ConsultarTodos()
         {
-            _conexion.Open();
-            List<Area> areas = _repositorio.ConsultarTodos();
-            _conexion.Close();
+            List<Area> areas = _context.Areas.ToList();
             return areas;
         }
         public string Eliminar(string id)
         {
             try
             {
-                _conexion.Open();
-                var area = _repositorio.BuscarPorId(id);
+                var area = _context.Areas.Find(id);
                 if (area != null)
                 {
-                    _repositorio.Eliminar(area);
-                    _conexion.Close();
+                    _context.Areas.Remove(area);
                     return ($"El registro se ha eliminado satisfactoriamente.");
                 }
                 else
@@ -64,19 +58,17 @@ namespace Logica
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
-
         }
-         public string Modificar(Area areaNueva)
+        public string Modificar(Area areaNueva)
         {
             try
             {
-                _conexion.Open();
-                var areaVieja = _repositorio.BuscarPorId(areaNueva.IdArea);
+                var areaVieja = _context.Areas.Find(areaNueva.IdArea);
                 if (areaVieja != null)
                 {
-                    _repositorio.Modificar(areaNueva);
-                    _conexion.Close();
+                    areaVieja.Nombre = areaNueva.Nombre;
+                    _context.Areas.Update(areaVieja);
+                    _context.SaveChanges();
                     return ($"El registro {areaNueva.Nombre} se ha modificado satisfactoriamente.");
                 }
                 else
@@ -89,19 +81,15 @@ namespace Logica
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
-
         }
         public Area BuscarxId(string id)
         {
-            _conexion.Open();
-            Area area = _repositorio.BuscarPorId(id);
-            _conexion.Close();
+            Area area = _context.Areas.Find(id);
             return area;
         }
 
     }
-     public class GuardarAreaResponse 
+    public class GuardarAreaResponse
     {
         public GuardarAreaResponse(Area area)
         {
@@ -118,6 +106,4 @@ namespace Logica
         public Area Area { get; set; }
 
     }
-        
-    
 }

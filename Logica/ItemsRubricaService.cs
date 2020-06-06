@@ -2,76 +2,89 @@ using System;
 using Datos;
 using Entity;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Logica
 {
     public class ItemsRubricaService
     {
-        private readonly ConnectionManager _conexion;
-        private readonly ItemsRubricaRepository _repositorio;
-
-        public ItemsRubricaService(string connectionString)
+        private readonly ExposoftwareContext _context;
+        public ItemsRubricaService(ExposoftwareContext context)
         {
-            _conexion = new ConnectionManager(connectionString);
-            _repositorio = new ItemsRubricaRepository(_conexion);
+            _context = context;
         }
 
         public GuardarItemsRubricaResponse Guardar(ItemsRubrica item)
         {
             try
             {
-                _conexion.Open();
-                _repositorio.Guardar(item);
-                _conexion.Close();
+                _context.ItemsRubricas.Add(item);
+                _context.SaveChanges();
                 return new GuardarItemsRubricaResponse(item);
             }
             catch (Exception e)
             {
                 return new GuardarItemsRubricaResponse($"Error de la Aplicacion: {e.Message}");
             }
-            finally { _conexion.Close(); }
         }
 
         public List<ItemsRubrica> ConsultarTodos(string id)
         {
-            _conexion.Open();
-            List<ItemsRubrica> items = _repositorio.ConsultarTodos(id);
-            _conexion.Close();
-            return items;
+            List<ItemsRubrica> lista = new List<ItemsRubrica>();
+            List<ItemsRubrica> items = _context.ItemsRubricas.ToList();
+            foreach (var item in items)
+            {
+                if (item.IdRubrica == id)
+                {
+                    lista.Add(item);
+                }
+            }
+            return lista;
         }
 
         public string Eliminar(string id)
         {
             try
             {
-                _conexion.Open();
-                _repositorio.Eliminar(id);
-                _conexion.Close();
-                return ($"El registro se ha eliminado satisfactoriamente.");
+                var item = _context.ItemsRubricas.Find(id);
+                if (item != null)
+                {
+                    _context.ItemsRubricas.Remove(item);
+                    return ($"El registro se ha eliminado satisfactoriamente.");
+                }
+                else
+                {
+                    return ($"Lo sentimos, no se encuentra registrada.");
+                }
             }
             catch (Exception e)
             {
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
-
         }
         public string Modificar(ItemsRubrica itemNueva)
         {
             try
             {
-                _conexion.Open();
-                _repositorio.Modificar(itemNueva);
-                _conexion.Close();
-                return ($"El registro {itemNueva.IdRubrica} se ha modificado satisfactoriamente.");
+                var itemVieja = _context.ItemsRubricas.Find(itemNueva.IdRubrica);
+                if (itemVieja != null)
+                {
+                    itemVieja.Descripcion = itemNueva.Descripcion;
+                    _context.ItemsRubricas.Update(itemVieja);
+                    _context.SaveChanges();
+                    return ($"El registro se ha modificado satisfactoriamente.");
+                }
+                else
+                {
+                    return ($"Lo sentimos, {itemNueva.IdRubrica} no se encuentra registrada.");
+                }
             }
             catch (Exception e)
             {
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
         }
 
     }

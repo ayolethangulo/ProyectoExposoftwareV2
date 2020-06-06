@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Entity;
 using Microsoft.AspNetCore.Http;
 using Logica;
+using Datos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using exposoftwaredotnet.Models;
@@ -16,12 +17,9 @@ namespace exposoftwaredotnet.Controllers
     public class UsuarioController: ControllerBase
     {
         private readonly UsuarioService _usuarioService;
-        public IConfiguration Configuration { get; }
-        public UsuarioController(IConfiguration configuration)
+        public UsuarioController(ExposoftwareContext context)
         {
-            Configuration = configuration;
-            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            _usuarioService = new UsuarioService(connectionString);
+            _usuarioService = new UsuarioService(context);
         }
         // GET: api/Usuario
         [HttpGet]
@@ -64,7 +62,7 @@ namespace exposoftwaredotnet.Controllers
             var usuario = new Usuario
             {
                 Identificacion = usuarioInput.Identificacion,
-                UsuarioNombre = usuarioInput.UsuarioNombre,
+                User = usuarioInput.User,
                 Contrasena = usuarioInput.Contrasena,
                 TipoDocente = usuarioInput.TipoDocente,
                

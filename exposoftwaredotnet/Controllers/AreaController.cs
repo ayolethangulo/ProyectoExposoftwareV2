@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Entity;
 using Logica;
+using Datos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -13,21 +14,18 @@ namespace exposoftwaredotnet.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AreaController: ControllerBase
+    public class AreaController : ControllerBase
     {
         private readonly AreaService _areaService;
-        public IConfiguration Configuration { get; }
-        public AreaController(IConfiguration configuration)
+        public AreaController(ExposoftwareContext context)
         {
-            Configuration = configuration;
-            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            _areaService = new AreaService(connectionString);
+            _areaService = new AreaService(context);
         }
         // GET: api/Area
         [HttpGet]
         public IEnumerable<AreaViewModel> Gets()
         {
-            var areas = _areaService.ConsultarTodos().Select(a=> new AreaViewModel(a));
+            var areas = _areaService.ConsultarTodos().Select(a => new AreaViewModel(a));
             return areas;
         }
 
@@ -46,9 +44,9 @@ namespace exposoftwaredotnet.Controllers
         {
             Area area = MapearArea(areaInput);
             var response = _areaService.Guardar(area);
-            if (response.Error) 
+            if (response.Error)
             {
-               ModelState.AddModelError("Guardar Area", response.Mensaje);
+                ModelState.AddModelError("Guardar Area", response.Mensaje);
                 var problemDetails = new ValidationProblemDetails(ModelState)
                 {
                     Status = StatusCodes.Status400BadRequest,
@@ -77,13 +75,14 @@ namespace exposoftwaredotnet.Controllers
         [HttpPut("{idArea}")]
         public ActionResult<string> Put(string idArea, Area area)
         {
-           var id=_areaService.BuscarxId(area.IdArea);
-            if(id==null){
+            var id = _areaService.BuscarxId(area.IdArea);
+            if (id == null)
+            {
                 return BadRequest("No encontrado");
             }
-            var mensaje=_areaService.Modificar(area);
-           return Ok(mensaje) ;
+            var mensaje = _areaService.Modificar(area);
+            return Ok(mensaje);
         }
-        
+
     }
 }

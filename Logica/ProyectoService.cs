@@ -2,19 +2,16 @@ using System;
 using Datos;
 using Entity;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Logica
 {
     public class ProyectoService
     {
-        private readonly ConnectionManager _conexion;
-        private readonly ProyectoRepository _repositorio;
-
-
-        public ProyectoService(string connectionString)
+        private readonly ExposoftwareContext _context;
+        public ProyectoService(ExposoftwareContext context)
         {
-            _conexion = new ConnectionManager(connectionString);
-            _repositorio = new ProyectoRepository(_conexion);
+            _context = context;
 
         }
 
@@ -22,39 +19,33 @@ namespace Logica
         {
             try
             {
-                if (proyecto.Identificacion == null)
-                {
-                    return new GuardarProyectoResponse("Error Debe registrar el docente");
-                }
-                _conexion.Open();
-                _repositorio.Guardar(proyecto);
-                _conexion.Close();
+                if (proyecto.Identificacion == null)
+                {
+                    return new GuardarProyectoResponse("Error Debe registrar el docente");
+                }
+                _context.Proyectos.Add(proyecto);
+                _context.SaveChanges();
                 return new GuardarProyectoResponse(proyecto);
             }
             catch (Exception e)
             {
                 return new GuardarProyectoResponse($"Error de la Aplicacion: {e.Message}");
             }
-            finally { _conexion.Close(); }
         }
 
         public List<Proyecto> ConsultarTodos()
         {
-            _conexion.Open();
-            List<Proyecto> proyectos = _repositorio.ConsultarTodos();
-            _conexion.Close();
+            List<Proyecto> proyectos = _context.Proyectos.ToList();
             return proyectos;
         }
-        public string Eliminar(string idProyecto)
+        public string Eliminar(int idProyecto)
         {
             try
             {
-                _conexion.Open();
-                var proyecto = _repositorio.BuscarPorIdentificacion(idProyecto);
+                var proyecto = _context.Proyectos.Find(idProyecto);
                 if (proyecto != null)
                 {
-                    _repositorio.Eliminar(proyecto);
-                    _conexion.Close();
+                    _context.Proyectos.Remove(proyecto);
                     return ($"El registro se ha eliminado satisfactoriamente.");
                 }
                 else
@@ -67,20 +58,25 @@ namespace Logica
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
-
         }
 
-           public string Modificar(Proyecto proyectoNueva)
+        public string Modificar(Proyecto proyectoNueva)
         {
             try
             {
-                _conexion.Open();
-                var proyectoVieja = _repositorio.BuscarPorIdentificacion(proyectoNueva.IdProyecto);
+                var proyectoVieja = _context.Proyectos.Find(proyectoNueva.IdProyecto);
                 if (proyectoVieja != null)
                 {
-                    _repositorio.Modificar(proyectoNueva);
-                    _conexion.Close();
+                    proyectoVieja.Titulo = proyectoNueva.Titulo;
+                    proyectoVieja.Asignatura = proyectoNueva.Asignatura;
+                    proyectoVieja.Semestre = proyectoNueva.Semestre;
+                    proyectoVieja.Resumen = proyectoNueva.Resumen;
+                    proyectoVieja.Resultados = proyectoNueva.Resultados;
+                    proyectoVieja.Metodologia = proyectoNueva.Metodologia;
+                    proyectoVieja.Estado = proyectoNueva.Estado;
+                    proyectoVieja.Observacion = proyectoNueva.Observacion;
+                    _context.Proyectos.Update(proyectoVieja);
+                    _context.SaveChanges();
                     return ($"El registro {proyectoNueva.Titulo} se ha modificado satisfactoriamente.");
                 }
                 else
@@ -93,14 +89,10 @@ namespace Logica
 
                 return $"Error de la Aplicación: {e.Message}";
             }
-            finally { _conexion.Close(); }
-
         }
-        public Proyecto BuscarxIdentificacion(string identificacion)
+        public Proyecto BuscarxIdentificacion(int identificacion)
         {
-            _conexion.Open();
-            Proyecto proyecto = _repositorio.BuscarPorIdentificacion(identificacion);
-            _conexion.Close();
+            Proyecto proyecto = _context.Proyectos.Find(identificacion);
             return proyecto;
         }
 
@@ -109,18 +101,18 @@ namespace Logica
     public class GuardarProyectoResponse
     {
         public GuardarProyectoResponse(Proyecto proyecto)
-         {
-        Error = false;
-        Proyecto = proyecto;
+        {
+            Error = false;
+            Proyecto = proyecto;
         }
         public GuardarProyectoResponse(string mensaje)
         {
-        Error = true;
-        Mensaje = mensaje;
+            Error = true;
+            Mensaje = mensaje;
         }
-    public bool Error { get; set; }
-    public string Mensaje { get; set; }
-    public Proyecto Proyecto { get; set; }
+        public bool Error { get; set; }
+        public string Mensaje { get; set; }
+        public Proyecto Proyecto { get; set; }
 
     }
 }
