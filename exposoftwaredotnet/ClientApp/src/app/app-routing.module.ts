@@ -74,7 +74,7 @@ const routes: Routes = [
     component: InscripcionConsultaComponent
   },
   {
-    path: 'evaluarPendon',
+    path: 'evaluarPendon/:idPendon',
     component: EvaluarPendonComponent
   },
   {
