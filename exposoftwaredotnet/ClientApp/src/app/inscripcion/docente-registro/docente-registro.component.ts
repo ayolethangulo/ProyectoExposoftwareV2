@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors }
 import { DatosLocalSService } from '../../services/datos-local-s.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
+import { Area } from 'src/app/areaMateria/models/area';
+import { AreaService } from 'src/app/services/area.service';
 
 
 @Component({
@@ -17,17 +19,18 @@ export class DocenteRegistroComponent implements OnInit {
 
   formGroup: FormGroup;
   docente: Docente;
+  areas: Area[];
   id: string;
   tipo: string = 'Lider de proyecto';
   bandera: number = 0;
   constructor(
-    private docenteService: DocenteService,
-    private formBuilder: FormBuilder,
-    private datosLocalS: DatosLocalSService,
-    private modalService: NgbModal) { }
+    private docenteService: DocenteService, private formBuilder: FormBuilder,
+    private datosLocalS: DatosLocalSService, private modalService: NgbModal,
+    private areaService: AreaService) { }
 
   ngOnInit(): void {
     this.buildForm();
+    this.cargarArea();
   }
 
   private buildForm() {
@@ -85,6 +88,11 @@ export class DocenteRegistroComponent implements OnInit {
       this.guardarLocal(this.docente.identificacion);
     }
 
+  }
+  public cargarArea() {
+    this.areaService.get().subscribe(result => {
+      this.areas = result;
+    });
   }
 
   public getError(controlName: string): string {

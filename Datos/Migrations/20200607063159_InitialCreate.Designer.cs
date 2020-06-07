@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datos.Migrations
 {
     [DbContext(typeof(ExposoftwareContext))]
-    [Migration("20200606071852_InitialCreate")]
+    [Migration("20200607063159_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.0-preview.4.20220.10")
+                .HasAnnotation("ProductVersion", "3.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -27,7 +27,7 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(4)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("IdArea");
 
@@ -40,10 +40,10 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(4)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("NombreArea")
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("IdAsignatura");
 
@@ -110,7 +110,7 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Perfil")
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("PrimerApellido")
                         .HasColumnType("nvarchar(20)");
@@ -125,7 +125,7 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("TipoDocente")
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("Identificacion");
 
@@ -171,47 +171,63 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Estudiante1")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estudiante10")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estudiante2")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estudiante3")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estudiante4")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estudiante5")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estudiante6")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estudiante7")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estudiante8")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estudiante9")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("IdProyecto")
                         .HasColumnType("int");
 
                     b.Property<string>("Identificacion")
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<DateTime>("fecha")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdInscripcion");
 
                     b.ToTable("Inscripciones");
+                });
+
+            modelBuilder.Entity("Entity.ItemsRubrica", b =>
+                {
+                    b.Property<string>("Item")
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdRubrica")
+                        .HasColumnType("nvarchar(4)");
+
+                    b.HasKey("Item");
+
+                    b.ToTable("ItemsRubricas");
                 });
 
             modelBuilder.Entity("Entity.Pendon", b =>
@@ -264,10 +280,16 @@ namespace Datos.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Asignatura")
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Estado")
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Estudiante1")
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Estudiante2")
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Identificacion")
                         .HasColumnType("nvarchar(10)");
@@ -301,7 +323,7 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(4)");
 
                     b.Property<string>("IdArea")
-                        .HasColumnType("nvarchar(4)");
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("IdRubrica");
 
@@ -314,13 +336,13 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Contrasena")
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Identificacion")
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("TipoDocente")
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("User");
 

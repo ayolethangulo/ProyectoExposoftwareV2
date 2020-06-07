@@ -198,14 +198,14 @@ namespace Datos.Migrations
                     b.Property<string>("Estudiante9")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("IdProyecto")
                         .HasColumnType("int");
 
                     b.Property<string>("Identificacion")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("fecha")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("IdInscripcion");
 
@@ -281,6 +281,12 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estado")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Estudiante1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Estudiante2")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Identificacion")

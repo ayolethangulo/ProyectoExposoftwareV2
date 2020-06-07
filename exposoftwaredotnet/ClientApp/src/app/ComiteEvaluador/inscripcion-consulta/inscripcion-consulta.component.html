@@ -3,7 +3,7 @@
   <app-menu-lateral></app-menu-lateral>
   <div class="container">
     <div class="col-6">
-      <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="Buscar por nombre de proyecto">
+      <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="Buscar">
     </div>
     <table class="table table-hover" *ngIf='proyectos && proyectos.length'>
       <thead>
@@ -11,8 +11,6 @@
               <th scope="col">#</th>
               <th scope="col">Codigo</th>
               <th scope="col">Docente</th>
-              <th scope="col">Autor 1</th>
-              <th scope="col">Autor 2</th>
               <th scope="col">Título</th>
               <th scope="col">Estado</th>
               <th scope="col">Acción</th>
@@ -23,8 +21,6 @@
               <th scope="row"> {{ i + 1 }} </th>
               <td>{{ proyecto.idProyecto }} </td>
               <td>{{ proyecto.identificacion }}</td>
-              <td>{{ proyecto.estudiante1 }}</td>
-              <td>{{ proyecto.estudiante2 }}</td>
               <td>{{ proyecto.titulo }}</td>
               <td>{{ proyecto.estado }}</td>
               <td> <a routerLink='/evaluaInscripcion/{{proyecto.idProyecto}}'>evaluar</a></td>

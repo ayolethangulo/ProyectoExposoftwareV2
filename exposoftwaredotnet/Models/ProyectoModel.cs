@@ -12,6 +12,8 @@ namespace exposoftwaredotnet.Models
 
         [Required(ErrorMessage = "Primero debe registrar al docente")]
         public string Identificacion { get; set; }
+        public string Estudiante1 { get; set; }
+        public string Estudiante2 { get; set; }
 
         [Required(ErrorMessage = "La asignatura es requerida")]
         public string Asignatura { get; set; } 
@@ -47,6 +49,8 @@ namespace exposoftwaredotnet.Models
             {
                 IdProyecto = proyecto.IdProyecto;
                 Identificacion = proyecto.Identificacion;
+                Estudiante1 = proyecto.Estudiante1;
+                Estudiante2 = proyecto.Estudiante2;
                 Asignatura = proyecto.Asignatura;
                 Titulo = proyecto.Titulo;
                 Semestre = proyecto.Semestre;

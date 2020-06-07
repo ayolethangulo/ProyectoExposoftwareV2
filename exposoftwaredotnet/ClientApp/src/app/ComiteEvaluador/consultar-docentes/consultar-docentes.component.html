@@ -14,6 +14,7 @@
                     <th scope="col">Celular</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Perfil</th>
+                    <th scope="col">Area</th>
                     <th scope="col">Tipo docente</th>
                     <th scope="col">Acción</th>
                 </tr>
@@ -26,6 +27,7 @@
                     <td>{{ docente.celular }}</td>
                     <td>{{ docente.correo }}</td>
                     <td>{{ docente.perfil }}</td>
+                    <td>{{ docente.nombreArea }}</td>
                     <td>{{ docente.tipoDocente }}</td>
                     <td> <a routerLink='/edicionDocentes/{{docente.identificacion}}'>
                     <img src="../../../assets/editarP.png" alt="Editar/Eliminar">

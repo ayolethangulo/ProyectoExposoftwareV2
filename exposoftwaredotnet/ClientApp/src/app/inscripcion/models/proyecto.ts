@@ -10,4 +10,5 @@ resumen: string;
 metodologia: string;
 resultados: string;
 estado: string;
+observacion: string;
 }

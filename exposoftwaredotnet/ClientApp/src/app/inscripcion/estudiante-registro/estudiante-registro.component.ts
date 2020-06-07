@@ -16,7 +16,7 @@ export class EstudianteRegistroComponent implements OnInit {
   estudiante: Estudiante;
   constructor(
     private estudianteService: EstudianteService, private formBuilder: FormBuilder,
-   private datosLocalS: DatosLocalSService) {}
+    private datosLocalS: DatosLocalSService) { }
 
   ngOnInit(): void {
     this.buildForm();

@@ -7,6 +7,8 @@ namespace Entity
         [Key]
         public int IdProyecto { get; set; }
         public string Identificacion { get; set; }
+        public string Estudiante1 { get; set; }
+        public string Estudiante2 { get; set; }
         public string Asignatura { get; set; } 
         public string Titulo { get; set; }
         public string Semestre { get; set; }

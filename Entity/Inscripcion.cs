@@ -19,6 +19,6 @@ namespace Entity
         public string Estudiante8 { get; set; }
         public string Estudiante9 { get; set; }
         public string Estudiante10 { get; set; }
-        public System.DateTime fecha { get; set; }
+        public System.DateTime Fecha { get; set; }
     }
 }

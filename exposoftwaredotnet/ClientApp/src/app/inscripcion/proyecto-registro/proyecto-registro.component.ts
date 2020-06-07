@@ -19,12 +19,9 @@ export class ProyectoRegistroComponent implements OnInit {
   asignaturas: Asignatura[];
   ids: string[];
   tamano: number;
-
   constructor(
-    private proyectoService: ProyectoService,
-    private formBuilder: FormBuilder,
-    private asignaturaService: AsignaturaService,
-    private datosLocalS: DatosLocalSService) { }
+    private proyectoService: ProyectoService, private formBuilder: FormBuilder,
+    private asignaturaService: AsignaturaService, private datosLocalS: DatosLocalSService) { }
 
   ngOnInit(): void {
     this.ObtenerDatos();
@@ -75,6 +72,7 @@ export class ProyectoRegistroComponent implements OnInit {
       }
     });
   }
+
 
   public getError(controlName: string): string {
     let error = '';

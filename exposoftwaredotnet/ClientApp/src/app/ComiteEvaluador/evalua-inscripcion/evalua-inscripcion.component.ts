@@ -4,6 +4,8 @@ import { ProyectoService } from 'src/app/services/proyecto.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
+import { EstudianteService } from 'src/app/services/estudiante.service';
+import { DocenteService } from 'src/app/services/docente.service';
 
 @Component({
   selector: 'app-evalua-inscripcion',
@@ -13,8 +15,13 @@ import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.compo
 export class EvaluaInscripcionComponent implements OnInit {
 
   proyecto: Proyecto;
+  estudiante: string;
+  estudiante2: string;
+  docente: string;
+  ide: string;
   constructor(private proyectoService: ProyectoService, private rutaActiva: ActivatedRoute,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal, private estudianteService: EstudianteService,
+    private docenteService: DocenteService) { }
 
   ngOnInit() {
     this.obtenerRuta();
@@ -24,6 +31,21 @@ export class EvaluaInscripcionComponent implements OnInit {
     this.proyectoService.getId(id).subscribe(p => {
       if (p != null) {
         this.proyecto = p;
+        this.estudianteService.getId(this.proyecto.estudiante1).subscribe(e => {
+          if (e != null) {
+            this.estudiante = e.primerNombre + ' ' + e.primerApellido;
+            this.estudianteService.getId(this.proyecto.estudiante2).subscribe(ee => {
+              if (ee != null) {
+                this.estudiante2 = ee.primerNombre + ' ' + ee.primerApellido;
+                this.docenteService.getId(this.proyecto.identificacion).subscribe(d => {
+                  if (d != null) {
+                    this.docente = d.primerNombre + ' ' + d.primerApellido;
+                  }
+                });
+              }
+            });
+          }
+        });
       }
     });
   }
@@ -35,5 +57,4 @@ export class EvaluaInscripcionComponent implements OnInit {
       messageBox.componentInstance.message = 'Actualizado correctamente!';
     });
   }
-
 }

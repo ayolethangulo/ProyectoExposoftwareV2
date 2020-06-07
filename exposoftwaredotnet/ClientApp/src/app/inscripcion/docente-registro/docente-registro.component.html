@@ -1,10 +1,10 @@
 <app-nav-menu></app-nav-menu>
 <div class="container">
-    <h5>JORNADA CIENTÍFICA DE INVESTIGACIÓN TECNOLÓGICA</h5>
+    <h6>JORNADA CIENTÍFICA DE INVESTIGACIÓN TECNOLÓGICA</h6>
     <h6>Inscripción de proyectos</h6>
     <div class="row">
         <div class="col-md-9 offset-md-1">
-            <h5>Datos del Docente <span class="obligatorio">* Obligatorio</span></h5>
+            <h6>Datos del Docente <span class="obligatorio">* Obligatorio</span></h6>
             <form [formGroup]="formGroup">
                 
                 <div class="form-group">
@@ -95,15 +95,15 @@
                     </div>
                     <div class="col">
                         <label for="nombreArea">Area<span class="obligatorio">*</span> </label>
-                        <select class="form-control" formControlName="nombreArea" name="nombreArea"
-                            [ngClass]="{'is-invalid': control.nombreArea.errors && formGroup.get('nombreArea').touched}">
-                            <option >
-                                area.nombre
-                            </option>
-                        </select>
-                        <div *ngIf="control.nombreArea.errors && formGroup.get('nombreArea').touched" class="invalid-feedback">
-                            <div *ngIf="control.nombreArea.errors.required">Campo requerido</div>
-                        </div>
+                            <select class="form-control" formControlName="nombreArea" name="nombreArea"
+                                [ngClass]="{'is-invalid': control.nombreArea.errors && formGroup.get('nombreArea').touched}">
+                                <option *ngFor="let area of areas" value={{area.nombre}}>
+                                    {{area.nombre}}
+                                </option>
+                            </select>
+                            <div *ngIf="control.nombreArea.errors && formGroup.get('nombreArea').touched" class="invalid-feedback">
+                                <div *ngIf="control.nombreArea.errors.required">Campo requerido</div>
+                            </div>
                     </div>
 
                 </div>

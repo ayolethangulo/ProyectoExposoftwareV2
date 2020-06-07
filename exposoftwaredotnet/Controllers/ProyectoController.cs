@@ -17,9 +17,11 @@ namespace exposoftwaredotnet.Controllers
     public class ProyectoController: ControllerBase
     {
         private readonly ProyectoService _proyectoService;
+        private readonly EmailService _emailService;
         public ProyectoController(ExposoftwareContext context)
         {
             _proyectoService = new ProyectoService(context);
+            _emailService = new EmailService(context);
         }
         // GET: api/Proyecto
         [HttpGet]
@@ -67,6 +69,8 @@ namespace exposoftwaredotnet.Controllers
             var proyecto = new Proyecto
             {
                 Identificacion = proyectoInput.Identificacion,
+                Estudiante1 = proyectoInput.Estudiante1,
+                Estudiante2 = proyectoInput.Estudiante2,
                 Asignatura = proyectoInput.Asignatura,
                 Titulo = proyectoInput.Titulo,
                 Semestre = proyectoInput.Semestre,
@@ -84,6 +88,7 @@ namespace exposoftwaredotnet.Controllers
             if(id==null){
                 return BadRequest("No encontrado");
             }
+            _emailService.EnviarCorreo(proyecto.Identificacion, proyecto.Estado,proyecto.Observacion);
             var mensaje=_proyectoService.Modificar(proyecto);
            return Ok(mensaje) ;
         }

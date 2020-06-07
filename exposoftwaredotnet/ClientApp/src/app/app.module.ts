@@ -55,6 +55,7 @@ import { PendonConsultaComponent } from './ComiteEvaluador/pendon-consulta/pendo
 import { InicioEvaluadorComponent } from './docenteEvaluador/inicio-evaluador/inicio-evaluador.component';
 import { RegistrarCalificacionComponent } from './docenteEvaluador/registrar-calificacion/registrar-calificacion.component';
 import { MenulateralliderComponent } from './DocenteLider/menulaterallider/menulaterallider.component';
+import { InscripcionService } from './services/inscripcion.service';
 
 
 @NgModule({
@@ -121,7 +122,8 @@ import { MenulateralliderComponent } from './DocenteLider/menulaterallider/menul
     DatosLocalSService,
     AreaService,
     RubricaService,
-    ItemsRubricaService
+    ItemsRubricaService,
+    InscripcionService
   ],
   bootstrap: [AppComponent]
 })
