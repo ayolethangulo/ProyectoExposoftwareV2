@@ -30,6 +30,7 @@ import { InscripcionConsultaComponent } from './ComiteEvaluador/inscripcion-cons
 import { PendonConsultaComponent } from './ComiteEvaluador/pendon-consulta/pendon-consulta.component';
 import { InicioEvaluadorComponent } from './docenteEvaluador/inicio-evaluador/inicio-evaluador.component';
 import { RegistrarCalificacionComponent } from './docenteEvaluador/registrar-calificacion/registrar-calificacion.component';
+import { ProyectoConsultaLComponent } from './DocenteLider/proyecto-consulta-l/proyecto-consulta-l.component';
 
 
 const routes: Routes = [
@@ -152,6 +153,10 @@ const routes: Routes = [
   {
     path: 'registrarCalificacion',
     component: RegistrarCalificacionComponent
+  },
+  {
+    path: 'proyectoConsultaL',
+    component: ProyectoConsultaLComponent
   }
 ];
 

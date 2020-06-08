@@ -18,7 +18,7 @@ namespace Logica
             _context = context;
         }
 
-         public MailMessage DatosCorreo(string correo, string estado, string observacion)
+         public MailMessage DatosCorreo(string correo, string estado, string observacion,int id)
         {
             string texto;
             MailMessage email = new MailMessage();
@@ -26,7 +26,7 @@ namespace Logica
             email.From = new MailAddress("exposoftwareupc@gmail.com");
             email.Subject = "Evaluación de la inscripción";
             if(estado.Equals("Aceptado")) {
-                texto = "lo invitamos a continuar en el proceso.";
+                texto = $"lo invitamos a continuar en el proceso <br> codigo del proyecto: {id} ";
             } else if(estado.Equals("Modificar")) {
                  texto = "Lo invitamos a que revise las observaciones y reestructurar la informacion del proyecto.";
             }else{
@@ -52,12 +52,12 @@ namespace Logica
         }
 
 
-        public string EnviarCorreo(string identificacion, string estado, string observacion)
+        public string EnviarCorreo(string identificacion, string estado, string observacion, int id)
         {
             try
             {
                 Docente docente = _context.Docentes.Find(identificacion);
-                MailMessage email = DatosCorreo(docente.Correo,estado,observacion);
+                MailMessage email = DatosCorreo(docente.Correo,estado,observacion,id);
                 SmtpClient smtp = ConfigurarCorreoGmail();
                 smtp.Send(email);
                 email.Dispose();

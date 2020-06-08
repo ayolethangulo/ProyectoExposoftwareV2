@@ -38,6 +38,19 @@ namespace Logica
             List<Proyecto> proyectos = _context.Proyectos.ToList();
             return proyectos;
         }
+         public List<Proyecto> ConsultarTodosXDocente(string identificacion)
+        {
+            List<Proyecto> lista = new List<Proyecto>();
+            List<Proyecto> items = _context.Proyectos.ToList();
+            foreach (var item in items)
+            {
+                if (item.Identificacion == identificacion)
+                {
+                    lista.Add(item);
+                }
+            }
+            return lista;
+        }
         public string Eliminar(int idProyecto)
         {
             try

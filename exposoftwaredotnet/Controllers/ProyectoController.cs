@@ -40,6 +40,7 @@ namespace exposoftwaredotnet.Controllers
             var proyectoViewModel = new ProyectoViewModel(proyecto);
             return proyectoViewModel;
         }
+        
         // POST: api/Proyecto
         [HttpPost]
         public ActionResult<ProyectoViewModel> Post(ProyectoInputModel proyectoInput)
@@ -88,7 +89,7 @@ namespace exposoftwaredotnet.Controllers
             if(id==null){
                 return BadRequest("No encontrado");
             }
-            _emailService.EnviarCorreo(proyecto.Identificacion, proyecto.Estado,proyecto.Observacion);
+            _emailService.EnviarCorreo(proyecto.Identificacion, proyecto.Estado,proyecto.Observacion, proyecto.IdProyecto);
             var mensaje=_proyectoService.Modificar(proyecto);
            return Ok(mensaje) ;
         }

@@ -21,6 +21,7 @@ namespace Datos
         public DbSet<Proyecto> Proyectos {get; set;}
         public DbSet<Rubrica> Rubricas {get; set;}
         public DbSet<Usuario> Usuarios {get; set;}
+        public DbSet<User> Users {get; set;}
 
     }
 }
