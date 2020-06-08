@@ -18,9 +18,11 @@ namespace exposoftwaredotnet.Controllers
     public class DocenteController: ControllerBase
     {
         private readonly DocenteService _docenteService;
+        private readonly EmailServiceDocente _emailService;
         public DocenteController(ExposoftwareContext context)
         {
             _docenteService = new DocenteService(context);
+            _emailService = new EmailServiceDocente(context);
         }
         // GET: api/Docente
         [HttpGet]
@@ -44,6 +46,9 @@ namespace exposoftwaredotnet.Controllers
         public ActionResult<DocenteViewModel> Post(DocenteInputModel docenteInput)
         {
             Docente docente = MapearDocente(docenteInput);
+            if(docente.TipoDocente.Equals("Docente evaluador")){
+                _emailService.EnviarCorreo(docente.Correo);
+            }
             var response = _docenteService.Guardar(docente);
             if (response.Error) 
             {
@@ -88,6 +93,9 @@ namespace exposoftwaredotnet.Controllers
             var id=_docenteService.BuscarxIdentificacion(docente.Identificacion);
             if(id==null){
                 return BadRequest("No encontrado");
+            }
+            if(id.TipoDocente.Equals("Docente evaluador")){
+                _emailService.EnviarCorreo(id.Correo);
             }
             var mensaje=_docenteService.Modificar(docente);
            return Ok(mensaje) ;
