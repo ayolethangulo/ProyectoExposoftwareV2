@@ -57,6 +57,7 @@ import { RegistrarCalificacionComponent } from './docenteEvaluador/registrar-cal
 import { MenulateralliderComponent } from './DocenteLider/menulaterallider/menulaterallider.component';
 import { PendonService } from './services/pendon.service';
 import { ProyectoConsultaLComponent } from './DocenteLider/proyecto-consulta-l/proyecto-consulta-l.component';
+import { InformacionPendonComponent } from './DocenteLider/informacion-pendon/informacion-pendon.component';
 
 
 @NgModule({
@@ -103,6 +104,7 @@ import { ProyectoConsultaLComponent } from './DocenteLider/proyecto-consulta-l/p
     RegistrarCalificacionComponent,
     MenulateralliderComponent,
     ProyectoConsultaLComponent,
+    InformacionPendonComponent,
   ],
   imports: [
     ReactiveFormsModule,

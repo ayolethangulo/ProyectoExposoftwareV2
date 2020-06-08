@@ -31,6 +31,7 @@ import { PendonConsultaComponent } from './ComiteEvaluador/pendon-consulta/pendo
 import { InicioEvaluadorComponent } from './docenteEvaluador/inicio-evaluador/inicio-evaluador.component';
 import { RegistrarCalificacionComponent } from './docenteEvaluador/registrar-calificacion/registrar-calificacion.component';
 import { ProyectoConsultaLComponent } from './DocenteLider/proyecto-consulta-l/proyecto-consulta-l.component';
+import { InformacionPendonComponent } from './DocenteLider/informacion-pendon/informacion-pendon.component';
 
 
 const routes: Routes = [
@@ -91,7 +92,7 @@ const routes: Routes = [
     component: InicioLiderComponent
   },
   {
-    path: 'RegistrarPendon',
+    path: 'registrarPendon',
     component: RegistrarPendonComponent
   },
   {
@@ -157,6 +158,10 @@ const routes: Routes = [
   {
     path: 'proyectoConsultaL',
     component: ProyectoConsultaLComponent
+  },
+  {
+    path: 'informacionPendon',
+    component: InformacionPendonComponent
   }
 ];
 
