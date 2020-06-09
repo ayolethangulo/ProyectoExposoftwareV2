@@ -58,6 +58,7 @@ import { MenulateralliderComponent } from './DocenteLider/menulaterallider/menul
 import { PendonService } from './services/pendon.service';
 import { ProyectoConsultaLComponent } from './DocenteLider/proyecto-consulta-l/proyecto-consulta-l.component';
 import { InformacionPendonComponent } from './DocenteLider/informacion-pendon/informacion-pendon.component';
+import { PendonConsultaLiderComponent } from './DocenteLider/pendon-consulta-lider/pendon-consulta-lider.component';
 
 
 @NgModule({
@@ -105,6 +106,7 @@ import { InformacionPendonComponent } from './DocenteLider/informacion-pendon/in
     MenulateralliderComponent,
     ProyectoConsultaLComponent,
     InformacionPendonComponent,
+    PendonConsultaLiderComponent,
   ],
   imports: [
     ReactiveFormsModule,

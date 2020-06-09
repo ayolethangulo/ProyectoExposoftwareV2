@@ -1,52 +1,14 @@
-.btn-group-vertical{
-    padding-top:1px;
-    padding-right: 10px;
+label, h5,h6, pre{
+    color:#202124;
+    font-family: Arial, Helvetica, sans-serif;
 }
-
-.btn-success {
-    padding-top:23px;
-    padding-bottom:23px;
-    font-weight:500;
-   
+label{
+    font-size: 14px;
 }
-.sub-row{
-   padding-right:500px;
+.obligatorio{
+    font-size: 15px;
+    color: red;
 }
-h3{
-    padding-left:41%; 
-}
-h6{
-    padding-top:23px;
-}
-.tamanio{
-    width: 70%;   
-    
-}
-.posicion{
-    padding-left:21%;
-}
-.posicion2{
-    padding-left:2%;
-}
-.botonEvaluar{
-    padding-top: 1%;
-}
-.caracteristicaBoton{
-    width: 10%;   
-    padding-top:1%;
-    padding-bottom: 1%;
-}
-.posicion3{
-    padding-left:22.7%;
-}
-#colFormLabel{
-    width: 126%;  
-}
-.botonRegistrar{
-    padding-top:2%;
-    padding-left:20%;
-    
-}
-.botonRegistrarTamanio{
-text-align: center;
+#botones{
+    margin: 5px;
 }

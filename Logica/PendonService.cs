@@ -19,6 +19,11 @@ namespace Logica
         {
             try
             {
+                 var proyectoBuscado = this.BuscarxIdProyecto(pendon.IdProyecto);
+                if (proyectoBuscado != 0)
+                {
+                    return new GuardarPendonResponse("Error el proyecto ya tiene un pendón registrado");
+                }
                 _context.Pendons.Add(pendon);
                 _context.SaveChanges();
                 return new GuardarPendonResponse(pendon);
@@ -92,6 +97,18 @@ namespace Logica
         {
             Pendon pendon = _context.Pendons.Find(idPendon);
             return pendon;
+        }
+        public int BuscarxIdProyecto(int id)
+        {
+            List<Pendon> pendons = _context.Pendons.ToList();
+            foreach (var item in pendons)
+            {
+                if (item.IdProyecto == id)
+                {
+                    return item.IdProyecto;
+                }
+            }
+            return 0;     
         }
 
     }
