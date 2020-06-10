@@ -155,7 +155,7 @@ const routes: Routes = [
     component: InicioEvaluadorComponent
   },
   {
-    path: 'registrarCalificacion',
+    path: 'registrarCalificacion/:idProyecto/:idRubrica',
     component: RegistrarCalificacionComponent
   },
   {

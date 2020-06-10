@@ -18,6 +18,11 @@ namespace Logica
         {
             try
             {
+                 var proyectoBuscado = this.BuscarxIdProyecto(calificacion.IdProyecto);
+                if (proyectoBuscado != 0)
+                {
+                    return new GuardarCalificacionResponse("Error, el proyecto ya tiene un docente evaluador asignado");
+                }
                 _context.Calificaciones.Add(calificacion);
                 _context.SaveChanges();
                 return new GuardarCalificacionResponse(calificacion);
@@ -26,6 +31,18 @@ namespace Logica
             {
                 return new GuardarCalificacionResponse($"Error de la Aplicacion: {e.Message}");
             }
+        }
+        public int BuscarxIdProyecto(int id)
+        {
+            List<Calificacion> calificacions = _context.Calificaciones.ToList();
+            foreach (var item in calificacions)
+            {
+                if (item.IdProyecto == id)
+                {
+                    return item.IdProyecto;
+                }
+            }
+            return 0;     
         }
          public string BuscarArea(string nombreAsignatura){
             List<Area> area = _context.Areas.ToList();
@@ -49,9 +66,17 @@ namespace Logica
             }
             return null;
         }
-        public List<Calificacion> ConsultarTodos()
+        public List<Calificacion> ConsultarTodos(string idEvaluador)
         {
-            List<Calificacion> calificaciones = _context.Calificaciones.ToList();
+            List<Calificacion> calificaciones = new List<Calificacion>();
+            List<Calificacion> items = _context.Calificaciones.ToList();
+            foreach (var item in items)
+            {
+                if (item.Evaluador == idEvaluador)
+                {
+                    calificaciones.Add(item);
+                }
+            }
             return calificaciones;
         }
         public string Eliminar(int id)

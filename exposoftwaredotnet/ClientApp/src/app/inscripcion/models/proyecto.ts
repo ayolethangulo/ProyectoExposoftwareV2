@@ -1,5 +1,5 @@
 export class Proyecto {
-idProyecto: string;
+idProyecto: number;
 identificacion: string;
 estudiante1: string;
 estudiante2: string;

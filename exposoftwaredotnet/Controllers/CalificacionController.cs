@@ -23,14 +23,14 @@ namespace exposoftwaredotnet.Controllers
             _calificacionService = new CalificacionesService(context);
         }
         // GET: api/Calificacion
-        [HttpGet]
-        public IEnumerable<CalificacionViewModel> Gets()
+        [HttpGet("{idEvaluador}")]
+        public IEnumerable<CalificacionViewModel> Gets(string idEvaluador)
         {
-            var calificaciones = _calificacionService.ConsultarTodos().Select(c => new CalificacionViewModel(c));
+            var calificaciones = _calificacionService.ConsultarTodos(idEvaluador).Select(c => new CalificacionViewModel(c));
             return calificaciones;
         }
 
-        // GET: api/Calificacion/5
+        /* // GET: api/Calificacion/5
         [HttpGet("{idCalificacion}")]
         public ActionResult<CalificacionViewModel> Get(int idCalificacion)
         {
@@ -38,7 +38,8 @@ namespace exposoftwaredotnet.Controllers
             if (calificacion == null) return NotFound();
             var calificacionViewModel = new CalificacionViewModel(calificacion);
             return calificacionViewModel;
-        }
+        } */
+        
         // POST: api/Calificacion
         [HttpPost]
         public ActionResult<CalificacionViewModel> Post(CalificacionInputModel calificacionInput)

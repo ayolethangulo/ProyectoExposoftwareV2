@@ -95,7 +95,7 @@ export class AsignarProyectosDocenteComponent implements OnInit {
   }
 
   add() {
-    this.calificacion.idProyecto = parseInt(this.proyecto.idProyecto, 10);
+    this.calificacion.idProyecto = this.proyecto.idProyecto;
     this.calificacion.identificacion = this.proyecto.identificacion;
     this.calificacion.idRubrica = this.rubrica.idRubrica;
     this.calificacion.evaluador = this.evaluador;

@@ -21,8 +21,9 @@ export class CalificacionService {
     private handleErrorService: HandleHttpErrorService) {
       this.baseUrl = baseUrl;
      }
-     get(): Observable<Calificacion[]> {
-      return this.http.get<Calificacion[]>(this.baseUrl + 'api/Calificacion')
+     get(idEvaluador: string): Observable<Calificacion[]> {
+      const url = `${this.baseUrl + 'api/Calificacion'}/${idEvaluador}`;
+      return this.http.get<Calificacion[]>(url, httpOptions)
         .pipe(
           catchError(this.handleErrorService.handleError<Calificacion[]>('Consulta calificaciones', null))
         );
@@ -45,13 +46,13 @@ export class CalificacionService {
       );
     }
 
-    getId(idCalificacion: string): Observable<Calificacion> {
+    /* getId(idCalificacion: string): Observable<Calificacion> {
       const url = `${this.baseUrl + 'api/Calificacion'}/${idCalificacion}`;
         return this.http.get<Calificacion>(url, httpOptions)
         .pipe(
           catchError(this.handleErrorService.handleError<Calificacion>('Buscar calificacion', null))
         );
-    }
+    } */
 
     delete(calificacion: Calificacion| string): Observable<string> {
       const id = typeof calificacion === 'string' ? calificacion : calificacion.idCalificacion;
