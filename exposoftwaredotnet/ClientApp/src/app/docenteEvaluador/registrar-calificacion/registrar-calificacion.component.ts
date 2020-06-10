@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemsRubricaService } from 'src/app/services/items-rubrica.service';
 import { ItemsRubrica } from 'src/app/areaMateria/models/items-rubrica';
-import { DescripcionC } from 'src/app/areaMateria/models/descripcion-c';
 import { DescripcionCService } from 'src/app/services/descripcion-c.service';
+import { DescripcionCalificacion } from 'src/app/areaMateria/models/descripcion-calificacion';
 
 @Component({
   selector: 'app-registrar-calificacion',
@@ -12,38 +12,47 @@ import { DescripcionCService } from 'src/app/services/descripcion-c.service';
 })
 export class RegistrarCalificacionComponent implements OnInit {
 
-  itemsRubricas: ItemsRubrica[];
-  valor: string;
-  descripcionC: DescripcionC;
-  descripciones: DescripcionC[];
+  itemsRubrica: ItemsRubrica[];
+  descripcion: DescripcionCalificacion;
+  valor1: number;
+  valor2: number;
+  valor3: number;
+  idProyecto: number;
+  total: number;
   constructor(private rutaActiva: ActivatedRoute, private itemsRubricaService: ItemsRubricaService,
     private descripcionCService: DescripcionCService) { }
 
   ngOnInit(): void {
     this.obtenerRuta();
-    this.valor = '';
+    this.descripcion = new DescripcionCalificacion();
+    this.valor1 = 0;
+    this.valor2 = 0;
+    this.valor3 = 0;
+    this.total = 0;
   }
   obtenerRuta() {
     const idP = this.rutaActiva.snapshot.params.idProyecto;
     const idR = this.rutaActiva.snapshot.params.idRubrica;
-    this.itemsRubricaService.get(idR).subscribe(result => {
-      this.itemsRubricas = result;
-      for (let index = 0; index < this.itemsRubricas.length; index++) {
-        this.descripcionC = new DescripcionC();
-        this.descripcionC.idProyecto = idP;
-        this.descripcionC.descripcion = this.itemsRubricas[index].descripcion;
-        this.descripcionCService.post(this.descripcionC).subscribe(ir => {
-          if (ir != null) {
-          this.descripcionC = ir;
-          }
-        });
-      }
-      this.cargarDescripcion(idP);
+    this.cargarItem(idR);
+    this.idProyecto = idP;
+    alert(this.idProyecto);
+  }
+
+  cargarItem(rubrica: string) {
+    this.itemsRubricaService.get(rubrica).subscribe(result => {
+      this.itemsRubrica = result;
     });
   }
-  cargarDescripcion(proyecto: number) {
-    this.descripcionCService.get(proyecto).subscribe(result => {
-      this.descripciones = result;
+  add() {
+    const idP = this.rutaActiva.snapshot.params.idProyecto;
+    const idR = this.rutaActiva.snapshot.params.idRubrica;
+    this.total = this.valor1 + this.valor2 + this.valor3;
+    this.descripcion.valor = this.total;
+    this.descripcion.idProyecto = parseInt(idP, 10);
+    this.descripcionCService.post(this.descripcion).subscribe(d => {
+      if (d != null) {
+        this.descripcion = d;
+      }
     });
   }
 }

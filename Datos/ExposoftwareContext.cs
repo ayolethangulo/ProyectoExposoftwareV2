@@ -12,7 +12,7 @@ namespace Datos
         public DbSet<Area> Areas {get; set;}
         public DbSet<Asignatura> Asignaturas {get; set;}
         public DbSet<Calificacion> Calificaciones {get; set;}
-        public DbSet<DescripcionCalificacion> DescripcionesC {get; set;}
+        public DbSet<DescripcionCalificacion> DescripcionCalificaciones {get; set;}
         public DbSet<Docente> Docentes {get; set;}
         public DbSet<Estudiante> Estudiantes {get; set;}
         public DbSet<Inscripcion> Inscripciones {get; set;}

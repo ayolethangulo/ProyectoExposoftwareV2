@@ -18,7 +18,7 @@ namespace Logica
         {
             try
             {
-                _context.DescripcionesC.Add(descripcion);
+                _context.DescripcionCalificaciones.Add(descripcion);
                 _context.SaveChanges();
                 return new GuardarDescripcionesCResponse(descripcion);
             }
@@ -31,7 +31,7 @@ namespace Logica
         public List<DescripcionCalificacion> ConsultarTodos(int idProyecto)
         {
             List<DescripcionCalificacion> calificaciones = new List<DescripcionCalificacion>();
-            List<DescripcionCalificacion> items = _context.DescripcionesC.ToList();
+            List<DescripcionCalificacion> items = _context.DescripcionCalificaciones.ToList();
             foreach (var item in items)
             {
                 if (item.IdProyecto == idProyecto)
@@ -45,10 +45,10 @@ namespace Logica
         {
             try
             {
-                var descripcion = _context.DescripcionesC.Find(id);
+                var descripcion = _context.DescripcionCalificaciones.Find(id);
                 if (descripcion != null)
                 {
-                    _context.DescripcionesC.Remove(descripcion);
+                    _context.DescripcionCalificaciones.Remove(descripcion);
                     _context.SaveChanges();
                     return ($"El registro se ha eliminado satisfactoriamente.");
                 }
@@ -68,12 +68,11 @@ namespace Logica
         {
             try
             {
-                var descripcionVieja = _context.DescripcionesC.Find(descripcionNueva.IdDescripcion);
+                var descripcionVieja = _context.DescripcionCalificaciones.Find(descripcionNueva.IdDescripcion);
                 if (descripcionVieja != null)
                 {
-                    descripcionVieja.Descripcion = descripcionNueva.Descripcion;
                     descripcionVieja.Valor = descripcionNueva.Valor;
-                    _context.DescripcionesC.Update(descripcionVieja);
+                    _context.DescripcionCalificaciones.Update(descripcionVieja);
                     _context.SaveChanges();
                     return ($"El registro se ha modificado satisfactoriamente.");
                 }
@@ -91,7 +90,7 @@ namespace Logica
 
         public DescripcionCalificacion BuscarxId(int id)
         {
-            DescripcionCalificacion descripcion = _context.DescripcionesC.Find(id);
+            DescripcionCalificacion descripcion = _context.DescripcionCalificaciones.Find(id);
             return descripcion;
         }
     }

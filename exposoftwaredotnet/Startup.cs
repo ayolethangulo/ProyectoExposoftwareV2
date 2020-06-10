@@ -42,7 +42,7 @@ namespace exposoftwaredotnet
                     {
                         Name = "Ana Angulo",
                         Email = string.Empty,
-                        Url = new Uri("https://github.com/ayolethangulo/Exposoftware"),
+                        Url = new Uri("https://github.com/ayolethangulo/ProyectoExposoftwareV2"),
                     },
                     License = new OpenApiLicense
                     {

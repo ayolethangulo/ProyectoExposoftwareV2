@@ -55,6 +55,9 @@ namespace Datos.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Evaluador")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
@@ -79,10 +82,7 @@ namespace Datos.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IdCalificacion")
+                    b.Property<int>("IdProyecto")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Valor")
@@ -90,7 +90,7 @@ namespace Datos.Migrations
 
                     b.HasKey("IdDescripcion");
 
-                    b.ToTable("DescripcionesC");
+                    b.ToTable("DescripcionCalificaciones");
                 });
 
             modelBuilder.Entity("Entity.Docente", b =>
@@ -326,6 +326,28 @@ namespace Datos.Migrations
                     b.HasKey("IdRubrica");
 
                     b.ToTable("Rubricas");
+                });
+
+            modelBuilder.Entity("Entity.User", b =>
+                {
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rol")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserName");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Entity.Usuario", b =>

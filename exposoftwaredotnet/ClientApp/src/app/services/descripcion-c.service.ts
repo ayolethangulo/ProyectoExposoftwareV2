@@ -1,9 +1,9 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { HandleHttpErrorService } from '../@base/handle-http-error.service';
-import { DescripcionC } from '../areaMateria/models/descripcion-c';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { DescripcionCalificacion } from '../areaMateria/models/descripcion-calificacion';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,32 +21,33 @@ export class DescripcionCService {
     private handleErrorService: HandleHttpErrorService) {
     this.baseUrl = baseUrl;
   }
-  get(idProyecto: number): Observable<DescripcionC[]> {
-    const url = `${this.baseUrl + 'api/DescripcionC'}/${idProyecto}`;
-    return this.http.get<DescripcionC[]>(url, httpOptions)
+  get(idProyecto: number): Observable<DescripcionCalificacion[]> {
+    const url = `${this.baseUrl + 'api/DescripcionCalificacion'}/${idProyecto}`;
+    return this.http.get<DescripcionCalificacion[]>(url, httpOptions)
       .pipe(
-        catchError(this.handleErrorService.handleError<DescripcionC[]>('Consulta resultados', null))
+        catchError(this.handleErrorService.handleError<DescripcionCalificacion[]>('Consulta resultados', null))
       );
   }
 
-  post(descripcion: DescripcionC): Observable<DescripcionC> {
-    return this.http.post<DescripcionC>(this.baseUrl + 'api/DescripcionC', descripcion)
+  post(descripcion: DescripcionCalificacion): Observable<DescripcionCalificacion> {
+    return this.http.post<DescripcionCalificacion>(this.baseUrl + 'api/DescripcionCalificacion', descripcion)
       .pipe(
-        catchError(this.handleErrorService.handleError<DescripcionC>('Registrar resultados', null))
+        tap(_ => this.handleErrorService.log('valor registrada')),
+        catchError(this.handleErrorService.handleError<DescripcionCalificacion>('Registrar resultados', null))
       );
   }
 
-  put(descripcion: DescripcionC): Observable<any> {
-    const url = `${this.baseUrl}api/DescripcionC/${descripcion.idDescripcion}`;
+  put(descripcion: DescripcionCalificacion): Observable<any> {
+    const url = `${this.baseUrl}api/DescripcionCalificacion/${descripcion.idDescripcion}`;
     return this.http.put(url, descripcion, httpOptions)
     .pipe(
       tap(_ => this.handleErrorService.log('Se ha actualizado correctamente!')),
       catchError(this.handleErrorService.handleError<any>('Editar resultados'))
     );
   }
-  delete(descripcion: DescripcionC| string): Observable<string> {
+  delete(descripcion: DescripcionCalificacion| string): Observable<string> {
     const id = typeof descripcion === 'string' ? descripcion : descripcion.idDescripcion;
-    return this.http.delete<string>(this.baseUrl + 'api/DescripcionC/' + id)
+    return this.http.delete<string>(this.baseUrl + 'api/DescripcionCalificacion/' + id)
     .pipe(
       tap(_ => this.handleErrorService.log('Se ha eliminado correctamente!')),
       catchError(this.handleErrorService.handleError<string>('Elimiar resultados', null))

@@ -41,7 +41,8 @@ namespace Datos.Migrations
                     Identificacion = table.Column<string>(nullable: true),
                     IdRubrica = table.Column<string>(nullable: true),
                     IdProyecto = table.Column<int>(nullable: false),
-                    Fecha = table.Column<DateTime>(nullable: false)
+                    Fecha = table.Column<DateTime>(nullable: false),
+                    Evaluador = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -49,18 +50,17 @@ namespace Datos.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DescripcionesC",
+                name: "DescripcionCalificaciones",
                 columns: table => new
                 {
                     IdDescripcion = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdCalificacion = table.Column<int>(nullable: false),
-                    Descripcion = table.Column<string>(nullable: true),
-                    Valor = table.Column<decimal>(nullable: false)
+                    Valor = table.Column<decimal>(nullable: false),
+                    IdProyecto = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DescripcionesC", x => x.IdDescripcion);
+                    table.PrimaryKey("PK_DescripcionCalificaciones", x => x.IdDescripcion);
                 });
 
             migrationBuilder.CreateTable(
@@ -197,6 +197,21 @@ namespace Datos.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserName = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: true),
+                    Estado = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Rol = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserName);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Usuarios",
                 columns: table => new
                 {
@@ -223,7 +238,7 @@ namespace Datos.Migrations
                 name: "Calificaciones");
 
             migrationBuilder.DropTable(
-                name: "DescripcionesC");
+                name: "DescripcionCalificaciones");
 
             migrationBuilder.DropTable(
                 name: "Docentes");
@@ -245,6 +260,9 @@ namespace Datos.Migrations
 
             migrationBuilder.DropTable(
                 name: "Rubricas");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");

@@ -9,8 +9,6 @@ namespace exposoftwaredotnet.Models
 {
     public class DescripcionCInputModel
     {
-        public int IdCalificacion { get; set; }
-        public string Descripcion { get; set; }
         public decimal Valor { get; set; }
         public int IdProyecto { get; set; }
     }
@@ -20,8 +18,7 @@ namespace exposoftwaredotnet.Models
 
         }
         public DescripcionCViewModel(DescripcionCalificacion descripcion){
-            IdCalificacion = descripcion.IdCalificacion;
-            Descripcion = descripcion.Descripcion;
+            IdDescripcion = descripcion.IdDescripcion;
             Valor = descripcion.Valor;
             IdProyecto = descripcion.IdProyecto;
         }

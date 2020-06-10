@@ -14,23 +14,23 @@ namespace exposoftwaredotnet.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DescripcioncController:ControllerBase
+    public class DescripcionCalificacionController: ControllerBase
     {
          private readonly DescripcionesCService _descripcionService;
 
-        public DescripcioncController(ExposoftwareContext context)
+        public DescripcionCalificacionController(ExposoftwareContext context)
         {
             _descripcionService = new DescripcionesCService(context);
         }
-        // GET: api/DescripcionC
+        // GET: api/DescripcionCalificacion
         [HttpGet("{idProyecto}")]
         public IEnumerable<DescripcionCViewModel> Gets(int idProyecto)
         {
-            var descripciones = _descripcionService.ConsultarTodos(idProyecto).Select(c => new DescripcionCViewModel(c));
+            var descripciones = _descripcionService.ConsultarTodos(idProyecto).Select(d => new DescripcionCViewModel(d));
             return descripciones;
         }
 
-        // POST: api/DescripcionC
+        // POST: api/DescripcionCalificacion
         [HttpPost]
         public ActionResult<DescripcionCViewModel> Post(DescripcionCInputModel descripcionInput)
         {
@@ -47,7 +47,7 @@ namespace exposoftwaredotnet.Controllers
             }
             return Ok(response.DescripcionCalificacion);
         }
-        // DELETE: api/DescripcionC/5
+        // DELETE: api/DescripcionCalificacion/5
         [HttpDelete("{idDescripcion}")]
         public ActionResult<string> Delete(int idDescripcion)
         {
@@ -58,14 +58,12 @@ namespace exposoftwaredotnet.Controllers
         {
             var descripcion = new DescripcionCalificacion
             {
-                IdCalificacion = descripcionCInput.IdCalificacion,
-                Descripcion = descripcionCInput.Descripcion,
                 Valor = descripcionCInput.Valor,
                 IdProyecto = descripcionCInput.IdProyecto,
             };
             return descripcion;
         }
-        // PUT: api/DescripcionC/5
+        // PUT: api/DescripcionCalificacion/5
         [HttpPut("{idDescripcion}")]
         public ActionResult<string> Put(int idDescripcion, DescripcionCalificacion descripcion)
         {
