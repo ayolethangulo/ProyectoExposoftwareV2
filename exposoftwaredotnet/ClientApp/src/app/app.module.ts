@@ -59,6 +59,9 @@ import { PendonService } from './services/pendon.service';
 import { ProyectoConsultaLComponent } from './DocenteLider/proyecto-consulta-l/proyecto-consulta-l.component';
 import { InformacionPendonComponent } from './DocenteLider/informacion-pendon/informacion-pendon.component';
 import { PendonConsultaLiderComponent } from './DocenteLider/pendon-consulta-lider/pendon-consulta-lider.component';
+import { CalificacionService } from './services/calificacion.service';
+import { AsignarProyectosComponent } from './ComiteEvaluador/asignar-proyectos/asignar-proyectos.component';
+import { AsignarProyectosDocenteComponent } from './ComiteEvaluador/asignar-proyectos-docente/asignar-proyectos-docente.component';
 
 
 @NgModule({
@@ -107,6 +110,8 @@ import { PendonConsultaLiderComponent } from './DocenteLider/pendon-consulta-lid
     ProyectoConsultaLComponent,
     InformacionPendonComponent,
     PendonConsultaLiderComponent,
+    AsignarProyectosComponent,
+    AsignarProyectosDocenteComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -129,7 +134,8 @@ import { PendonConsultaLiderComponent } from './DocenteLider/pendon-consulta-lid
     AreaService,
     RubricaService,
     ItemsRubricaService,
-    PendonService
+    PendonService,
+    CalificacionService
   ],
   bootstrap: [AppComponent]
 })

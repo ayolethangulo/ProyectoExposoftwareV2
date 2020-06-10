@@ -10,5 +10,6 @@ namespace Entity
         public string IdRubrica { get; set; }
         public int IdProyecto { get; set; }
         public System.DateTime Fecha { get; set; }
+        public string Evaluador { get; set; }
     }
 }

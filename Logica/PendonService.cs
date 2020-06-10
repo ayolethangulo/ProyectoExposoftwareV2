@@ -32,7 +32,7 @@ namespace Logica
             {
                 return new GuardarPendonResponse($"Error de la Aplicacion: {e.Message}");
             }
-        }
+        }  
 
         public List<Pendon> ConsultarTodos()
         {

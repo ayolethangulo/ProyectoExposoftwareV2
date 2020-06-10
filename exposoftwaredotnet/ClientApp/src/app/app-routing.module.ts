@@ -33,6 +33,8 @@ import { RegistrarCalificacionComponent } from './docenteEvaluador/registrar-cal
 import { ProyectoConsultaLComponent } from './DocenteLider/proyecto-consulta-l/proyecto-consulta-l.component';
 import { InformacionPendonComponent } from './DocenteLider/informacion-pendon/informacion-pendon.component';
 import { PendonConsultaLiderComponent } from './DocenteLider/pendon-consulta-lider/pendon-consulta-lider.component';
+import { AsignarProyectosComponent } from './ComiteEvaluador/asignar-proyectos/asignar-proyectos.component';
+import { AsignarProyectosDocenteComponent } from './ComiteEvaluador/asignar-proyectos-docente/asignar-proyectos-docente.component';
 
 
 const routes: Routes = [
@@ -167,6 +169,14 @@ const routes: Routes = [
   {
     path: 'pendonConsultaLider',
     component: PendonConsultaLiderComponent
+  },
+  {
+    path: 'asignarProyectos',
+    component: AsignarProyectosComponent
+  },
+  {
+    path: 'asignarProyectosDocente/:idProyecto',
+    component: AsignarProyectosDocenteComponent
   }
 ];
 
