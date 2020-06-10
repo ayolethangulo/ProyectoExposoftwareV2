@@ -9,5 +9,6 @@ namespace Entity
         public int IdCalificacion { get; set; }
         public string Descripcion { get; set; }
         public decimal Valor { get; set; }
+        public int IdProyecto { get; set; }
     }
 }

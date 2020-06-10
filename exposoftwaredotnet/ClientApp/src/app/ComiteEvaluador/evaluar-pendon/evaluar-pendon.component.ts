@@ -29,7 +29,7 @@ export class EvaluarPendonComponent implements OnInit {
     this.pendonService.getId(id).subscribe(p => {
       if (p != null) {
         this.pendon = p;
-        this.proyectoService.getId(this.pendon.idProyecto.toString()).subscribe(pe => {
+        this.proyectoService.getId(this.pendon.idProyecto).subscribe(pe => {
           if (pe != null) {
             this.proyecto = pe.identificacion;
             this.docenteService.getId(this.proyecto).subscribe(d => {

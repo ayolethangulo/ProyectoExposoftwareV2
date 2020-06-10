@@ -5,6 +5,6 @@ label, h5,h6{
 label{
     font-size: 14px;
 }
-#botones{
+.botones{
     margin: 15px;
 }

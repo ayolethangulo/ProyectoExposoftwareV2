@@ -46,7 +46,7 @@ export class ProyectoService {
     );
   }
 
-  getId(idProyecto: string): Observable<Proyecto> {
+  getId(idProyecto: number): Observable<Proyecto> {
     const url = `${this.baseUrl + 'api/Proyecto'}/${idProyecto}`;
       return this.http.get<Proyecto>(url, httpOptions)
       .pipe(

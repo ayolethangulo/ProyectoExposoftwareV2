@@ -13,7 +13,7 @@ import { DocenteService } from 'src/app/services/docente.service';
 })
 export class ProyectoConsultaLComponent implements OnInit {
 
-  id: string;
+  id: number;
   estudiante: string;
   estudiante2: string;
   docente: string;

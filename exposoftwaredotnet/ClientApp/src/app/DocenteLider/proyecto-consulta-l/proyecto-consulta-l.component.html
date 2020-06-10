@@ -7,7 +7,7 @@
                 <h6>Digite código del proyecto</h6>
                     <div class="row">
                         <div class="col-2">
-                            <input type="text" name="id" [(ngModel)]="id" class="form-control" />
+                            <input type="number" name="id" [(ngModel)]="id" class="form-control" />
                         </div>
                         <div class="col">
                             <button class="btn btn-success" (click)="buscar()" type="button">Buscar</button>
@@ -82,9 +82,9 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button id="botones" class="btn btn-primary mr-1" (click)="update()">Actualizar</button>
+                        <button class="botones" class="btn btn-primary mr-1" (click)="update()">Actualizar</button>
 
-                        <button id="botones" class="btn btn-secondary" type="reset">Cancel</button>
+                        <button class="botones" class="btn btn-secondary" type="reset">Cancel</button>
                     </div>
                 </form>
             </div>
