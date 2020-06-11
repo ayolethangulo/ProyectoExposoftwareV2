@@ -1,29 +1,59 @@
-<!-- <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-success btn-sm" [routerLink]="['/loginLider']">Lider De Proyecto</button>
-    <button type="button" class="btn btn-success btn-sm active" [routerLink]="['/LoginComiteEvaluador']">Comite Evaluador</button>
-    <button type="button" class="btn btn-success btn-sm" [routerLink]="['/LoginDocenteEvaluador']">Docente Evaluador</button>
-  </div>
-     -->
-    <h4 ><strong>COMITÉ EVALUADOR</strong></h4>
-    
-    <div class="row">
-      <div class="col-md-6 offset-md-3 mt-3">
-        <form>
+<app-nav-menu></app-nav-menu>
+<div class="container">
+  <h4><strong>Loggin</strong></h4>
+  <div class="row">
+    <div class="col-md-6">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
           <div class="form-group">
-            <label for="exampleInputEmail1">Usuario</label>
-            <input type="Usuario" class="form-control" id="exampleInputEmail1" aria-describedby="MsgUsuario">
-            <small id="MsgUsuario" class="form-text text-muted">Ingrese su Usuario.</small>
+            <div class="col">
+              <label for="username">Nombre de Usuario <span class="obligatorio">*</span></label>
+              <input type="text" name="username" formControlName="username" class="form-control"
+                [ngClass]="{'is-invalid': submitted && f.username.errors }" />
+              <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Campo requerido</div>
+              </div>
+            </div>
           </div>
+          <!--           <div class="form-group">
+            <div class="col">
+              <label for="email">Correo<span class="obligatorio">*</span></label>
+              <input type="text" name="email" formControlName="email" class="form-control"
+                [ngClass]="{'is-invalid': control.email.errors && formGroup.get('email').touched}" />
+              <div *ngIf="control.email.errors && formGroup.get('email').touched" class="invalid-feedback">
+                <div *ngIf="control.email.errors.required">Campo requerido</div>
+              </div>
+            </div>
+          </div> -->
           <div class="form-group">
-            <label for="exampleInputPassword1">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <div class="col">
+              <label for="password">Contraseña</label>
+              <input type="password" name="password" formControlName="password" class="form-control"
+                [ngClass]="{'is-invalid':  submitted && f.password.errors}" />
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Campo requerido</div>
+              </div>
+            </div>
           </div>
-    
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          <!--   <div class="form-group">
+            <label for="rol">Tipo docente <span class="obligatorio">*</span></label>
+            <input type="text" name="rol" formControlName="rol" class="form-control"
+                [ngClass]="{'is-invalid': control.rol.errors && formGroup.get('rol').touched}" />
+            <div *ngIf="control.rol.errors && formGroup.get('rol').touched" class="invalid-feedback">
+              <div *ngIf="control.rol.errors.required">Seleccione una opción</div>
+            </div>
+          </div> -->
+          <div class="text-center">
+            <div class="form-group">
+              <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Login
+              </button>
+            </div>
           </div>
-          <button type="button" class="btn btn-success btn-sm btn-block" [routerLink]="['/inicio']"> INICIAR</button>
-        </form>
-      </div>
+        </div>
+      </form>
+      <a [routerLink]="['/usuarioRegistro']">Registrarse</a>
     </div>
+  </div>
+</div>

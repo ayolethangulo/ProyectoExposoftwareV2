@@ -9,6 +9,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
+using exposoftwaredotnet.Config;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace exposoftwaredotnet
 {
@@ -29,6 +33,35 @@ namespace exposoftwaredotnet
             services.AddDbContext<ExposoftwareContext>(e=>e.UseSqlServer(connectionString));
 
             services.AddControllersWithViews();
+
+            #region    configure strongly typed settings objects
+            var appSettingsSection = Configuration.GetSection("AppSetting");
+            services.Configure<AppSetting>(appSettingsSection);
+            #endregion
+
+            #region Configure jwt authentication inteprete el token 
+            var appSettings = appSettingsSection.Get<AppSetting>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+            #endregion
+
             //Agregar OpenApi Swagger
             services.AddSwaggerGen(c =>
             {
@@ -50,6 +83,34 @@ namespace exposoftwaredotnet
                         Url = new Uri("https://www.byasystems.co/license"),
                     }
                 });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "JWT Authorization header using the Bearer scheme."
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                          new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference 
+                                { 
+                                    Type = ReferenceType.SecurityScheme, 
+                                    Id = "Bearer" 
+                                }
+                            },
+                            new string[] {}
+
+                    }
+                });
+                //////Add Operation Specific Authorization///////
+                c.OperationFilter<AuthOperationFilter>();
+                ////////////////////////////////////////////////
             });
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -80,6 +141,17 @@ namespace exposoftwaredotnet
             }
 
             app.UseRouting();
+            
+            #region global cors policy activate Authentication/Authorization
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+            #endregion
+
 
             app.UseEndpoints(endpoints =>
             {

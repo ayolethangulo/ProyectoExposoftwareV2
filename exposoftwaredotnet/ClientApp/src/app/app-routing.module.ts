@@ -35,6 +35,8 @@ import { InformacionPendonComponent } from './DocenteLider/informacion-pendon/in
 import { PendonConsultaLiderComponent } from './DocenteLider/pendon-consulta-lider/pendon-consulta-lider.component';
 import { AsignarProyectosComponent } from './ComiteEvaluador/asignar-proyectos/asignar-proyectos.component';
 import { AsignarProyectosDocenteComponent } from './ComiteEvaluador/asignar-proyectos-docente/asignar-proyectos-docente.component';
+import { UsuarioRegistroComponent } from './usuario/usuario-registro/usuario-registro.component';
+import { AuthGuard } from './services/auth.guard';
 
 
 const routes: Routes = [
@@ -88,11 +90,11 @@ const routes: Routes = [
   },
   {
     path: 'inicio',
-    component: InicioComponent
+    component: InicioComponent, canActivate: [AuthGuard]
   },
   {
     path: 'inicioDocenteLider',
-    component: InicioLiderComponent
+    component: InicioLiderComponent, canActivate: [AuthGuard]
   },
   {
     path: 'registrarPendon',
@@ -152,7 +154,7 @@ const routes: Routes = [
   },
   {
     path: 'inicioEvaluador',
-    component: InicioEvaluadorComponent
+    component: InicioEvaluadorComponent, canActivate: [AuthGuard]
   },
   {
     path: 'registrarCalificacion/:idProyecto/:idRubrica',
@@ -177,6 +179,10 @@ const routes: Routes = [
   {
     path: 'asignarProyectosDocente/:idProyecto',
     component: AsignarProyectosDocenteComponent
+  },
+  {
+    path: 'usuarioRegistro',
+    component: UsuarioRegistroComponent
   }
 ];
 

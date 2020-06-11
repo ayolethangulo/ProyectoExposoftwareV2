@@ -62,6 +62,9 @@ import { PendonConsultaLiderComponent } from './DocenteLider/pendon-consulta-lid
 import { CalificacionService } from './services/calificacion.service';
 import { AsignarProyectosComponent } from './ComiteEvaluador/asignar-proyectos/asignar-proyectos.component';
 import { AsignarProyectosDocenteComponent } from './ComiteEvaluador/asignar-proyectos-docente/asignar-proyectos-docente.component';
+import { UsuarioRegistroComponent } from './usuario/usuario-registro/usuario-registro.component';
+import { UsuarioService } from './services/usuario.service';
+import { JwtInterceptor } from './services/jwt.interceptor';
 
 
 @NgModule({
@@ -112,6 +115,7 @@ import { AsignarProyectosDocenteComponent } from './ComiteEvaluador/asignar-proy
     PendonConsultaLiderComponent,
     AsignarProyectosComponent,
     AsignarProyectosDocenteComponent,
+    UsuarioRegistroComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -135,7 +139,9 @@ import { AsignarProyectosDocenteComponent } from './ComiteEvaluador/asignar-proy
     RubricaService,
     ItemsRubricaService,
     PendonService,
-    CalificacionService
+    CalificacionService,
+    UsuarioService,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

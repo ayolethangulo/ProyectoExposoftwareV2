@@ -4,8 +4,6 @@ using Entity;
 using System.Collections.Generic;
 using System.Linq;
 
-
-
 namespace Logica
 {
     public class UsuarioService
@@ -17,16 +15,16 @@ namespace Logica
             _context = context;
         }
         
-        public GuardarUsuarioResponse Guardar(Usuario usuario)
+        public GuardarUsuarioResponse Guardar(User usuario)
         {
             try
             {
-                var usuarioBuscada = _context.Usuarios.Find(usuario.User);
+                var usuarioBuscada = _context.Users.Find(usuario.UserName);
                 if (usuarioBuscada != null)
                 {
                     return new GuardarUsuarioResponse("Error el usuario ya se encuentra registrada");
                 }
-                _context.Usuarios.Add(usuario);
+                _context.Users.Add(usuario);
                 _context.SaveChanges();
                 return new GuardarUsuarioResponse(usuario);
             }
@@ -35,25 +33,25 @@ namespace Logica
                 return new GuardarUsuarioResponse($"Error de la Aplicacion: {e.Message}");
             }
         }
-        public List<Usuario> ConsultarTodos()
+        public List<User> ConsultarTodos()
         {
-            List<Usuario> usuarios = _context.Usuarios.ToList();
+            List<User> usuarios = _context.Users.ToList();
             return usuarios;
         }
-        public string Eliminar(string identificacion)
+        public string Eliminar(string userName)
         {
             try
             {
-                var usuario = _context.Usuarios.Find(identificacion);
+                var usuario = _context.Users.Find(userName);
                 if (usuario != null)
                 {
-                  _context.Usuarios.Remove(usuario);
+                  _context.Users.Remove(usuario);
                   _context.SaveChanges();
-                    return ($"El registro {usuario.User} se ha eliminado satisfactoriamente.");
+                    return ($"El registro {usuario.UserName} se ha eliminado satisfactoriamente.");
                 }
                 else
                 {
-                    return ($"Lo sentimos, {identificacion} no se encuentra registrada.");
+                    return ($"Lo sentimos, {userName} no se encuentra registrada.");
                 }
             }
             catch (Exception e)
@@ -62,19 +60,19 @@ namespace Logica
                 return $"Error de la Aplicación: {e.Message}";
             }
         }
-        public Usuario BuscarxIdentificacion(string identificacion)
+        public User BuscarxIdentificacion(string userName)
         {
-            Usuario usuario =_context.Usuarios.Find(identificacion);
+            User usuario =_context.Users.Find(userName);
             return usuario;
         }
 
     }
      public class GuardarUsuarioResponse 
     {
-        public GuardarUsuarioResponse(Usuario usuario)
+        public GuardarUsuarioResponse(User usuario)
         {
             Error = false;
-            Usuario = usuario;
+            User = usuario;
         }
         public GuardarUsuarioResponse(string mensaje)
         {
@@ -83,7 +81,7 @@ namespace Logica
         }
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public Usuario Usuario { get; set; }
+        public User User { get; set; }
 
     }
     

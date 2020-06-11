@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Entity;
 using Logica;
 using Datos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -12,8 +13,10 @@ using exposoftwaredotnet.Models;
 
 namespace exposoftwaredotnet.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
+    [Route("api/[controller]")]
+    
     public class AreaController : ControllerBase
     {
         private readonly AreaService _areaService;

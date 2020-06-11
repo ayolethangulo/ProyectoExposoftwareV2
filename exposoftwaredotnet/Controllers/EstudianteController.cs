@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using exposoftwaredotnet.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace exposoftwaredotnet.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class EstudianteController: ControllerBase

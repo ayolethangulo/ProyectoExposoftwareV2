@@ -15,14 +15,19 @@ export class HandleHttpErrorService {
 
       if (error.status == '500') {
         this.mostrarError500(error);
-      }
-      if (error.status == '400') {
+      } else if (error.status == '400') {
         this.mostrarError400(error);
+      } else if (error.status == '401') {
+        this.mostrarError401(error);
       }
+
       return of(result as T);
     };
   }
   private mostrarError500(error: any) {
+    console.error(error);
+  }
+  private mostrarError401(error: any) {
     console.error(error);
   }
   private mostrarError400(error: any): void {
@@ -31,7 +36,7 @@ export class HandleHttpErrorService {
     let mensajeValidaciones: string =
       `Señor(a) usuario(a), se han presentado algunos errores de validación, por favor revíselos y vuelva a realizar la operación.<br/><br/>`;
 
-      for (const prop in error.error.errors) {
+    for (const prop in error.error.errors) {
       contadorValidaciones++;
       mensajeValidaciones += `<strong>${contadorValidaciones}. ${prop}:</strong>`;
 

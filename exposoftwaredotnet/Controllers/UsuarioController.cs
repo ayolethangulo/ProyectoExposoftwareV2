@@ -9,12 +9,13 @@ using Datos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using exposoftwaredotnet.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace exposoftwaredotnet.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioController: ControllerBase
+    public class UsuarioController : ControllerBase
     {
         private readonly UsuarioService _usuarioService;
         public UsuarioController(ExposoftwareContext context)
@@ -23,58 +24,58 @@ namespace exposoftwaredotnet.Controllers
         }
         // GET: api/Usuario
         [HttpGet]
-        public IEnumerable<UsuarioViewModel> Gets()
+        public IEnumerable<LoginViewModel> Gets()
         {
-            var usuarios = _usuarioService.ConsultarTodos().Select(p=> new UsuarioViewModel(p));
+            var usuarios = _usuarioService.ConsultarTodos().Select(u => new LoginViewModel(u));
             return usuarios;
         }
 
         // GET: api/Usuario/5
-        [HttpGet("{identificacion}")]
-        public ActionResult<UsuarioViewModel> Get(string identificacion)
+        [HttpGet("{userName}")]
+        public ActionResult<LoginViewModel> Get(string userName)
         {
-            var usuario = _usuarioService.BuscarxIdentificacion(identificacion);
+            var usuario = _usuarioService.BuscarxIdentificacion(userName);
             if (usuario == null) return NotFound();
-            var usuarioViewModel = new UsuarioViewModel(usuario);
-            return usuarioViewModel;
+            var loginViewModel = new LoginViewModel(usuario);
+            return loginViewModel;
         }
         // POST: api/Usuario
         [HttpPost]
-        public ActionResult<UsuarioViewModel> Post(UsuarioInputModel usuarioInput)
+        public ActionResult<LoginViewModel> Post(LoginViewModel usuarioInput)
         {
-            Usuario usuario = MapearUsuario(usuarioInput);
+            User usuario = MapearUsuario(usuarioInput);
             var response = _usuarioService.Guardar(usuario);
-            if (response.Error) 
+            if (response.Error)
             {
                 return BadRequest(response.Mensaje);
             }
-            return Ok(response.Usuario);
+            return Ok(response.User);
         }
         // DELETE: api/Usuario/5
-        [HttpDelete("{identificacion}")]
-        public ActionResult<string> Delete(string identificacion)
+        [HttpDelete("{userName}")]
+        public ActionResult<string> Delete(string userName)
         {
-            string mensaje = _usuarioService.Eliminar(identificacion);
+            string mensaje = _usuarioService.Eliminar(userName);
             return Ok(mensaje);
         }
-        private Usuario MapearUsuario(UsuarioInputModel usuarioInput)
+        private User MapearUsuario(LoginViewModel usuarioInput)
         {
-            var usuario = new Usuario
+            var usuario = new User
             {
-                Identificacion = usuarioInput.Identificacion,
-                User = usuarioInput.User,
-                Contrasena = usuarioInput.Contrasena,
-                TipoDocente = usuarioInput.TipoDocente,
-               
+                UserName = usuarioInput.UserName,
+                Password = usuarioInput.Password,
+                Email = usuarioInput.Email,
+                Rol = usuarioInput.Rol,
+
             };
             return usuario;
         }
         // PUT: api/Usuario/5
-        [HttpPut("{identificacion}")]
-        public ActionResult<string> Put(string identificacion, Usuario usuario)
+        [HttpPut("{userName}")]
+        public ActionResult<string> Put(string userName, User usuario)
         {
             throw new NotImplementedException();
         }
-        
+
     }
 }
