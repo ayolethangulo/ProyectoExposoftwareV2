@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Asignatura } from '../models/asignatura';
 import { AsignaturaService } from '../../services/asignatura.service';
+import { SignalRAsignaturaService } from 'src/app/services/signal-rasignatura.service';
 
 
 @Component({
@@ -12,12 +13,14 @@ export class AsignaturaConsultaComponent implements OnInit {
 
   searchText: string;
   asignaturas: Asignatura[];
-  constructor(private asignaturaService: AsignaturaService) { }
+  constructor(private asignaturaService: AsignaturaService, private signalRAsignatura: SignalRAsignaturaService) { }
 
   ngOnInit(): void {
     this.asignaturaService.get().subscribe(result => {
       this.asignaturas = result;
     });
+    this.signalRAsignatura.signalReceived.subscribe((asignatura: Asignatura) => {
+      this.asignaturas.push(asignatura);
+    });
   }
-
 }

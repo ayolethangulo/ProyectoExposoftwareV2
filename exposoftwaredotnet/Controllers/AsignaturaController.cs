@@ -10,7 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using exposoftwaredotnet.Models;
-
+using Microsoft.AspNetCore.SignalR;
+using exposoftwaredotnet.Hubs;
 
 namespace exposoftwaredotnet.Controllers
 {
@@ -21,9 +22,11 @@ namespace exposoftwaredotnet.Controllers
     [ApiController]
     public class AsignaturaController: ControllerBase
     {
+        private readonly IHubContext<SignalHub> _hubContext;
         private readonly AsignaturaService _asignaturaService;
-        public AsignaturaController(ExposoftwareContext context)
+        public AsignaturaController(ExposoftwareContext context, IHubContext<SignalHub> hubContext)
         {
+            _hubContext = hubContext;
            _asignaturaService = new AsignaturaService(context);
         }
         // GET: api/Asignatura
@@ -45,7 +48,7 @@ namespace exposoftwaredotnet.Controllers
         }
         // POST: api/Asignatura
         [HttpPost]
-        public ActionResult<AsignaturaViewModel> Post(AsignaturaInputModel asignaturaInput)
+        public async Task<ActionResult<AsignaturaViewModel>> PostAsync(AsignaturaInputModel asignaturaInput)
         {
             Asignatura asignatura = MapearAsignatura(asignaturaInput);
             var response = _asignaturaService.Guardar(asignatura);
@@ -58,7 +61,9 @@ namespace exposoftwaredotnet.Controllers
                 };
                 return BadRequest(problemDetails);
             }
-            return Ok(response.Asignatura);
+            var asignaturaViewModel = new AsignaturaViewModel(response.Asignatura);
+            await _hubContext.Clients.All.SendAsync("AsignaturaRegistrada", asignaturaViewModel);
+            return Ok(asignaturaViewModel);
         }
         // DELETE: api/Asignatura/5
         [HttpDelete("{idAsignatura}")]

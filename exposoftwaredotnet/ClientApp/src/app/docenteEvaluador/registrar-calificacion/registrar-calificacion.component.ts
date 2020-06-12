@@ -35,7 +35,6 @@ export class RegistrarCalificacionComponent implements OnInit {
     const idR = this.rutaActiva.snapshot.params.idRubrica;
     this.cargarItem(idR);
     this.idProyecto = idP;
-    alert(this.idProyecto);
   }
 
   cargarItem(rubrica: string) {

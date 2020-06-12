@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using exposoftwaredotnet.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
+using exposoftwaredotnet.Hubs;
 
 namespace exposoftwaredotnet.Controllers
 {
@@ -18,11 +20,13 @@ namespace exposoftwaredotnet.Controllers
     [ApiController]
     public class PendonController: ControllerBase
     {
+        private readonly IHubContext<SignalHub> _hubContext;
         private readonly PendonService _pendonService;
         private readonly EmailServicePendon _emailService;
        
-        public PendonController(ExposoftwareContext context)
+        public PendonController(ExposoftwareContext context, IHubContext<SignalHub> hubContext)
         {
+            _hubContext = hubContext;
             _pendonService = new PendonService(context);
             _emailService = new EmailServicePendon(context);
         }
@@ -45,7 +49,7 @@ namespace exposoftwaredotnet.Controllers
         }
         // POST: api/Pendon
         [HttpPost]
-        public ActionResult<PendonViewModel> Post(PendonInputModel pendonInput)
+        public async Task<ActionResult<PendonViewModel>> PostAsync(PendonInputModel pendonInput)
         {
             Pendon pendon = MapearPendon(pendonInput);
             var response = _pendonService.Guardar(pendon);
@@ -58,7 +62,9 @@ namespace exposoftwaredotnet.Controllers
                 };
                 return BadRequest(problemDetails);
             }
-            return Ok(response.Pendon);
+            var pendonViewModel = new PendonViewModel(response.Pendon);
+            await _hubContext.Clients.All.SendAsync("PendonRegistrada", pendonViewModel);
+            return Ok(pendonViewModel);
         }
         // DELETE: api/Pendon/5
         [HttpDelete("{idPendon}")]

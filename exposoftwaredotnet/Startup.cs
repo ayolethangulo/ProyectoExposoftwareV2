@@ -13,6 +13,7 @@ using exposoftwaredotnet.Config;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using exposoftwaredotnet.Hubs;
 
 namespace exposoftwaredotnet
 {
@@ -31,6 +32,8 @@ namespace exposoftwaredotnet
              // Configurar cadena de Conexion con EF
             var connectionString=Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ExposoftwareContext>(e=>e.UseSqlServer(connectionString));
+
+            services.AddSignalR();
 
             services.AddControllersWithViews();
 
@@ -83,6 +86,7 @@ namespace exposoftwaredotnet
                         Url = new Uri("https://www.byasystems.co/license"),
                     }
                 });
+
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
@@ -151,14 +155,16 @@ namespace exposoftwaredotnet
             app.UseAuthentication();
             app.UseAuthorization();
             #endregion
-
+            
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapHub<SignalHub>("/signalHub");   
             });
+
             //start swagger
             app.UseSwagger();
             app.UseSwaggerUI(c =>

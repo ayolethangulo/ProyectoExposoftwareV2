@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using exposoftwaredotnet.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
+using exposoftwaredotnet.Hubs;
 
 namespace exposoftwaredotnet.Controllers
 {
@@ -19,10 +21,12 @@ namespace exposoftwaredotnet.Controllers
     [ApiController]
     public class DocenteController: ControllerBase
     {
+        private readonly IHubContext<SignalHub> _hubContext;
         private readonly DocenteService _docenteService;
         private readonly EmailServiceDocente _emailService;
-        public DocenteController(ExposoftwareContext context)
+        public DocenteController(ExposoftwareContext context, IHubContext<SignalHub> hubContext)
         {
+            _hubContext = hubContext;
             _docenteService = new DocenteService(context);
             _emailService = new EmailServiceDocente(context);
         }
@@ -45,7 +49,7 @@ namespace exposoftwaredotnet.Controllers
         }
         // POST: api/Docente
         [HttpPost]
-        public ActionResult<DocenteViewModel> Post(DocenteInputModel docenteInput)
+        public async Task<ActionResult<DocenteViewModel>> PostAsync(DocenteInputModel docenteInput)
         {
             Docente docente = MapearDocente(docenteInput);
             if(docente.TipoDocente.Equals("Docente evaluador")){
@@ -61,7 +65,9 @@ namespace exposoftwaredotnet.Controllers
                 };
                 return BadRequest(problemDetails);
             }
-            return Ok(response.Docente);
+            var docenteViewModel = new DocenteViewModel(response.Docente);
+            await _hubContext.Clients.All.SendAsync("DocenteRegistrada", docenteViewModel);
+            return Ok(docenteViewModel);
         }
         // DELETE: api/Docente/5
         [HttpDelete("{identificacion}")]

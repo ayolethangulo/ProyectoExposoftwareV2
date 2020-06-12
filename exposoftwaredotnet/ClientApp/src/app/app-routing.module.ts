@@ -94,7 +94,7 @@ const routes: Routes = [
   },
   {
     path: 'inicioDocenteLider',
-    component: InicioLiderComponent, canActivate: [AuthGuard]
+    component: InicioLiderComponent
   },
   {
     path: 'registrarPendon',
@@ -154,7 +154,7 @@ const routes: Routes = [
   },
   {
     path: 'inicioEvaluador',
-    component: InicioEvaluadorComponent, canActivate: [AuthGuard]
+    component: InicioEvaluadorComponent
   },
   {
     path: 'registrarCalificacion/:idProyecto/:idRubrica',

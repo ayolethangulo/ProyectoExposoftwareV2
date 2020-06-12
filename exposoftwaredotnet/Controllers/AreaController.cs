@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using exposoftwaredotnet.Models;
+using exposoftwaredotnet.Hubs;
+using Microsoft.AspNetCore.SignalR;
 
 namespace exposoftwaredotnet.Controllers
 {
@@ -19,9 +21,11 @@ namespace exposoftwaredotnet.Controllers
     
     public class AreaController : ControllerBase
     {
+        private readonly IHubContext<SignalHub> _hubContext;
         private readonly AreaService _areaService;
-        public AreaController(ExposoftwareContext context)
+        public AreaController(ExposoftwareContext context, IHubContext<SignalHub> hubContext)
         {
+            _hubContext = hubContext;
             _areaService = new AreaService(context);
         }
         // GET: api/Area
@@ -43,7 +47,7 @@ namespace exposoftwaredotnet.Controllers
         }
         // POST: api/Area
         [HttpPost]
-        public ActionResult<AreaViewModel> Post(AreaInputModel areaInput)
+        public async Task<ActionResult<AreaViewModel>> PostAsync(AreaInputModel areaInput)
         {
             Area area = MapearArea(areaInput);
             var response = _areaService.Guardar(area);
@@ -56,7 +60,9 @@ namespace exposoftwaredotnet.Controllers
                 };
                 return BadRequest(problemDetails);
             }
-            return Ok(response.Area);
+            var areaViewModel = new AreaViewModel(response.Area);
+            await _hubContext.Clients.All.SendAsync("AreaRegistrada", areaViewModel);
+            return Ok(areaViewModel);
         }
         // DELETE: api/Area/5
         [HttpDelete("{idArea}")]

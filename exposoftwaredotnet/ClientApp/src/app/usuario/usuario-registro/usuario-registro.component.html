@@ -1,8 +1,8 @@
 <app-nav-menu></app-nav-menu>
 <div class="container">
-  <h4><strong>Registrar Usuario</strong></h4>
+  <h4>Registrar Usuario</h4>
   <div class="row">
-    <div class="col-md-6 offset-md-3 mt-3">
+    <div class="col-md-6">
       <form [formGroup]="formGroup">
         <div class="form-group">
           <div class="form-group">
@@ -36,22 +36,26 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="rol">Tipo docente <span class="obligatorio">*</span></label>
-            <select class="form-control" formControlName="rol" name="rol"
-              [ngClass]="{'is-invalid': control.rol.errors && formGroup.get('rol').touched}">
-              <option>Lider de proyecto</option>
-              <option>Docente evaluador</option>
-            </select>
-            <div *ngIf="control.rol.errors && formGroup.get('rol').touched" class="invalid-feedback">
-              <div *ngIf="control.rol.errors.required">Seleccione una opción</div>
+            <div class="col">
+              <label for="rol">Tipo docente <span class="obligatorio">*</span></label>
+              <select class="form-control" formControlName="rol" name="rol"
+                [ngClass]="{'is-invalid': control.rol.errors && formGroup.get('rol').touched}">
+                <option>Lider de proyecto</option>
+                <option>Docente evaluador</option>
+              </select>
+              <div *ngIf="control.rol.errors && formGroup.get('rol').touched" class="invalid-feedback">
+                <div *ngIf="control.rol.errors.required">Seleccione una opción</div>
+              </div>
             </div>
           </div>
           <div class="text-center">
-            <button type="button" class="btn btn-success btn-sm btn-block" (click)="onSubmit()" [disabled]="formGroup.invalid"> Registrar</button>
+            <div class="form-group">
+              <button type="button" class="btn btn-primary" (click)="onSubmit()"
+              [disabled]="formGroup.invalid"> Registrar</button>
+            </div>
           </div>
         </div>
       </form>
     </div>
   </div>
-
 </div>

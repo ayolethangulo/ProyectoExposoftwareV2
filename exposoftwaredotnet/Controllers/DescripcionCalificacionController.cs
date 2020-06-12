@@ -19,10 +19,12 @@ namespace exposoftwaredotnet.Controllers
     public class DescripcionCalificacionController: ControllerBase
     {
          private readonly DescripcionesCService _descripcionService;
+         private readonly EmailServicePuntaje _emailPuntajeService;
 
         public DescripcionCalificacionController(ExposoftwareContext context)
         {
             _descripcionService = new DescripcionesCService(context);
+            _emailPuntajeService = new EmailServicePuntaje(context);
         }
         // GET: api/DescripcionCalificacion
         [HttpGet("{idProyecto}")]
@@ -47,6 +49,7 @@ namespace exposoftwaredotnet.Controllers
                 };
                 return BadRequest(problemDetails);
             }
+            _emailPuntajeService.EnviarCorreo(descripcion);
             return Ok(response.DescripcionCalificacion);
         }
         // DELETE: api/DescripcionCalificacion/5
