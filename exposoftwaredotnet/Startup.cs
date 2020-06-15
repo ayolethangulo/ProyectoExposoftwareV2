@@ -14,6 +14,8 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using exposoftwaredotnet.Hubs;
+using ExposoftwareDotnet.Extensions;
+using exposoftwaredotnet.Services;
 
 namespace exposoftwaredotnet
 {
@@ -32,90 +34,13 @@ namespace exposoftwaredotnet
              // Configurar cadena de Conexion con EF
             var connectionString=Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ExposoftwareContext>(e=>e.UseSqlServer(connectionString));
-
+            services.AddIdentityConfig();
+            services.AddJwtAuthentication(Configuration);
+            services.AddScoped<ITokenGenerator, TokenGenerator>();
+            services.AddSwagger();
             services.AddSignalR();
-
             services.AddControllersWithViews();
 
-            #region    configure strongly typed settings objects
-            var appSettingsSection = Configuration.GetSection("AppSetting");
-            services.Configure<AppSetting>(appSettingsSection);
-            #endregion
-
-            #region Configure jwt authentication inteprete el token 
-            var appSettings = appSettingsSection.Get<AppSetting>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
-
-            services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
-            #endregion
-
-            //Agregar OpenApi Swagger
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "School API",
-                    Description = "School API - ASP.NET Core Web API",
-                    TermsOfService = new Uri("https://cla.dotnetfoundation.org/"),
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Ana Angulo",
-                        Email = string.Empty,
-                        Url = new Uri("https://github.com/ayolethangulo/ProyectoExposoftwareV2"),
-                    },
-                    License = new OpenApiLicense
-                    {
-                        Name = "Licencia dotnet foundation",
-                        Url = new Uri("https://www.byasystems.co/license"),
-                    }
-                });
-
-
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer",
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
-                    Description = "JWT Authorization header using the Bearer scheme."
-                });
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                          new OpenApiSecurityScheme
-                            {
-                                Reference = new OpenApiReference 
-                                { 
-                                    Type = ReferenceType.SecurityScheme, 
-                                    Id = "Bearer" 
-                                }
-                            },
-                            new string[] {}
-
-                    }
-                });
-                //////Add Operation Specific Authorization///////
-                c.OperationFilter<AuthOperationFilter>();
-                ////////////////////////////////////////////////
-            });
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -151,11 +76,11 @@ namespace exposoftwaredotnet
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
-
+            app.UseSwaggerApiDocumentation();
             app.UseAuthentication();
             app.UseAuthorization();
             #endregion
-            
+         
 
             app.UseEndpoints(endpoints =>
             {
@@ -165,14 +90,7 @@ namespace exposoftwaredotnet
                 endpoints.MapHub<SignalHub>("/signalHub");   
             });
 
-            //start swagger
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            });
-            //end swagger
-
+       
             app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,

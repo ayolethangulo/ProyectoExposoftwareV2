@@ -37,6 +37,7 @@ import { AsignarProyectosComponent } from './ComiteEvaluador/asignar-proyectos/a
 import { AsignarProyectosDocenteComponent } from './ComiteEvaluador/asignar-proyectos-docente/asignar-proyectos-docente.component';
 import { UsuarioRegistroComponent } from './usuario/usuario-registro/usuario-registro.component';
 import { AuthGuard } from './services/auth.guard';
+import { ComiteEvaluadorGuard } from './Guards/comite-evaluador.guard';
 
 
 const routes: Routes = [
@@ -130,7 +131,7 @@ const routes: Routes = [
   },
   {
     path: 'RegistrarDocente',
-    component: RegistrarDocentesComponent
+    component: RegistrarDocentesComponent, canActivate:[ComiteEvaluadorGuard]
   },
   {
     path: 'consultarDocente',

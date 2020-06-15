@@ -1,28 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\programacion-web\\exposoftwareProyecto\\Entity\\Entity.csproj": {}
+    "D:\\ConLogin\\ProyectoExposoftwareV2\\Entity\\Entity.csproj": {}
   },
   "projects": {
-    "C:\\programacion-web\\exposoftwareProyecto\\Entity\\Entity.csproj": {
+    "D:\\ConLogin\\ProyectoExposoftwareV2\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\programacion-web\\exposoftwareProyecto\\Entity\\Entity.csproj",
+        "projectUniqueName": "D:\\ConLogin\\ProyectoExposoftwareV2\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "C:\\programacion-web\\exposoftwareProyecto\\Entity\\Entity.csproj",
-        "packagesPath": "C:\\Users\\anayo\\.nuget\\packages\\",
-        "outputPath": "C:\\programacion-web\\exposoftwareProyecto\\Entity\\obj\\",
+        "projectPath": "D:\\ConLogin\\ProyectoExposoftwareV2\\Entity\\Entity.csproj",
+        "packagesPath": "C:\\Users\\JOELBOLIVARGC\\.nuget\\packages\\",
+        "outputPath": "D:\\ConLogin\\ProyectoExposoftwareV2\\Entity\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\anayo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\JOELBOLIVARGC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,6 +38,26 @@
       "frameworks": {
         "netstandard2.1": {
           "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
             "System.ComponentModel.Annotations": {
               "target": "Package",
               "version": "[4.7.0, )"
@@ -59,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

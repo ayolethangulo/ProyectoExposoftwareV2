@@ -1,0 +1,15 @@
+D:\ConLogin\ProyectoExposoftwareV2\Datos\bin\Debug\netcoreapp3.1\Datos.deps.json
+D:\ConLogin\ProyectoExposoftwareV2\Datos\bin\Debug\netcoreapp3.1\Datos.runtimeconfig.json
+D:\ConLogin\ProyectoExposoftwareV2\Datos\bin\Debug\netcoreapp3.1\Datos.runtimeconfig.dev.json
+D:\ConLogin\ProyectoExposoftwareV2\Datos\bin\Debug\netcoreapp3.1\Datos.dll
+D:\ConLogin\ProyectoExposoftwareV2\Datos\bin\Debug\netcoreapp3.1\Datos.pdb
+D:\ConLogin\ProyectoExposoftwareV2\Datos\bin\Debug\netcoreapp3.1\Entity.dll
+D:\ConLogin\ProyectoExposoftwareV2\Datos\bin\Debug\netcoreapp3.1\Entity.pdb
+D:\ConLogin\ProyectoExposoftwareV2\Datos\obj\Debug\netcoreapp3.1\Datos.csprojAssemblyReference.cache
+D:\ConLogin\ProyectoExposoftwareV2\Datos\obj\Debug\netcoreapp3.1\Datos.csproj.CoreCompileInputs.cache
+D:\ConLogin\ProyectoExposoftwareV2\Datos\obj\Debug\netcoreapp3.1\Datos.AssemblyInfoInputs.cache
+D:\ConLogin\ProyectoExposoftwareV2\Datos\obj\Debug\netcoreapp3.1\Datos.AssemblyInfo.cs
+D:\ConLogin\ProyectoExposoftwareV2\Datos\obj\Debug\netcoreapp3.1\Datos.csproj.CopyComplete
+D:\ConLogin\ProyectoExposoftwareV2\Datos\obj\Debug\netcoreapp3.1\Datos.dll
+D:\ConLogin\ProyectoExposoftwareV2\Datos\obj\Debug\netcoreapp3.1\Datos.pdb
+D:\ConLogin\ProyectoExposoftwareV2\Datos\obj\Debug\netcoreapp3.1\Datos.genruntimeconfig.cache

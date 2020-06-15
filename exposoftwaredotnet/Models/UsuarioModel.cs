@@ -8,25 +8,17 @@ namespace exposoftwaredotnet.Models
 {
     public class UsuarioInputModel
     { 
-        public string Identificacion { get; set; }
-        public string User { get; set; } 
-        public string Contrasena { get; set; }
-        public string TipoDocente { get; set; }        
+        public string NombreUser { get; set; }
+        public string Mail { get; set; }
+        public string Password { get; set; }
+        public string Rol { get; set; }
+
     }
+
      public class UsuarioViewModel : UsuarioInputModel
         {
-            public UsuarioViewModel()
-            {
+          public string Token { get; set; }
 
-            }
-            public UsuarioViewModel(Usuario usuario)
-            {
-                Identificacion = usuario.Identificacion;
-                User = usuario.User;
-                Contrasena = usuario.Contrasena;
-                TipoDocente = usuario.TipoDocente;
-                
-            }
-          
         }
+
 }

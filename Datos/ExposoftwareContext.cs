@@ -1,11 +1,12 @@
 using Entity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Datos
 {
-    public class ExposoftwareContext : DbContext
+    public class ExposoftwareContext : IdentityDbContext<User>
     {
-        public ExposoftwareContext(DbContextOptions options) : base(options)
+        public ExposoftwareContext(DbContextOptions<ExposoftwareContext> options) : base(options)
         {
 
         }
@@ -21,7 +22,7 @@ namespace Datos
         public DbSet<Proyecto> Proyectos {get; set;}
         public DbSet<Rubrica> Rubricas {get; set;}
         public DbSet<Usuario> Usuarios {get; set;}
-        public DbSet<User> Users {get; set;}
+    
 
     }
 }
