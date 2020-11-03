@@ -9,3 +9,4 @@ C:\programacion-web\exposoftwareProyecto\Datos\obj\Debug\netstandard2.1\Datos.As
 C:\programacion-web\exposoftwareProyecto\Datos\obj\Debug\netstandard2.1\Datos.csproj.CopyComplete
 C:\programacion-web\exposoftwareProyecto\Datos\obj\Debug\netstandard2.1\Datos.dll
 C:\programacion-web\exposoftwareProyecto\Datos\obj\Debug\netstandard2.1\Datos.pdb
+C:\programacion-web\exposoftwareProyecto\Datos\obj\Debug\netstandard2.1\Datos.csproj.CoreCompileInputs.cache

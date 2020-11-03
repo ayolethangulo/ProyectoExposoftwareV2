@@ -11,3 +11,4 @@ C:\programacion-web\exposoftwareProyecto\Logica\obj\Debug\netstandard2.1\Logica.
 C:\programacion-web\exposoftwareProyecto\Logica\obj\Debug\netstandard2.1\Logica.csproj.CopyComplete
 C:\programacion-web\exposoftwareProyecto\Logica\obj\Debug\netstandard2.1\Logica.dll
 C:\programacion-web\exposoftwareProyecto\Logica\obj\Debug\netstandard2.1\Logica.pdb
+C:\programacion-web\exposoftwareProyecto\Logica\obj\Debug\netstandard2.1\Logica.csproj.CoreCompileInputs.cache

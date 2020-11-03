@@ -60,7 +60,7 @@ namespace Logica
                 return $"Error de la Aplicación: {e.Message}";
             }
         }
-        public User BuscarxIdentificacion(string userName)
+        public User BuscarxNombre(string userName)
         {
             User usuario =_context.Users.Find(userName);
             return usuario;

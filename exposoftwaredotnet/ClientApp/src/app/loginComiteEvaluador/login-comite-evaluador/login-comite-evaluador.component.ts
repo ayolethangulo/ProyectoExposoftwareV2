@@ -5,6 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { first } from 'rxjs/operators';
 import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { User } from 'src/app/seguridad/user';
 
 @Component({
   selector: 'app-login-comite-evaluador',
@@ -17,8 +19,10 @@ export class LoginComiteEvaluadorComponent implements OnInit {
   returnUrl: string;
   loading = false;
   submitted = false;
+  user: User;
+  ruta: string;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder, private usuarioService: UsuarioService,
     private modalService: NgbModal, private route: ActivatedRoute,
     private router: Router, private authenticationService: AuthenticationService
   ) {
@@ -47,12 +51,13 @@ export class LoginComiteEvaluadorComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
+    this.ObtenerRuta();
     this.loading = true;
     this.authenticationService.login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          this.router.navigate([this.ruta]);
         },
         error => {
           const modalRef = this.modalService.open(AlertModalComponent);
@@ -60,6 +65,20 @@ export class LoginComiteEvaluadorComponent implements OnInit {
           modalRef.componentInstance.message = error.error;
           this.loading = false;
         });
+  }
+
+  public ObtenerRuta() {
+    this.usuarioService.getId(this.f.username.value).subscribe(u => {
+      if (u != null) {
+        if (u.rol == 'admin') {
+          this.ruta = this.route.snapshot.queryParams['returnUrl'] || '/';
+        } else if (u.rol == 'Docente evaluador') {
+          this.ruta = this.route.snapshot.queryParams['returnUrl'] || '/inicioEvaluador';
+        } else if ( u.rol == 'Docente lider') {
+          this.ruta = this.route.snapshot.queryParams['returnUrl'] || '/inicioDocenteLider';
+        }
+      }
+    });
   }
 
 

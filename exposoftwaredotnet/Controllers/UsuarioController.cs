@@ -34,7 +34,7 @@ namespace exposoftwaredotnet.Controllers
         [HttpGet("{userName}")]
         public ActionResult<LoginViewModel> Get(string userName)
         {
-            var usuario = _usuarioService.BuscarxIdentificacion(userName);
+            var usuario = _usuarioService.BuscarxNombre(userName);
             if (usuario == null) return NotFound();
             var loginViewModel = new LoginViewModel(usuario);
             return loginViewModel;

@@ -6,3 +6,4 @@ C:\programacion-web\exposoftwareProyecto\Entity\obj\Debug\netstandard2.1\Entity.
 C:\programacion-web\exposoftwareProyecto\Entity\obj\Debug\netstandard2.1\Entity.AssemblyInfo.cs
 C:\programacion-web\exposoftwareProyecto\Entity\obj\Debug\netstandard2.1\Entity.dll
 C:\programacion-web\exposoftwareProyecto\Entity\obj\Debug\netstandard2.1\Entity.pdb
+C:\programacion-web\exposoftwareProyecto\Entity\obj\Debug\netstandard2.1\Entity.csproj.CoreCompileInputs.cache

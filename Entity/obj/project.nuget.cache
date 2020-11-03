@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "EQqC7o+feZSbpEBt/O8eEs9H1Tif8Uw7wXk1KdFKZqEdSocWKXRrqcEoDrneETB4Usq5p0vFbIYwc+odvcYiXA==",
+  "dgSpecHash": "p4yyoBXAajiZcKmhbSvsjnuaDXcmBGATk5kfYEW48RXZ6s8Zf2Xvlihy/v4xBCQjBxkzli1ccdClHiYWDjWFCQ==",
   "success": true,
-  "projectFilePath": "E:\\JOEL BOLIVAR GM\\ProyectoExposoftwareV2\\Entity\\Entity.csproj",
+  "projectFilePath": "C:\\programacion-web\\exposoftwareProyecto\\Entity\\Entity.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\JOELBOLIVARGC\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\JOELBOLIVARGC\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\anayo\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }
