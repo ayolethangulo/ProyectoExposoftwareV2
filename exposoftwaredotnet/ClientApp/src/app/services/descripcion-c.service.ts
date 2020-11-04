@@ -32,7 +32,7 @@ export class DescripcionCService {
   post(descripcion: DescripcionCalificacion): Observable<DescripcionCalificacion> {
     return this.http.post<DescripcionCalificacion>(this.baseUrl + 'api/DescripcionCalificacion', descripcion)
       .pipe(
-        tap(_ => this.handleErrorService.log('valor registrada')),
+        tap(_ => this.handleErrorService.log('valor registrado')),
         catchError(this.handleErrorService.handleError<DescripcionCalificacion>('Registrar resultados', null))
       );
   }
@@ -52,5 +52,12 @@ export class DescripcionCService {
       tap(_ => this.handleErrorService.log('Se ha eliminado correctamente!')),
       catchError(this.handleErrorService.handleError<string>('Elimiar resultados', null))
     );
+  }
+  getId(idProyecto: number): Observable<DescripcionCalificacion> {
+    const url = `${this.baseUrl + 'api/DescripcionCalificacion'}/${idProyecto}`;
+      return this.http.get<DescripcionCalificacion>(url, httpOptions)
+      .pipe(
+        catchError(this.handleErrorService.handleError<DescripcionCalificacion>('Buscar calificacion', null))
+      );
   }
 }

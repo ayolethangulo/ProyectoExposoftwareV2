@@ -88,10 +88,17 @@ namespace Logica
             }
         }
 
-        public DescripcionCalificacion BuscarxId(int id)
+        public DescripcionCalificacion BuscarxId(int idProyecto)
         {
-            DescripcionCalificacion descripcion = _context.DescripcionCalificaciones.Find(id);
-            return descripcion;
+             List<DescripcionCalificacion> descripciones = _context.DescripcionCalificaciones.ToList();
+            foreach (var item in descripciones)
+            {
+                if (item.IdProyecto == idProyecto)
+                {
+                    return item;
+                }
+            }
+            return null; 
         }
     }
      public class GuardarDescripcionesCResponse

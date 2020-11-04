@@ -32,16 +32,6 @@ namespace exposoftwaredotnet.Controllers
             return calificaciones;
         }
 
-        /* // GET: api/Calificacion/5
-        [HttpGet("{idCalificacion}")]
-        public ActionResult<CalificacionViewModel> Get(int idCalificacion)
-        {
-            var calificacion = _calificacionService.BuscarxId(idCalificacion);
-            if (calificacion == null) return NotFound();
-            var calificacionViewModel = new CalificacionViewModel(calificacion);
-            return calificacionViewModel;
-        } */
-        
         // POST: api/Calificacion
         [HttpPost]
         public ActionResult<CalificacionViewModel> Post(CalificacionInputModel calificacionInput)

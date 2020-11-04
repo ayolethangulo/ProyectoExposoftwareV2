@@ -71,7 +71,7 @@ export class LoginComiteEvaluadorComponent implements OnInit {
     this.usuarioService.getId(this.f.username.value).subscribe(u => {
       if (u != null) {
         if (u.rol == 'admin') {
-          this.ruta = this.route.snapshot.queryParams['returnUrl'] || '/';
+          this.ruta = this.route.snapshot.queryParams['returnUrl'] || '/inicio';
         } else if (u.rol == 'Docente evaluador') {
           this.ruta = this.route.snapshot.queryParams['returnUrl'] || '/inicioEvaluador';
         } else if ( u.rol == 'Docente lider') {

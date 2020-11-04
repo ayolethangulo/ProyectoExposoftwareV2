@@ -29,6 +29,14 @@ export class CalificacionService {
         );
     }
 
+    getId(idProyecto: number): Observable<Calificacion> {
+      const url = `${this.baseUrl + 'api/Calificacion'}/${idProyecto}`;
+        return this.http.get<Calificacion>(url, httpOptions)
+        .pipe(
+          catchError(this.handleErrorService.handleError<Calificacion>('Buscar proyecto', null))
+        );
+    }
+
     post(calificacion: Calificacion): Observable<Calificacion> {
       return this.http.post<Calificacion>(this.baseUrl + 'api/Calificacion', calificacion)
         .pipe(
@@ -45,14 +53,6 @@ export class CalificacionService {
         catchError(this.handleErrorService.handleError<any>('Editar calificacion'))
       );
     }
-
-    /* getId(idCalificacion: string): Observable<Calificacion> {
-      const url = `${this.baseUrl + 'api/Calificacion'}/${idCalificacion}`;
-        return this.http.get<Calificacion>(url, httpOptions)
-        .pipe(
-          catchError(this.handleErrorService.handleError<Calificacion>('Buscar calificacion', null))
-        );
-    } */
 
     delete(calificacion: Calificacion| string): Observable<string> {
       const id = typeof calificacion === 'string' ? calificacion : calificacion.idCalificacion;

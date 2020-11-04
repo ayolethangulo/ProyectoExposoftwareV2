@@ -34,6 +34,16 @@ namespace exposoftwaredotnet.Controllers
             return descripciones;
         }
 
+         // GET: api/DescripcionCalificacion/5
+        [HttpGet("{idProyecto}")]
+        public ActionResult<DescripcionCViewModel> Get(int idProyecto)
+        {
+            var descripcion = _descripcionService.BuscarxId(idProyecto);
+            if (descripcion == null) return NotFound();
+            var descripcionCViewModel = new DescripcionCViewModel(descripcion);
+            return descripcionCViewModel;
+        }
+
         // POST: api/DescripcionCalificacion
         [HttpPost]
         public ActionResult<DescripcionCViewModel> Post(DescripcionCInputModel descripcionInput)
@@ -63,6 +73,9 @@ namespace exposoftwaredotnet.Controllers
         {
             var descripcion = new DescripcionCalificacion
             {
+                P1 = descripcionCInput.P1,
+                P2 = descripcionCInput.P2,
+                P3 = descripcionCInput.P3,
                 Valor = descripcionCInput.Valor,
                 IdProyecto = descripcionCInput.IdProyecto,
             };

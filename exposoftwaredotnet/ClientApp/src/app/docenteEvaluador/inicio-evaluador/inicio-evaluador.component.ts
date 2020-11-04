@@ -23,12 +23,15 @@ export class InicioEvaluadorComponent implements OnInit {
   }
 
   buscar() {
+    this.calificaciones = [];
     this.calificacionService.get(this.id).subscribe(result => {
       this.calificaciones = result;
       this.cargarProyectos();
     });
   }
   cargarProyectos() {
+    this.lista = [];
+    this.listaP = [];
     this.proyectoService.get().subscribe(result => {
       this.listaP = result;
       this.listaP.forEach(elementP => {

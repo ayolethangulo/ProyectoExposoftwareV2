@@ -1,20 +1,41 @@
-<div class="btn-group-vertical" style="float:left">
-    <button type="button" class="btn btn-success " [routerLink]="['/InicioDocenteLider']"> Inicio</button>
-    <button type="button" class="btn btn-success " [routerLink]="['/RegistrarPendon']"> Registrar Pendon</button>
-    <button type="button" class="btn btn-success " [routerLink]="['/ConsultaResultado']"> Consultar Resultado</button>
-
-</div>
 <div class="container">
     <div class="row">
+        <label for="id">Digite Código del proyecto</label>
+        <div class="col-2">
+            <input type="number" name="idProyecto" [(ngModel)]="idProyecto" class="form-control" />
+        </div>
         <div class="col">
-            <h3>Consultar Resultado</h3>
-            <form>
-               <p>Resultado de la primera fase: </p>
-                  
-               <p>Resultado del Pendon: </p>
-
-               <p>Resultado de la tercera fase: </p>
-             </form>
+            <button class="btn btn-success" (click)="buscar()" type="button">Buscar</button>
         </div>
     </div>
+    <div class="form-row">
+        <div class="form-group">
+            <div *ngFor="let item of itemsRubrica">
+                    <div class="row">
+                        <div class="col">
+                            <label >Item:  {{ item.item }}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <label>Descripción: </label>
+                            <div class="col">
+                                <label>{{ item.descripcion }}</label>
+                            </div>
+                    </div>
+                <br>
+            </div>
+        </div>
+        <div class="form-group">
+            <h6>Valoracion 0-100</h6>
+            <div class="col-2">
+                <input type="number" name="valor1" [(ngModel)]="valor1" class="form-control" />
+            </div>
+            <div class="col-3">
+                <input type="number" name="valor2" [(ngModel)]="valor2" class="form-control" />
+            </div>
+            <div class="col-4">
+                <input type="number" name="valor3" [(ngModel)]="valor3" class="form-control" />
+            </div>
+    </div>
+    <input type="number" name="total" [(ngModel)]="total" class="form-control" />
 </div>

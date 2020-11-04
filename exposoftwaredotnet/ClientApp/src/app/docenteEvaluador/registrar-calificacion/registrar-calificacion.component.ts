@@ -24,7 +24,6 @@ export class RegistrarCalificacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerRuta();
-    this.descripcion = new DescripcionCalificacion();
     this.valor1 = 0;
     this.valor2 = 0;
     this.valor3 = 0;
@@ -45,6 +44,10 @@ export class RegistrarCalificacionComponent implements OnInit {
   add() {
     const idP = this.rutaActiva.snapshot.params.idProyecto;
     const idR = this.rutaActiva.snapshot.params.idRubrica;
+    this.descripcion = new DescripcionCalificacion();
+    this.descripcion.p1 = this.valor1;
+    this.descripcion.p2 = this.valor2;
+    this.descripcion.p3 = this.valor3;
     this.total = this.valor1 + this.valor2 + this.valor3;
     this.descripcion.valor = this.total;
     this.descripcion.idProyecto = parseInt(idP, 10);

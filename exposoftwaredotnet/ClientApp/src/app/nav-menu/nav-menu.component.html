@@ -24,25 +24,25 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/Informacion']">Información general</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <!-- /*<li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/inicioDocenteLider']">Docente Líder</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']"> 
+          <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/inicioEvaluador']">Docente Evaluador</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="currentUser">
+          <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/inicio']">Comité evaluador</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="currentUser" id="li-Logout">
+          </li> */ -->
+          <li class="nav-item"  [routerLinkActive]="['link-active']" *ngIf="currentUser" id="li-Logout">
              <a class="nav-item nav-link" (click)="logout()">Logout</a>
           </li>
-            
+
           <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!currentUser">
             <a [routerLink]="['/LoginComiteEvaluador']">
               <button id="btnIniciarSesion" type="button" class="btn btn-outline-success">Iniciar sesión</button>
             </a>
           </li>
-          
+
         </ul>
       </div>
     </div>
