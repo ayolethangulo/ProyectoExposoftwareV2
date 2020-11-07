@@ -32,6 +32,14 @@ namespace exposoftwaredotnet.Controllers
             return calificaciones;
         }
 
+         // GET: api/Calificacion
+        [HttpGet]
+        public IEnumerable<CalificacionViewModel> Gets()
+        {
+            var calificaciones = _calificacionService.Consultar().Select(cc=> new CalificacionViewModel(cc));
+            return calificaciones;
+        }
+
         // POST: api/Calificacion
         [HttpPost]
         public ActionResult<CalificacionViewModel> Post(CalificacionInputModel calificacionInput)

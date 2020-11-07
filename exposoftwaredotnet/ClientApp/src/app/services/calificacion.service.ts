@@ -29,11 +29,10 @@ export class CalificacionService {
         );
     }
 
-    getId(idProyecto: number): Observable<Calificacion> {
-      const url = `${this.baseUrl + 'api/Calificacion'}/${idProyecto}`;
-        return this.http.get<Calificacion>(url, httpOptions)
+    gets(): Observable<Calificacion[]> {
+      return this.http.get<Calificacion[]>(this.baseUrl + 'api/Calificacion')
         .pipe(
-          catchError(this.handleErrorService.handleError<Calificacion>('Buscar proyecto', null))
+          catchError(this.handleErrorService.handleError<Calificacion[]>('Consulta Calificaciones', null))
         );
     }
 

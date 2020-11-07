@@ -87,6 +87,11 @@ namespace Logica
                 return $"Error de la Aplicación: {e.Message}";
             }
         }
+        public List<DescripcionCalificacion> Consultar()
+        {
+            List<DescripcionCalificacion> descripcions = _context.DescripcionCalificaciones.ToList();
+            return descripcions;
+        }
 
         public DescripcionCalificacion BuscarxId(int idProyecto)
         {

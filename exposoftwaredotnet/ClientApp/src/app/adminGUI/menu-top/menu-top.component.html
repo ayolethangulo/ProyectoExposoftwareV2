@@ -19,7 +19,7 @@
           <div ngbDropdown class="d-inline-block">
             <button class="btn btn-outline-success" id="dropdownBasic1" ngbDropdownToggle>Usuario</button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button ngbDropdownItem>Cerrar sesión</button>
+              <button ngbDropdownItem (click)="logout()">Cerrar sesión</button>
             </div>
           </div>
         </div>

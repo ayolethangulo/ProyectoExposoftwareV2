@@ -26,22 +26,13 @@ namespace exposoftwaredotnet.Controllers
             _descripcionService = new DescripcionesCService(context);
             _emailPuntajeService = new EmailServicePuntaje(context);
         }
-        // GET: api/DescripcionCalificacion
-        [HttpGet("{idProyecto}")]
-        public IEnumerable<DescripcionCViewModel> Gets(int idProyecto)
-        {
-            var descripciones = _descripcionService.ConsultarTodos(idProyecto).Select(d => new DescripcionCViewModel(d));
-            return descripciones;
-        }
 
-         // GET: api/DescripcionCalificacion/5
-        [HttpGet("{idProyecto}")]
-        public ActionResult<DescripcionCViewModel> Get(int idProyecto)
+         // GET: api/DescripcionCalificacion
+        [HttpGet]
+        public IEnumerable<DescripcionCViewModel> Gets()
         {
-            var descripcion = _descripcionService.BuscarxId(idProyecto);
-            if (descripcion == null) return NotFound();
-            var descripcionCViewModel = new DescripcionCViewModel(descripcion);
-            return descripcionCViewModel;
+            var descripciones = _descripcionService.Consultar().Select(d=> new DescripcionCViewModel(d));
+            return descripciones;
         }
 
         // POST: api/DescripcionCalificacion

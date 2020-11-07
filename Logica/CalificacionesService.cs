@@ -44,20 +44,6 @@ namespace Logica
             }
             return 0;     
         }
-         public Calificacion BuscarxIdProyecto2(int idProyecto)
-        {
-            Calificacion calificacion = new Calificacion();
-            List<Calificacion> calificacions = _context.Calificaciones.ToList();
-            foreach (var item in calificacions)
-            {
-                if (item.IdProyecto == idProyecto)
-                {
-                    calificacion = item;
-                }
-            }   
-            return calificacion;
-        }
-
          public string BuscarArea(string nombreAsignatura){
             List<Area> area = _context.Areas.ToList();
             foreach (var item in area)
@@ -91,6 +77,11 @@ namespace Logica
                     calificaciones.Add(item);
                 }
             }
+            return calificaciones;
+        }
+         public List<Calificacion> Consultar()
+        {
+            List<Calificacion> calificaciones = _context.Calificaciones.ToList();
             return calificaciones;
         }
         public string Eliminar(int id)

@@ -14,8 +14,8 @@ import { ItemsRubricaService } from 'src/app/services/items-rubrica.service';
 export class ConsultaResultadoComponent implements OnInit {
 
   itemsRubrica: ItemsRubrica[];
-  descripcion: DescripcionCalificacion;
-  calificacion: Calificacion;
+  descripciones: DescripcionCalificacion[];
+  calificacion: Calificacion[];
   idRubrica: string;
   idProyecto: number;
   valor1: number;
@@ -27,13 +27,20 @@ export class ConsultaResultadoComponent implements OnInit {
     private descripcionCService: DescripcionCService) { }
 
   ngOnInit(): void {
+    this.valor1 = 0;
+    this.valor2 = 0;
+    this.valor3 = 0;
+    this.total = 0;
   }
 
   buscar() {
-    this.calificacionService.getId(this.idProyecto).subscribe(c => {
+    this.calificacionService.gets().subscribe(c => {
       this.calificacion = c;
-      alert(this.calificacion.idProyecto);
-      this.cargarItem(this.calificacion.idRubrica, this.calificacion.idProyecto);
+      this.calificacion.forEach(element => {
+        if ( element.idProyecto == this.idProyecto) {
+          this.cargarItem(element.idRubrica, element.idProyecto);
+        }
+      });
     });
   }
   cargarItem(rubrica: string, idProyecto: number) {
@@ -44,12 +51,16 @@ export class ConsultaResultadoComponent implements OnInit {
   }
 
   cargarPuntaje(idProyecto: number) {
-    this.descripcionCService.getId(idProyecto).subscribe(p => {
-      this.descripcion = p;
-      this.valor1 = p.p1;
-      this.valor2 = p.p2;
-      this.valor3 = p.p3;
-      this.total = p.valor;
+    this.descripcionCService.gets().subscribe(p => {
+      this.descripciones = p;
+      this.descripciones.forEach(element => {
+        if (element.idProyecto == idProyecto) {
+          this.valor1 = element.p1;
+          this.valor2 = element.p2;
+          this.valor3 = element.p3;
+          this.total = element.valor;
+        }
+      });
     });
   }
 

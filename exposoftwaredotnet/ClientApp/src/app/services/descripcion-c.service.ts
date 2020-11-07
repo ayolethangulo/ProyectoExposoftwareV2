@@ -21,11 +21,11 @@ export class DescripcionCService {
     private handleErrorService: HandleHttpErrorService) {
     this.baseUrl = baseUrl;
   }
-  get(idProyecto: number): Observable<DescripcionCalificacion[]> {
-    const url = `${this.baseUrl + 'api/DescripcionCalificacion'}/${idProyecto}`;
-    return this.http.get<DescripcionCalificacion[]>(url, httpOptions)
+
+  gets(): Observable<DescripcionCalificacion[]> {
+    return this.http.get<DescripcionCalificacion[]>(this.baseUrl + 'api/DescripcionCalificacion')
       .pipe(
-        catchError(this.handleErrorService.handleError<DescripcionCalificacion[]>('Consulta resultados', null))
+        catchError(this.handleErrorService.handleError<DescripcionCalificacion[]>('Consulta descripciones', null))
       );
   }
 
@@ -52,12 +52,5 @@ export class DescripcionCService {
       tap(_ => this.handleErrorService.log('Se ha eliminado correctamente!')),
       catchError(this.handleErrorService.handleError<string>('Elimiar resultados', null))
     );
-  }
-  getId(idProyecto: number): Observable<DescripcionCalificacion> {
-    const url = `${this.baseUrl + 'api/DescripcionCalificacion'}/${idProyecto}`;
-      return this.http.get<DescripcionCalificacion>(url, httpOptions)
-      .pipe(
-        catchError(this.handleErrorService.handleError<DescripcionCalificacion>('Buscar calificacion', null))
-      );
   }
 }
